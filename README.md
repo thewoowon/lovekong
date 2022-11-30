@@ -5,6 +5,7 @@
   <img alt="lib" src="https://img.shields.io/badge/TailwindCSS-3.2.4-blue"/>
   <img alt="lib" src="https://img.shields.io/badge/Emotion-11.10.5-red"/>
   <img alt="lib" src="https://img.shields.io/badge/ReactQuery-4.18.0-purple"/>
+    <img alt="lib" src="https://img.shields.io/badge/Recoil-0.7.6-blue"/>
 </p>
 
 ## Logo
