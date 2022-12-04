@@ -1,4 +1,5 @@
 import '../styles/globals.css'
+//import '../styles/util.scss'
 import type { AppProps } from 'next/app'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { SessionProvider } from 'next-auth/react'
@@ -26,7 +27,9 @@ function MyApp({
     <SessionProvider session={session}>
       <QueryClientProvider client={queryClient}>
         <Header></Header>
-        <Component {...pageProps} />
+        <div className="mt-10">
+          <Component {...pageProps} />
+        </div>
         <Footer></Footer>
       </QueryClientProvider>
     </SessionProvider>
