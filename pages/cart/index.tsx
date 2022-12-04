@@ -1,10 +1,9 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
 
 export default function Cart() {
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>LoveKong | Cart</title>
         <meta name="description" content="LoveKong Stained Glass" />
@@ -23,8 +22,6 @@ export default function Cart() {
       <main>
         <h1>hello</h1>
       </main>
-
-      <footer className={styles.footer}></footer>
     </div>
   )
 }

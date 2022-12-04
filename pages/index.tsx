@@ -4,7 +4,7 @@ import styles from '../styles/Home.module.css'
 
 export default function Home() {
   return (
-    <div>
+    <div className="scroll-smooth">
       <Head>
         <title>LoveKong</title>
         <meta name="description" content="LoveKong Stained Glass" />
@@ -21,8 +21,30 @@ export default function Home() {
           content="https://imagedelivery.net/6qzLODAqs2g1LZbVYqtuQw/bb63b50a-7d84-464c-249a-9da9aa993900/public"
         />
       </Head>
-
-      <footer></footer>
+      <section
+        style={{ height: '600px' }}
+        className="bg-white flex flex-col justify-center items-center"
+      >
+        <div className="font-sans-kr text-2xl">hello</div>
+        <div className="font-sans-kr-bold text-2xl">hello</div>
+        <div className="font-sans-kr-light text-2xl">hello</div>
+      </section>
+      <section
+        style={{ height: '600px' }}
+        className="bg-gray-50 flex justify-center items-center"
+      ></section>
+      <section
+        style={{ height: '600px' }}
+        className="bg-white flex justify-center items-center"
+      ></section>
+      <section
+        style={{ height: '600px' }}
+        className="bg-gray-50 flex justify-center items-center"
+      ></section>
+      <section
+        style={{ height: '600px' }}
+        className="bg-white flex justify-center items-center"
+      ></section>
     </div>
   )
 }

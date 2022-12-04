@@ -7,8 +7,14 @@ const nextConfig = {
     emotion: true,
   },
   images: {
-    domains: ["picsum.photos", "example.com", "lh3.googleusercontent.com"],
+    domains: [
+      'picsum.photos',
+      'example.com',
+      'lh3.googleusercontent.com',
+      'imagedelivery.net',
+      'images.unsplash.com',
+    ],
   },
-};
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
