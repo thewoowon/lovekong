@@ -13,6 +13,8 @@
     "@emotion/css": "^11.10.5",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@mantine/core": "^5.9.1",
+    "@mantine/hooks": "^5.9.1",
     "@next-auth/prisma-adapter": "^1.0.5",
     "@prisma/client": "^4.7.1",
     "@react-oauth/google": "^0.5.0",

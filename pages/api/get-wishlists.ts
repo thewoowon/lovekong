@@ -8,7 +8,7 @@ const prisma = new PrismaClient()
 
 async function getWishlists(userId: string) {
   try {
-    const whshlist = await prisma.wishlist.findUnique({
+    const whshlist = await prisma.wishlists.findUnique({
       where: {
         userId: userId,
       },
@@ -23,7 +23,6 @@ async function getWishlists(userId: string) {
           },
         },
       })
-      console.log(products)
       return products
     }
 

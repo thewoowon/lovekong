@@ -8,11 +8,18 @@ import {
 } from '@tabler/icons'
 import { useSession } from 'next-auth/react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useState } from 'react'
 
 export default function Header() {
   const { data: session } = useSession()
   const router = useRouter()
+
+  const [toggle, setToggle] = useState(false)
+  const clickProfile = () => {
+    setToggle(!toggle)
+  }
 
   return (
     <header
@@ -33,7 +40,7 @@ export default function Header() {
           <IconBox
             stroke={0.5}
             onClick={() => {
-              router.push('/goods')
+              router.push('/products')
             }}
           ></IconBox>
         </div>
@@ -54,17 +61,16 @@ export default function Header() {
           ></IconShoppingCart>
         </div>
         {session ? (
-          <div className="mr-4 flex justify-center items-center">
+          <div className="mr-4 flex justify-center items-center relative">
             <Image
-              onClick={() => {
-                router.push('/my')
-              }}
-              className="rounded-full"
+              onClick={clickProfile}
+              className="rounded-full cursor-pointer mx-2"
               alt=""
               src={session.user?.image!}
               width={30}
               height={30}
             ></Image>
+            {toggle && <ProfileMenu />}
           </div>
         ) : (
           <div className="rounded-full p-2 cursor-pointer hover:bg-blue-200 transition duration-300 ease-in-out">
@@ -78,5 +84,23 @@ export default function Header() {
         )}
       </div>
     </header>
+  )
+}
+
+const ProfileMenu = () => {
+  const menus = [
+    { title: '내 프로필', link: '/my' },
+    { title: '로그아웃', link: '/auth/signout' },
+  ]
+  return (
+    <ol className="font-sans-kr-light absolute top-10 z-50 w-[120px] shadow-lg bg-white rounded-md overflow-hidden transition duration-200 ease-in-out">
+      {menus.map((menu) => (
+        <Link href={menu.link} className="text-zinc-700" key={menu.title}>
+          <li className="hover:bg-zinc-100 transition duration-200 ease-in-out px-4 py-2 w-full text-center text-sm text-darkGray">
+            {menu.title}
+          </li>
+        </Link>
+      ))}
+    </ol>
   )
 }

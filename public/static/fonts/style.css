@@ -1,0 +1,34 @@
+@font-face {
+    font-family: 'AAutoyes-Closely';
+    src: url('AAutoyesClosely-2OvmW.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gratisan';
+    src: url('Gratisan-w1v6w.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Kashie-Mercy';
+    src: url('KashieMercy-RpK0V.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Salonica';
+    src: url('Salonica-eZnJO.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Yesteryear';
+    src: url('Yesteryear-MdvP.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

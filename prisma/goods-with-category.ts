@@ -3,7 +3,7 @@ import { CATEGORY_MAP } from 'constants/goods'
 
 const prisma = new PrismaClient()
 
-const productData: Prisma.goodsCreateInput[] = Array.apply(
+const productData: Prisma.ProductsCreateInput[] = Array.apply(
   null,
   Array(100)
 ).map((_, index) => ({

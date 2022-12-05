@@ -6,7 +6,7 @@ export default function Card({
   image: string
 }) {
   return (
-    <div className="max-w-xs overflow-hidden rounded-md shadow-lg hover:scale-105 transition duration-300 ease-in-out">
+    <div className="max-w-xs overflow-hidden hover:rotate-1 rounded-md shadow-lg transition duration-300 ease-in-out">
       <div className=" rounded-lg relative">
         <img
           className="w-full h-96"

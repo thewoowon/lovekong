@@ -14,8 +14,6 @@ async function getOrder(userId: string) {
       },
     })
 
-    console.log(orders)
-
     let response = []
 
     for (const order of orders) {

@@ -6,6 +6,7 @@ import { SessionProvider } from 'next-auth/react'
 import { Session } from 'next-auth'
 import Header from '@components/Header'
 import Footer from '@components/Footer'
+import 'public/static/fonts/style.css'
 import Head from 'next/head'
 
 function MyApp({
@@ -27,9 +28,7 @@ function MyApp({
     <SessionProvider session={session}>
       <QueryClientProvider client={queryClient}>
         <Header></Header>
-        <div className="mt-10">
-          <Component {...pageProps} />
-        </div>
+        <Component {...pageProps} />
         <Footer></Footer>
       </QueryClientProvider>
     </SessionProvider>
