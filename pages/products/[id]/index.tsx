@@ -1,7 +1,7 @@
 import CommentItem from '@components/CommentItem'
 import { CountControl } from '@components/CountControl'
 import CustomEditor from '@components/Editor'
-import { Button } from '@mantine/core'
+import { Badge, Button } from '@mantine/core'
 import { Carts, OrderItems, Products, Comments } from '@prisma/client'
 import {
   IconCoin,
@@ -16,6 +16,7 @@ import { convertFromRaw, convertToRaw, EditorState } from 'draft-js'
 import { GetServerSidePropsContext } from 'next'
 import { useSession } from 'next-auth/react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Carousel from 'nuka-carousel'
 import { CART_QUERY_KEY } from 'pages/cart/index'
@@ -52,49 +53,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   }
 }
 
-const images = [
-  {
-    original: 'https://picsum.photos/id/1012/1000/600/',
-    thumbnail: 'https://picsum.photos/id/1012/250/150/',
-  },
-  {
-    original: 'https://picsum.photos/id/1012/1000/600/',
-    thumbnail: 'https://picsum.photos/id/1012/250/150/',
-  },
-  {
-    original: 'https://picsum.photos/id/1013/1000/600/',
-    thumbnail: 'https://picsum.photos/id/1013/250/150/',
-  },
-  {
-    original: 'https://picsum.photos/id/1013/1000/600/',
-    thumbnail: 'https://picsum.photos/id/1013/250/150/',
-  },
-  {
-    original: 'https://picsum.photos/id/1015/1000/600/',
-    thumbnail: 'https://picsum.photos/id/1015/250/150/',
-  },
-  {
-    original: 'https://picsum.photos/id/1015/1000/600/',
-    thumbnail: 'https://picsum.photos/id/1015/250/150/',
-  },
-  {
-    original: 'https://picsum.photos/id/1019/1000/600/',
-    thumbnail: 'https://picsum.photos/id/1019/250/150/',
-  },
-  {
-    original: 'https://picsum.photos/id/1019/1000/600/',
-    thumbnail: 'https://picsum.photos/id/1019/250/150/',
-  },
-  {
-    original: 'https://picsum.photos/id/1019/1000/600/',
-    thumbnail: 'https://picsum.photos/id/1019/250/150/',
-  },
-  {
-    original: 'https://picsum.photos/id/1019/1000/600/',
-    thumbnail: 'https://picsum.photos/id/1019/250/150/',
-  },
-]
-
 const WISHLIST_QUERY_KEY = `/api/get-wishlist`
 
 interface IParam {
@@ -103,7 +61,7 @@ interface IParam {
 
 export interface ICommentItemType extends Comments, OrderItems {}
 
-export default function Product(props: {
+export default function ProductsId(props: {
   product: Products & { images: string[] }
   comments: ICommentItemType[]
 }) {
@@ -264,14 +222,15 @@ export default function Product(props: {
   // }, [productId])
 
   return product != null && productId != null ? (
-    <div className="flex flex-row font-sans-kr-light my-10 px-36">
-      <div style={{ maxWidth: '600px' }} className="mr-10">
+    <div className="flex flex-row justify-center font-sans-kr-light my-10 px-36">
+      <div style={{ maxWidth: '500px', minWidth: '300px' }} className="mr-10">
         <Carousel
           animation="fade"
           withoutControls
           wrapAround
           speed={10}
           slideIndex={index}
+          className="overflow-hidden"
         >
           {product.images.map((url, index) => {
             return (
@@ -279,8 +238,9 @@ export default function Product(props: {
                 src={url}
                 alt="image"
                 key={`${url}-carousel-${index}`}
-                width="600"
-                height="360"
+                width="500"
+                height="400"
+                className="overflow-hidden"
               ></Image>
             )
           })}
@@ -291,6 +251,7 @@ export default function Product(props: {
               <div
                 onClick={() => setIndex(index)}
                 key={`${url}-thumbnail-${index}`}
+                className="cursor-pointer overflow-hidden"
               >
                 <Image src={url} alt="image" width="100" height="60"></Image>
               </div>
@@ -308,22 +269,68 @@ export default function Product(props: {
             ))}
         </div>
       </div>
-      <div style={{ maxWidth: '600px' }} className="flex flex-col space-y-4">
-        <div className="text-lg text-zinc-400">{product.name}</div>
-        <div className="text-4xl font-semibold">
-          {CATEGORY_MAP[product.category_id]}
+      <div
+        style={{
+          maxWidth: '700px',
+          minWidth: '500px',
+          border: '0.5px solid rgba(200,200,200,1)',
+        }}
+        className="p-10 flex flex-col space-y-4 rounded-md"
+      >
+        <div className="text-sm">
+          Type : {CATEGORY_MAP[product.category_id]}
         </div>
-        <div className="text-lg font-light">
-          {product.price.toLocaleString('ko-KR')}₩
+        <div className="text-3xl font-sans-kr">{product.name}</div>
+        <div className="text-2xl py-5 text-end">
+          {product.price.toLocaleString('ko-KR')} ₩
         </div>
-        <div>
-          <div className="font-light text-center py-2">수량을 입력하세요.</div>
+        <div
+          style={{ border: '0.5px solid rgba(200,200,200,1)' }}
+          className="grid grid-col-1 gap-5 grid-row-3 py-5 rounded-md px-4"
+        >
+          <div className="text-md text-start font-light">
+            함께 구매하면 좋은 상품 :{' '}
+            {product.category_id === 0 ? (
+              <Link href="/">Vase</Link>
+            ) : product.category_id === 1 ? (
+              <Link href="/">Case</Link>
+            ) : product.category_id === 2 ? (
+              <Link href="/">Accessory</Link>
+            ) : product.category_id === 3 ? (
+              <Link href="/">Light</Link>
+            ) : product.category_id === 4 ? (
+              <Link href="/">Case</Link>
+            ) : product.category_id === 5 ? (
+              <Link href="/">Light</Link>
+            ) : null}
+          </div>
+          <div className="text-md text-start font-light">
+            원산지 : 제품 상세설명 참조
+          </div>
+          <div className="text-md text-start font-light">
+            택배배송 : 2~3일 이내 배송(100,000원 이상 구매시 무료배송)
+          </div>
+        </div>
+        <div className="flex justify-between">
+          <div className="font-light text-xl text-start py-2">수량</div>
           <CountControl
+            width={150}
             value={quantity}
             setValue={setQuantity}
             max={1000}
             min={1}
           />
+        </div>
+        <div className="text-2xl py-5 flex justify-between">
+          <div className="text-3xl">총 상품금액</div>
+          <div className="text-3xl">
+            <span className="text-sm">{`(선택 수량 : ${quantity}) `}</span>
+            {(quantity
+              ? product.price * quantity
+              : product.price
+            ).toLocaleString('ko-KR')}{' '}
+            ₩
+          </div>
         </div>
         <div className="flex space-x-3">
           <div className="flex-1">
@@ -389,7 +396,41 @@ export default function Product(props: {
         >
           구매하기
         </Button>
-        <div className="text-sm text-zinc-400">
+        <div className="text-sm">
+          {' '}
+          쇼핑할 때 필독{' '}
+          <Link
+            href={'/'}
+            className="text-green-500 border-b-green-400 hover:border-b-2 "
+          >
+            안전거래 TIP!
+          </Link>
+        </div>
+        <div className="text-sm">
+          {' '}
+          상품정보에 문제가 있나요?{' '}
+          <Link
+            href={'/'}
+            className="text-green-500 border-b-green-400 hover:border-b-2 "
+          >
+            신고하기
+          </Link>
+        </div>
+        <div className="text-sm">
+          {' '}
+          대량 주문이 필요한가요?{' '}
+          <Link
+            href={'/'}
+            className="text-green-500 border-b-green-400 hover:border-b-2 "
+          >
+            연락하기
+          </Link>
+        </div>
+        <div
+          style={{ minHeight: '300px' }}
+          className="bg-yellow-50 rounded-md"
+        ></div>
+        <div className="text-sm  text-end text-zinc-400">
           등록 : {format(new Date(product.createdAt), 'yyyy년 MM월 dd일')}
         </div>
       </div>

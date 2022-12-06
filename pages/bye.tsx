@@ -20,12 +20,12 @@ export default function Bye() {
         >
           {'-> '} 메인으로 이동하기
         </Link>
-        <Link
+        {/* <Link
           className="border-b-2 border-b-white hover:border-b-blue-500 cursor-pointer"
           href="/auth/login"
         >
           {'-> '} 다시 로그인하기
-        </Link>
+        </Link> */}
       </div>
     </div>
   )

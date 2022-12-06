@@ -11,6 +11,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
+import { signIn } from 'next-auth/react'
 
 export default function Header() {
   const { data: session } = useSession()
@@ -77,7 +78,7 @@ export default function Header() {
             <IconUser
               stroke={0.5}
               onClick={() => {
-                router.push('/auth/login')
+                signIn()
               }}
             ></IconUser>
           </div>
@@ -89,11 +90,14 @@ export default function Header() {
 
 const ProfileMenu = () => {
   const menus = [
-    { title: '내 프로필', link: '/my' },
+    { title: '나의 주문', link: '/my' },
     { title: '로그아웃', link: '/auth/signout' },
   ]
   return (
-    <ol className="font-sans-kr-light absolute top-10 z-50 w-[120px] shadow-lg bg-white rounded-md overflow-hidden transition duration-200 ease-in-out">
+    <ol
+      style={{ border: '1px solid rgba(200,200,200,0.6)' }}
+      className="font-sans-kr absolute top-10 z-50 w-[120px] shadow-lg bg-white rounded-md overflow-hidden transition duration-200 ease-in-out"
+    >
       {menus.map((menu) => (
         <Link href={menu.link} className="text-zinc-700" key={menu.title}>
           <li className="hover:bg-zinc-100 transition duration-200 ease-in-out px-4 py-2 w-full text-center text-sm text-darkGray">

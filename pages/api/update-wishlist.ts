@@ -8,7 +8,7 @@ const prisma = new PrismaClient()
 
 async function updateWishlist(userId: string, productId: string) {
   try {
-    const wishlist = await prisma.wishlist.findUnique({
+    const wishlist = await prisma.wishlists.findUnique({
       where: {
         userId: userId,
       },
@@ -25,7 +25,7 @@ async function updateWishlist(userId: string, productId: string) {
       ? originWishlist.filter((item) => item != productId)
       : [...originWishlist, productId]
 
-    const response = await prisma.wishlist.upsert({
+    const response = await prisma.wishlists.upsert({
       where: {
         userId: userId,
       },

@@ -6,11 +6,22 @@ import { useRouter } from 'next/router'
 import { Categories, Products, Carts, OrderItems } from '@prisma/client'
 import { useEffect, useMemo, useState } from 'react'
 import { ORDER_QUERY_KEY } from 'pages/my'
-import { IconCoin, IconRefresh, IconX } from '@tabler/icons'
+import {
+  IconBox,
+  IconCoin,
+  IconEqual,
+  IconHighlight,
+  IconMinus,
+  IconPlus,
+  IconRefresh,
+  IconX,
+} from '@tabler/icons'
 import { Button, Loader } from '@mantine/core'
 import { CATEGORY_MAP } from 'constants/goods'
 import { CountControl } from '@components/CountControl'
 import styled from '@emotion/styled'
+import Script from 'next/script'
+import { format } from 'date-fns'
 
 interface ICartItem extends Carts {
   name: string
@@ -91,9 +102,9 @@ export default function Cart() {
     unknown,
     Products[]
   >(
-    [`/api/get-products?skip=${0}&take=${6}`],
+    [`/api/get-products?skip=${0}&take=${10}`],
     () =>
-      fetch(`/api/get-products?skip=${0}&take=${6}`).then((res) => res.json()),
+      fetch(`/api/get-products?skip=${0}&take=${10}`).then((res) => res.json()),
     {
       select: (data) => data.items,
     }
@@ -115,124 +126,166 @@ export default function Cart() {
         />
         <meta property="og:image" content="" />
       </Head>
+      <Script id="naver_script">
+        {`var oPay = Naver.Pay.create({
+          "mode" : "production", // development or production
+          "clientId": "u86j4ripEt8LRfPGzQ8" // clientId
+          });
 
-      <main className="my-10 px-36 font-sans-kr-light">
-        <p className="text-2xl mb-4">장바구니 ({data && data.length})</p>
-        <div className="flex">
-          <div className="flex flex-col p-4 space-y-4 flex-1">
-            {data ? (
-              data.length > 0 ? (
-                data.map((value, iter) => {
-                  return <Items key={iter} {...value}></Items>
-                })
-              ) : (
-                <div>장바구니가 비었어요.</div>
-              )
-            ) : (
-              <div>Loading....</div>
-            )}
-          </div>
-          <div className="p-4">
-            <div
-              className="flex flex-col p-4 space-y-4 shadow-xl rounded-md"
-              style={{ minWidth: '300px' }}
-            >
-              <p className="text-xl font-semibold">주문정보</p>
-              <Row>
-                <p>합계 금액</p>
-                <p>{amount.toLocaleString('ko-KR')} ₩</p>
-              </Row>
-              <Row>
-                <p>배송비</p>
-                <p>{deliveryAmount.toLocaleString('ko-KR')} ₩</p>
-              </Row>
-              <Row>
-                <p>할인 금액</p>
-                <p>{discountAmount.toLocaleString('ko-KR')} ₩</p>
-              </Row>
-              <Row>
-                <p className="font-semibold">결제 금액</p>
-                <p className="text-green-500 font-semibold">
-                  {(amount + deliveryAmount - discountAmount).toLocaleString(
-                    'ko-KR'
-                  )}{' '}
-                  ₩
-                </p>
-              </Row>
-              <Button
-                leftIcon={<IconCoin size={20} stroke={1.5} />}
-                className={`bg-green-400 hover:bg-green-500 transition duration-200 ease-in-out`}
-                onClick={() => {
-                  if (session == null) {
-                    alert('로그인이 필요합니다.')
-                    router.push('/auth/login')
-                    return
-                  }
-                  handleOrder()
-                }}
-              >
-                결제하기
-              </Button>
-            </div>
+    //직접 만드신 네이버페이 결제버튼에 click Event를 할당하세요
+    var elNaverPayBtn = document.getElementById("naverPayBtn");
+
+    elNaverPayBtn.addEventListener("click", function() {
+        oPay.open({
+          "merchantUserKey": "가맹점 사용자 식별키",
+          "merchantPayKey": "가맹점 주문 번호",
+          "productName": "상품명을 입력하세요",
+          "totalPayAmount": "1000",
+          "taxScopeAmount": "1000",
+          "taxExScopeAmount": "0",
+          "returnUrl": "사용자 결제 완료 후 결제 결과를 받을 URL"
+        });
+    });`}
+      </Script>
+      <main className="font-sans-kr mx-auto bg-zinc-50">
+        <div
+          className="text-2xl flex justify-center py-10 bg-white"
+          style={{ borderBottom: '0.5px solid rgba(200,200,200,1)' }}
+        >
+          <div style={{ width: '1080px' }}>
+            장바구니 ({data && data.length})
           </div>
         </div>
-        <p className="text-2xl my-10">추천 상품</p>
-        {products ? (
-          products.length > 0 ? (
-            <div className="grid grid-cols-4 gap-5">
-              {products.map((product) => {
-                return (
-                  <div key={product.id} className="m-auto">
-                    <div
-                      className="hover:opacity-95 cursor-pointer hover:shadow-md transition ease-in-out duration-300"
-                      style={{ maxWidth: 400 }}
-                      onClick={() => {
-                        router.push(`/products/${product.id}`)
-                      }}
-                    >
-                      <Image
-                        className="rounded-md"
-                        src={product.image_url ?? ''}
-                        alt={product.name}
-                        width={400}
-                        height={500}
-                        placeholder="blur"
-                        blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
-                      ></Image>
-                      <div className="flex p-2">
-                        <span className="font-sans-kr text-lg">
-                          {product.name}
-                        </span>
-                        <span className="font-sans-kr-light ml-auto">
-                          {product.price.toLocaleString('ko-KR')}₩
-                        </span>
-                      </div>
-                      <div className="flex px-2 pb-2">
-                        <span className="text-zinc-500 font-sans-kr-light">
-                          type : {CATEGORY_MAP[product.category_id - 1]}
-                        </span>
+        <div
+          className="text-xl flex justify-center py-10 bg-white"
+          style={{ borderBottom: '0.5px solid rgba(200,200,200,1)' }}
+        >
+          <div style={{ width: '1080px' }}>✅ 일반배송 </div>
+        </div>
+        <button id="naverPayBtn" className="px-4 py-2 bg-green-500">
+          네이버 페이 결제
+        </button>
+        <div className="flex flex-col justify-center items-center space-y-10 py-10">
+          {data ? (
+            data.length > 0 ? (
+              data.map((value, iter) => {
+                return <Items key={iter} {...value}></Items>
+              })
+            ) : (
+              <div>장바구니가 비었어요.</div>
+            )
+          ) : (
+            <div>Loading....</div>
+          )}
+        </div>
+        <div
+          className="flex flex-col p-4 space-y-4 shadow-lg rounded-md bg-white mx-auto"
+          style={{ width: '1080px', border: '0.5px solid rgba(200,200,200,1)' }}
+        >
+          <p className="text-xl font-semibold">주문정보</p>
+          <Row>
+            <p>합계 금액</p>
+            <p>{amount.toLocaleString('ko-KR')} ₩</p>
+          </Row>
+          <Row>
+            <p>배송비</p>
+            <p>{deliveryAmount.toLocaleString('ko-KR')} ₩</p>
+          </Row>
+          <Row>
+            <p>할인 금액</p>
+            <p>{discountAmount.toLocaleString('ko-KR')} ₩</p>
+          </Row>
+          <Row>
+            <p className="font-semibold">결제 금액</p>
+            <p className="text-green-500 font-semibold">
+              {(amount + deliveryAmount - discountAmount).toLocaleString(
+                'ko-KR'
+              )}{' '}
+              ₩
+            </p>
+          </Row>
+          <Button
+            leftIcon={<IconCoin size={20} stroke={1.5} />}
+            className={`bg-green-400 hover:bg-green-500 transition duration-200 ease-in-out`}
+            onClick={() => {
+              if (session == null) {
+                alert('로그인이 필요합니다.')
+                router.push('/auth/login')
+                return
+              }
+              handleOrder()
+            }}
+          >
+            결제하기
+          </Button>
+        </div>
+        <div
+          className="text-2xl flex justify-center py-10 bg-white  my-10"
+          style={{ borderBottom: '0.5px solid rgba(200,200,200,1)' }}
+        >
+          <div style={{ width: '1080px' }}>추천 상품</div>
+        </div>
+        <div className="flex justify-center py-10 bg-white">
+          {products ? (
+            products.length > 0 ? (
+              <div
+                className="grid grid-cols-4 gap-5"
+                style={{ width: '1080px' }}
+              >
+                {products.map((product) => {
+                  return (
+                    <div key={product.id} className="m-auto">
+                      <div
+                        className="hover:opacity-95 cursor-pointer hover:shadow-md transition ease-in-out duration-300"
+                        style={{ maxWidth: 400 }}
+                        onClick={() => {
+                          router.push(`/products/${product.id}`)
+                        }}
+                      >
+                        <Image
+                          className="rounded-md"
+                          src={product.image_url ?? ''}
+                          alt={product.name}
+                          width={400}
+                          height={500}
+                          placeholder="blur"
+                          blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
+                        ></Image>
+                        <div className="flex p-2">
+                          <span className="font-sans-kr text-lg">
+                            {product.name}
+                          </span>
+                          <span className="font-sans-kr-light ml-auto">
+                            {product.price.toLocaleString('ko-KR')}₩
+                          </span>
+                        </div>
+                        <div className="flex px-2 pb-2">
+                          <span className="text-zinc-500 font-sans-kr-light">
+                            type : {CATEGORY_MAP[product.category_id - 1]}
+                          </span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                )
-              })}
-            </div>
+                  )
+                })}
+              </div>
+            ) : (
+              <div className="flex justify-center m-auto items-center font-sans-kr-light h-60">
+                상품 준비 중입니다.
+              </div>
+            )
           ) : (
-            <div className="flex justify-center m-auto items-center font-sans-kr-light h-60">
-              상품 준비 중입니다.
+            <div
+              style={{ height: '400px' }}
+              className="flex flex-col justify-center items-center font-sans-kr-light"
+            >
+              <div>
+                제품 목록을 가져오는 중입니다. 다른 페이지로 이동하지 마세요.
+              </div>
+              <Loader variant="bars" color={'gray'} size={'lg'}></Loader>
             </div>
-          )
-        ) : (
-          <div
-            style={{ height: '400px' }}
-            className="flex flex-col justify-center items-center font-sans-kr-light"
-          >
-            <div>
-              제품 목록을 가져오는 중입니다. 다른 페이지로 이동하지 마세요.
-            </div>
-            <Loader variant="bars" color={'gray'} size={'lg'}></Loader>
-          </div>
-        )}
+          )}
+        </div>
       </main>
     </div>
   )
@@ -243,6 +296,8 @@ const Items = (props: ICartItem) => {
   const [amount, setAmount] = useState<number>(props.price)
   const queryClient = useQueryClient()
   const router = useRouter()
+  const today = new Date()
+  const delivery = 3000
   useEffect(() => {
     if (quantity) {
       setAmount(quantity * props.price)
@@ -318,49 +373,122 @@ const Items = (props: ICartItem) => {
   }
 
   return (
-    <div className="w-full flex p-4 shadow-xl rounded-md">
-      <Image
-        src={props.image_url}
-        width={600}
-        height={360}
-        alt="image"
-        onClick={() => {
-          router.push(`/products/${props.productId}`)
-        }}
-      ></Image>
-      <div className="flex flex-col ml-4">
-        <span className="font-semibold mb-2">{props.name}</span>
-        <span className="mb-auto">
-          가격 : {props.price.toLocaleString('ko-KR')} ₩
-        </span>
-        <div className="flex items-center space-x-2">
-          <CountControl
-            value={quantity}
-            setValue={setQuantity}
-            max={1000}
-            min={1}
-          ></CountControl>
-          <div className="rounded-full flex justify-center transition duration-300 ease-in-out items-center hover:bg-gray-100 w-10 h-10">
-            <IconRefresh
-              className="hover:animate-spin"
-              onClick={() => {
-                handleUpdate()
-              }}
-              stroke={1.5}
-            ></IconRefresh>
-          </div>
+    <div
+      className="flex-col py-6 px-12 shadow-lg rounded-xl bg-white"
+      style={{
+        border: '1px solid rgba(200,200,200,0.6)',
+        width: '1080px',
+        height: '400px',
+      }}
+    >
+      <div className="flex justify-between text-2xl py-2 border-b-2 border-b-zinc-700">
+        <div className="flex items-center justify-center">
+          <span className="px-2">{props.name}</span>
+          <IconBox></IconBox>
         </div>
-      </div>
-      <div className="flex ml-auto space-x-4">
-        <span>{amount.toLocaleString('ko-KR')} ₩</span>
-        <div className="transition duration-300 ease-in-out flex justify-center items-center hover:bg-gray-100">
+        <div className="cursor-pointer transition duration-200 ease-in-out flex justify-center items-center p-1 hover:bg-green-200 rounded-full">
           <IconX
             onClick={() => {
               handleDelete()
             }}
+            stroke={1}
             size={30}
-            stroke={1.5}
           ></IconX>
+        </div>
+      </div>
+      <div className="flex flex-row justify-start items-center">
+        <div className="px-10">
+          <div className="text-sm font-sans-kr py-4">
+            수제작 평균 소요시간
+            <span className="text-green-500 font-sans-kr-bold px-2">5~7일</span>
+          </div>
+          <div className="flex border-r-2 border-zinc-400 pr-20">
+            <Image
+              className="mr-6"
+              src={props.image_url}
+              width={90}
+              height={60}
+              alt="image"
+              onClick={() => {
+                router.push(`/products/${props.productId}`)
+              }}
+            ></Image>
+            <div className="flex flex-col items-start justify-center">
+              <div className="font-sans-kr py-1">
+                영롱한 색이 매력적인 조명 : {props.name}
+              </div>
+              <div className="font-sans-kr-bold py-1">
+                {props.price.toLocaleString('ko-KR')}원
+              </div>
+              <div className="py-1 text-sm text-zinc-500">
+                LoveKong Statined Glass
+              </div>
+              <div className="py-1 text-xs">배송 평균 소요 시간 1~2일</div>
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col ml-4">
+          <div className="flex flex-col justify-center items-center text-sm font-sans-kr py-4 px-10"></div>
+          <div className="flex items-center space-x-2">
+            <CountControl
+              value={quantity}
+              setValue={setQuantity}
+              max={1000}
+              min={1}
+              width={150}
+            ></CountControl>
+            <div className="rounded-full flex justify-center transition duration-300 ease-in-out items-center hover:bg-gray-100 w-10 h-10">
+              <IconRefresh
+                className="hover:animate-spin"
+                onClick={() => {
+                  handleUpdate()
+                }}
+                stroke={1.5}
+              ></IconRefresh>
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col justify-center items-center h-full px-10">
+          <div className="flex flex-col justify-center items-center text-sm font-sans-kr py-4 px-10"></div>
+          <div className="text-sm">상품 금액</div>
+          <div className="font-sans-kr-bold pb-2">
+            {props.amount.toLocaleString('kr-KR')}
+          </div>
+          <div>
+            <Button color={'green'}>주문하기</Button>
+          </div>
+        </div>
+        <div className="flex flex-col justify-center items-center h-full px-10">
+          <div className="flex flex-col justify-center items-center text-sm font-sans-kr py-4 px-10"></div>
+          <div className="text-sm">배송비</div>
+          <div className="font-sans-kr-bold pb-2">3,000원</div>
+        </div>
+      </div>
+      <div className="flex justify-center items-center ml-auto space-x-4 py-10">
+        <div className="flex flex-col items-center justify-center px-8">
+          <div>선택상품금액</div>
+          <div className="font-sans-kr-bold">
+            {amount.toLocaleString('ko-KR')}원
+          </div>
+        </div>
+        <IconPlus stroke={1} size={25}></IconPlus>
+        <div className="flex flex-col items-center justify-center px-8">
+          <div>총 배송비</div>
+          <div className="font-sans-kr-bold">
+            {delivery.toLocaleString('ko-KR')}원
+          </div>
+        </div>
+        <IconMinus stroke={1} size={25}></IconMinus>
+        <div className="flex flex-col items-center justify-center px-8">
+          <div>할인예상금액</div>
+          <div className="font-sans-kr-bold text-red-500">{0}원</div>
+        </div>
+        <IconEqual stroke={1} size={25}></IconEqual>
+        <div className="px-8">
+          주문 금액
+          <span className="text-green-600 font-sans-kr-bold px-2">
+            {(amount + delivery).toLocaleString('ko-KR')}원
+          </span>
         </div>
       </div>
     </div>

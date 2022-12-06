@@ -1,7 +1,7 @@
 import { authOptions } from './auth/[...nextauth]'
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { Cart, OrderItems, PrismaClient } from '@prisma/client'
+import { Carts, OrderItems, PrismaClient } from '@prisma/client'
 import { getSession, useSession } from 'next-auth/react'
 
 const prisma = new PrismaClient()

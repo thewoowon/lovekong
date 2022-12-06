@@ -199,7 +199,10 @@ export default function ProductsHome() {
               })}
             </div>
           ) : (
-            <div className="flex justify-center m-auto items-center font-sans-kr-light h-60">
+            <div
+              style={{ height: '400px' }}
+              className="flex justify-center m-auto items-center font-sans-kr-light"
+            >
               상품 준비 중입니다.
             </div>
           )

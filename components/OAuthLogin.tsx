@@ -2,6 +2,8 @@ import {
   IconBrandApple,
   IconBrandGmail,
   IconBrandGoogle,
+  IconBrandKickstarter,
+  IconBrandKotlin,
   IconBrandMeta,
   IconBrandNetflix,
   IconBrandNextjs,
@@ -54,7 +56,7 @@ export default function OAuthLogin() {
           </span>
           <br />
           <ButtonBig
-            className="m-2 flex justify-center items-center hover:bg-blue-600 bg-blue-500 text-white"
+            className="m-2 flex justify-center items-center shadow-lg hover:bg-blue-600 bg-blue-500 text-white"
             onClick={() => signIn('google')}
           >
             <IconBrandGoogle
@@ -64,15 +66,15 @@ export default function OAuthLogin() {
             ></IconBrandGoogle>
             <span className="px-2">구글 로그인</span>
           </ButtonBig>
-          <ButtonBig
-            className="m-2 flex justify-center items-center hover:bg-zinc-600 bg-zinc-500 text-white"
-            onClick={() => signIn('apple')}
+          {/* <ButtonBig
+            className="m-2 flex justify-center items-center shadow-lg hover:bg-yellow-500 bg-yellow-400 text-white"
+            onClick={() => signIn('kakao')}
           >
-            <IconBrandApple color="white" stroke={2} size={25}></IconBrandApple>
-            <span className="px-2">애플 로그인</span>
-          </ButtonBig>
+            <IconBrandKickstarter color="white" stroke={2} size={25}></IconBrandKickstarter>
+            <span className="px-2">카카오 로그인</span>
+          </ButtonBig> */}
           <ButtonBig
-            className="m-2 flex justify-center items-center hover:bg-green-600 bg-green-500 text-white"
+            className="m-2 flex justify-center items-center shadow-lg hover:bg-green-600 bg-green-500 text-white"
             onClick={() => signIn('naver')}
           >
             <IconBrandNextjs

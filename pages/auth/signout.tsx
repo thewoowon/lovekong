@@ -3,10 +3,7 @@ import { signOut } from 'next-auth/react'
 import { Loader } from '@mantine/core'
 
 export default function SignOut() {
-  useEffect(() => {
-    signOut({ callbackUrl: 'http://localhost:3000/bye' })
-  }, [])
-
+  signOut({ callbackUrl: 'http://localhost:3000/bye' })
   return (
     <div
       style={{ height: '600px' }}

@@ -8,6 +8,7 @@ import Header from '@components/Header'
 import Footer from '@components/Footer'
 import 'public/static/fonts/style.css'
 import Head from 'next/head'
+import Script from 'next/script'
 
 function MyApp({
   Component,
@@ -28,6 +29,7 @@ function MyApp({
     <SessionProvider session={session}>
       <QueryClientProvider client={queryClient}>
         <Header></Header>
+        <Script src="https://nsp.pay.naver.com/sdk/js/naverpay.min.js"></Script>
         <Component {...pageProps} />
         <Footer></Footer>
       </QueryClientProvider>

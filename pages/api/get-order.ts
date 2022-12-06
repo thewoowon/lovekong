@@ -22,7 +22,7 @@ async function getOrder(userId: string) {
         .split(',')
         .map((id: string) => Number(id))) {
         const res: OrderItems[] =
-          await prisma.$queryRaw`SELECT OI.id, OI.quantity, OI.amount,OI.price, PR.name, PR.image_url, OI.productId FROM OrderItems AS OI JOIN products AS PR ON OI.productId = PR.id WHERE OI.id = ${orderItemId};`
+          await prisma.$queryRaw`SELECT OI.id, OI.quantity, OI.amount,OI.price, PR.name, PR.image_url, OI.productId FROM OrderItems AS OI JOIN Products AS PR ON OI.productId = PR.id WHERE OI.id = ${orderItemId};`
         orderItems.push.apply(orderItems, res)
       }
       response.push({

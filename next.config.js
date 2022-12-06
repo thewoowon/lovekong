@@ -13,6 +13,7 @@ const nextConfig = {
       'lh3.googleusercontent.com',
       'imagedelivery.net',
       'images.unsplash.com',
+      'ssl.pstatic.net',
     ],
   },
 }

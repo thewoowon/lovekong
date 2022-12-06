@@ -55,6 +55,7 @@ interface QuantityInputProps {
   min?: number
   max?: number
   readOnly?: boolean
+  width?: number
 }
 
 export function CountControl({
@@ -63,12 +64,13 @@ export function CountControl({
   min = 1,
   max = 10,
   readOnly = false,
+  width,
 }: QuantityInputProps) {
   const { classes } = useStyles()
   const handlers = useRef<NumberInputHandlers>(null)
 
   return (
-    <div className={classes.wrapper}>
+    <div className={classes.wrapper} style={width ? { width: width } : {}}>
       <ActionIcon<'button'>
         size={28}
         variant="transparent"

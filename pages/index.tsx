@@ -63,13 +63,16 @@ export default function Home() {
         <div className="font-sans-kr-light text-3xl pb-20 text-zinc-600">
           러브콩의 아이덴티티를 만나보세요.
         </div>
-        <div className="grid grid-flow-row grid-rows-2 grid-cols-3 gap-8">
-          <Card image="/assets/light/light1.jpeg" title={'Light'}></Card>
-          <Card image="/assets/light/light2.jpeg" title={'Case'}></Card>
-          <Card image="/assets/light/light3.jpeg" title={'Vase'}></Card>
-          <Card image="/assets/light/light4.jpeg" title={'Tray'}></Card>
-          <Card image="/assets/light/light5.jpeg" title={'Accesory'}></Card>
-          <Card image="/assets/light/light6.jpeg" title={'Others'}></Card>
+        <div className="grid grid-flow-row grid-rows-3 grid-cols-2 gap-8">
+          <Card image="/assets/mainCategory/light.jpeg" title={'Light'}></Card>
+          <Card image="/assets/mainCategory/tray.jpeg" title={'Case'}></Card>
+          <Card image="/assets/mainCategory/tray.jpeg" title={'Vase'}></Card>
+          <Card image="/assets/mainCategory/tray.jpeg" title={'Tray'}></Card>
+          <Card
+            image="/assets/mainCategory/accesory.jpeg"
+            title={'Accesory'}
+          ></Card>
+          <Card image="/assets/mainCategory/etc.jpeg" title={'Others'}></Card>
         </div>
       </section>
       <section className="bg-white flex flex-col justify-center items-center px-36 py-20">

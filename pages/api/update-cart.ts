@@ -1,14 +1,14 @@
 import { authOptions } from './auth/[...nextauth]'
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { Cart, PrismaClient } from '@prisma/client'
+import { Carts, PrismaClient } from '@prisma/client'
 import { getSession, useSession } from 'next-auth/react'
 
 const prisma = new PrismaClient()
 
-async function updateCart(item: Cart) {
+async function updateCart(item: Carts) {
   try {
-    const cart = await prisma.cart.update({
+    const cart = await prisma.carts.update({
       where: {
         id: item.id,
       },
