@@ -126,7 +126,7 @@ export default function Cart() {
         />
         <meta property="og:image" content="" />
       </Head>
-      <Script id="naver_script">
+      {/* <Script id="naver_script">
         {`var oPay = Naver.Pay.create({
           "mode" : "production", // development or production
           "clientId": "u86j4ripEt8LRfPGzQ8" // clientId
@@ -146,7 +146,7 @@ export default function Cart() {
           "returnUrl": "사용자 결제 완료 후 결제 결과를 받을 URL"
         });
     });`}
-      </Script>
+      </Script> */}
       <main className="font-sans-kr mx-auto bg-zinc-50">
         <div
           className="text-2xl flex justify-center py-10 bg-white"
@@ -162,9 +162,6 @@ export default function Cart() {
         >
           <div style={{ width: '1080px' }}>✅ 일반배송 </div>
         </div>
-        <button id="naverPayBtn" className="px-4 py-2 bg-green-500">
-          네이버 페이 결제
-        </button>
         <div className="flex flex-col justify-center items-center space-y-10 py-10">
           {data ? (
             data.length > 0 ? (
@@ -179,7 +176,7 @@ export default function Cart() {
           )}
         </div>
         <div
-          className="flex flex-col p-4 space-y-4 shadow-lg rounded-md bg-white mx-auto"
+          className="flex flex-col py-6 px-12 space-y-4 shadow-lg rounded-md bg-white mx-auto"
           style={{ width: '1080px', border: '0.5px solid rgba(200,200,200,1)' }}
         >
           <p className="text-xl font-semibold">주문정보</p>
@@ -225,7 +222,7 @@ export default function Cart() {
         >
           <div style={{ width: '1080px' }}>추천 상품</div>
         </div>
-        <div className="flex justify-center py-10 bg-white">
+        <div className="flex justify-center my-10 ">
           {products ? (
             products.length > 0 ? (
               <div
@@ -236,14 +233,17 @@ export default function Cart() {
                   return (
                     <div key={product.id} className="m-auto">
                       <div
-                        className="hover:opacity-95 cursor-pointer hover:shadow-md transition ease-in-out duration-300"
-                        style={{ maxWidth: 400 }}
+                        className="hover:opacity-95 cursor-pointer rounded-md shadow-lg p-3 transition ease-in-out duration-300"
+                        style={{
+                          border: '1px solid rgba(200,200,200,0.6)',
+                          maxWidth: 300,
+                        }}
                         onClick={() => {
                           router.push(`/products/${product.id}`)
                         }}
                       >
                         <Image
-                          className="rounded-md"
+                          className="rounded-sm"
                           src={product.image_url ?? ''}
                           alt={product.name}
                           width={400}
@@ -252,7 +252,7 @@ export default function Cart() {
                           blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
                         ></Image>
                         <div className="flex p-2">
-                          <span className="font-sans-kr text-lg">
+                          <span className="font-sans-kr text-md">
                             {product.name}
                           </span>
                           <span className="font-sans-kr-light ml-auto">
@@ -378,7 +378,7 @@ const Items = (props: ICartItem) => {
       style={{
         border: '1px solid rgba(200,200,200,0.6)',
         width: '1080px',
-        height: '400px',
+        height: '430px',
       }}
     >
       <div className="flex justify-between text-2xl py-2 border-b-2 border-b-zinc-700">
@@ -455,7 +455,19 @@ const Items = (props: ICartItem) => {
             {props.amount.toLocaleString('kr-KR')}
           </div>
           <div>
-            <Button color={'green'}>주문하기</Button>
+            <Button
+              leftIcon={<IconCoin size={20} stroke={1.5} />}
+              className={`bg-green-400 hover:bg-green-500 transition duration-200 ease-in-out`}
+              // onClick={() => {
+              //   if (session == null) {
+              //     alert('로그인이 필요합니다.')
+              //     router.push('/auth/login')
+              //     return
+              //   }
+              // }}
+            >
+              주문하기
+            </Button>
           </div>
         </div>
         <div className="flex flex-col justify-center items-center h-full px-10">
@@ -464,7 +476,7 @@ const Items = (props: ICartItem) => {
           <div className="font-sans-kr-bold pb-2">3,000원</div>
         </div>
       </div>
-      <div className="flex justify-center items-center ml-auto space-x-4 py-10">
+      <div className="flex justify-center items-center ml-auto space-x-4 py-12">
         <div className="flex flex-col items-center justify-center px-8">
           <div>선택상품금액</div>
           <div className="font-sans-kr-bold">

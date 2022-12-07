@@ -14,10 +14,17 @@ export default function MainCommentItem({
   comment: MainCommentItemType
 }) {
   return (
-    <Wrapper className="shadow-lg rounded-lg">
-      <div className="p-5">
-        <div className="flex">
-          <div className="flex">
+    <div
+      style={{
+        border: '1px solid rgba(200,200,200,0.6)',
+        maxWidth: '360px',
+        minWidth: '300px',
+      }}
+      className="max-w-lg min-w-sm overflow-hidden hover:rotate-1 rounded-md shadow-lg transition duration-300 ease-in-out font-sans-kr"
+    >
+      <div className="rounded-lg relative bg-white">
+        <div className="px-3 pt-6 flex justify-between items-center">
+          <div className="flex items-center">
             {Array.from({ length: 5 }, (_, i) => i + 1).map((value, iter) => {
               return (
                 <IconStar
@@ -32,27 +39,23 @@ export default function MainCommentItem({
             / {comment.rate}
           </div>
         </div>
-        <p className="py-1 text-start text-sm text-zinc-400">
+        <p className="px-4 py-1 text-start text-sm text-zinc-400">
           {comment.userId} - {comment.createdAt}
         </p>
-        <p className="py-1 text-start text-sm text-zinc-600">
+        <p className="px-4 py-1 text-start text-sm text-zinc-600">
           size : {comment.size} / {comment.color}
         </p>
-        <p className="py-4 text-start text-md text-zinc-600">
+        <p className="px-4 py-4 h-48 mb-10 text-start text-md text-zinc-600">
           {comment.comment}
         </p>
         <Image
           src={comment.user_img}
           alt="Comment Image"
-          width={300}
-          height={200}
+          width={400}
+          height={500}
+          className="w-full h-96 px-4 pb-4"
         ></Image>
       </div>
-    </Wrapper>
+    </div>
   )
 }
-
-const Wrapper = styled.div`
-  padding: 16px;
-  width: 500px;
-`

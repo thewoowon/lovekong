@@ -223,7 +223,7 @@ export default function ProductsId(props: {
 
   return product != null && productId != null ? (
     <div className="flex flex-row justify-center font-sans-kr-light my-10 px-36">
-      <div style={{ maxWidth: '500px', minWidth: '300px' }} className="mr-10">
+      <div style={{ maxWidth: '400px', minWidth: '250px' }} className="mr-10">
         <Carousel
           animation="fade"
           withoutControls

@@ -160,19 +160,22 @@ export default function ProductsHome() {
         </div>
         {products ? (
           products.length > 0 ? (
-            <div className="grid grid-cols-4 gap-5">
+            <div className="grid grid-cols-5 gap-5">
               {products.map((product) => {
                 return (
                   <div key={product.id} className="m-auto">
                     <div
-                      className="hover:opacity-95 cursor-pointer hover:shadow-md transition ease-in-out duration-300"
-                      style={{ maxWidth: 400 }}
+                      className="hover:opacity-95 cursor-pointer rounded-md shadow-lg p-3 transition ease-in-out duration-300"
+                      style={{
+                        border: '1px solid rgba(200,200,200,0.6)',
+                        maxWidth: 300,
+                      }}
                       onClick={() => {
                         router.push(`/products/${product.id}`)
                       }}
                     >
                       <Image
-                        className="rounded-md"
+                        className="rounded-sm"
                         src={product.image_url ?? ''}
                         alt={product.name}
                         width={400}
@@ -181,7 +184,7 @@ export default function ProductsHome() {
                         blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
                       ></Image>
                       <div className="flex p-2">
-                        <span className="font-sans-kr text-lg">
+                        <span className="font-sans-kr text-md">
                           {product.name}
                         </span>
                         <span className="font-sans-kr-light ml-auto">
@@ -217,7 +220,7 @@ export default function ProductsHome() {
             <Loader variant="bars" color={'gray'} size={'lg'}></Loader>
           </div>
         )}
-        <div className="w-full flex mt-5">
+        <div className="w-full flex mt-20">
           {total && total !== 0 ? (
             <Pagination
               className="m-auto"

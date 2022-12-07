@@ -17,8 +17,12 @@ export default function Card({
 }) {
   return (
     <div
-      style={{ border: '1px solid rgba(200,200,200,0.6)' }}
-      className="max-w-lg min-w-sm overflow-hidden hover:rotate-1 rounded-md shadow-lg transition duration-300 ease-in-out font-sans-kr"
+      style={{
+        border: '1px solid rgba(200,200,200,0.6)',
+        maxWidth: '360px',
+        minWidth: '300px',
+      }}
+      className="min-w-sm overflow-hidden hover:rotate-1 rounded-md shadow-lg transition duration-300 ease-in-out font-sans-kr"
     >
       <div className="rounded-lg relative bg-white">
         <div className="p-3 flex justify-between items-center">
@@ -35,13 +39,13 @@ export default function Card({
           <IconDots stroke={1.5} size={20}></IconDots>
         </div>
         <Image
-          height={30}
-          width={30}
+          height={500}
+          width={400}
           className="w-full h-96"
           src={image}
           alt="Sunset in the mountains"
         ></Image>
-        <div className="p-3  flex">
+        <div className="p-3 flex">
           <div className="flex flex-row items-center justify-start">
             <IconHeart fill="#FF8080" stroke={1.5} size={30}></IconHeart>
             <IconMessageCircle2

@@ -23,11 +23,11 @@ export default function Header() {
   }
 
   return (
-    <header
-      className="px-36"
-      style={{ borderBottom: '0.5px solid rgba(240,240,240,0.8)' }}
-    >
-      <div className="w-full m-auto flex h-12 items-center">
+    <header style={{ borderBottom: '0.5px solid rgba(240,240,240,0.8)' }}>
+      <div
+        className="m-auto flex h-12 items-center"
+        style={{ maxWidth: '1080px' }}
+      >
         <div className="rounded-full p-2 cursor-pointer hover:bg-zinc-200 transition duration-300 ease-in-out">
           <IconHome
             stroke={0.5}

@@ -54,23 +54,26 @@ export default function Wishlist() {
                 return (
                   <div key={product.id} className="m-auto">
                     <div
-                      className="hover:opacity-95 cursor-pointer hover:shadow-md transition ease-in-out duration-300"
-                      style={{ maxWidth: 310 }}
+                      className="hover:opacity-95 cursor-pointer rounded-md shadow-lg p-3 transition ease-in-out duration-300"
+                      style={{
+                        border: '1px solid rgba(200,200,200,0.6)',
+                        maxWidth: 300,
+                      }}
                       onClick={() => {
                         router.push(`/products/${product.id}`)
                       }}
                     >
                       <Image
-                        className="rounded-md"
+                        className="rounded-sm"
                         src={product.image_url ?? ''}
                         alt={product.name}
-                        width={310}
-                        height={390}
+                        width={400}
+                        height={500}
                         placeholder="blur"
                         blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
                       ></Image>
                       <div className="flex p-2">
-                        <span className="font-sans-kr text-lg">
+                        <span className="font-sans-kr text-md">
                           {product.name}
                         </span>
                         <span className="font-sans-kr-light ml-auto">
