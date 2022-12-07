@@ -27,7 +27,6 @@ export default async function handler(
 ) {
   // const session = await getSession({ req });
   const session = (await getSession({ req })) as CustomDefaultSession
-  console.log(session)
   if (session == null) {
     res.status(401).json({ items: [], message: 'Unauthorized' })
     return

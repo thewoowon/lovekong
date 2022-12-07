@@ -12,7 +12,6 @@ export default function CommentItem({ item }: { item: ICommentItemType }) {
       ? EditorState.createWithContent(convertFromRaw(JSON.parse(item.contents)))
       : EditorState.createEmpty()
   )
-  console.log(item)
   return (
     <Wrapper>
       <div>

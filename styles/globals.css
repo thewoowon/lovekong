@@ -54,3 +54,23 @@
     font-family: noto sans kr;
     font-weight: 400;
 }
+
+.culture{
+    height: 800px;
+    width: 100%;
+    position: relative;
+}
+.video-section{
+    height: 800px !important;
+}
+.video-div{
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    /* background-color: aliceblue; */
+    height: 10rem;
+    text-align: center;
+    border-radius: 1rem;
+    /* box-shadow: 1px 1px 10px 10px powderblue; */
+    transform: translate(-50%, -50%);
+}

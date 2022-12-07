@@ -17,27 +17,18 @@ export default function Home() {
           content={`${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/comments`}
         />
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="럽콩(LoveKong) Comments" />
+        <meta property="og:title" content="러브콩(LoveKong) Comments" />
         <meta
           property="og:description"
-          content="럽콩의 아이덴티티를 여러 제품을 통해 만나보세요."
+          content="러브콩의 스테인드 글라스 제품들을 만나보세요."
         />
         <meta
           property="og:image"
           content="https://imagedelivery.net/6qzLODAqs2g1LZbVYqtuQw/bb63b50a-7d84-464c-249a-9da9aa993900/public"
         />
       </Head>
-      <section style={{ height: '700px' }} className="overflow-hidden relative">
-        <div
-          className="flex flex-col justify-center items-center relative rounded-full bg-white"
-          style={{
-            width: '1000px',
-            height: '1000px',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%,-50%)',
-          }}
-        >
+      <section style={{ height: '800px' }} className="relative pb-36">
+        <div className="flex flex-col justify-center items-center h-full">
           <div className="grid grid-flow-col grid-rows-2 grid-cols-3 gap-8">
             <div className="transform scale-110 -rotate-6 -translate-y-10 bg-green-200 w-24 h-36 rounded-md hover:bg-green-300 transition duration-300 ease-in-out hover:scale-125 hover:shadow-lg"></div>
             <div className="row-start-1 rotate-6 col-start-2 col-span-2 transform translate-x-20 -translate-y-12 bg-purple-200 rounded-md hover:bg-purple-300 transition duration-300 ease-in-out hover:scale-110 hover:shadow-lg"></div>
@@ -53,17 +44,43 @@ export default function Home() {
             >
               LoveKong Stained Glass
             </div>
-            <div className="relative font-sans-kr-light text-3xl pb-2">
+            <div className="relative font-sans-kr text-zinc-700 text-3xl pb-2">
               러브콩 스테인드 글라스
             </div>
-            <div className="relative font-sans-kr-light text-lg text-zinc-500">
+            <div className="relative font-sans-kr text-lg text-zinc-500">
               Since 2020
             </div>
           </div>
         </div>
       </section>
+      {/* <section className="culture video-section">
+        <video autoPlay muted loop style={{ "width": '100%',"height":"100%" }}>
+          <source src="/videos/main_video.mp4"/>
+        </video>
+        <div className="video-div">
+          <p className="video-p-1">함께 만들어 가는 유비케어</p>
+          <p className="video-p-2">임직원이 행복한 유비케어</p>
+        </div>
+      </section> */}
+      <section style={{ height: '900px' }} className="relative overflow-hidden">
+        <video
+          autoPlay
+          muted
+          loop
+          style={{ width: '100%', height: 'auto', opacity: 0.1 }}
+          className="absolute"
+        >
+          <source src="/assets/video/AdobeStock_444088961_AdobeExpress.mp4" />
+        </video>
+        <div className="video-div">
+          <div
+            className="bg-white rounded-md shadow-md"
+            style={{ width: '600px', height: '450px' }}
+          ></div>
+        </div>
+      </section>
       <section className="bg-zinc-50 flex flex-col justify-center items-center px-36 py-20">
-        <div className="font-sans-kr-light text-3xl pb-20 text-zinc-600">
+        <div className="font-sans-kr text-3xl pb-20">
           러브콩의 아이덴티티를 만나보세요.
         </div>
         <div className="grid grid-flow-row grid-rows-3 grid-cols-2 gap-8">
@@ -79,7 +96,7 @@ export default function Home() {
         </div>
       </section>
       <section className="bg-white flex flex-col justify-center items-center px-36 py-20">
-        <div className="font-sans-kr-light text-3xl pb-20 text-zinc-600">
+        <div className="font-sans-kr text-3xl pb-20">
           고객님들의 후기를 들어보세요.
         </div>
         <div className="grid grid-flow-row grid-rows-3 grid-cols-2 gap-8">

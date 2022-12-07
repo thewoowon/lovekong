@@ -103,10 +103,10 @@ export default function ProductsHome() {
           content={`${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/products`}
         />
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="럽콩(LoveKong) Goods" />
+        <meta property="og:title" content="러브콩(LoveKong) Goods" />
         <meta
           property="og:description"
-          content="럽콩의 아이덴티티를 여러 제품을 통해 만나보세요."
+          content="러브콩의 스테인드 글라스 제품들을 만나보세요."
         />
         <meta property="og:image" content="" />
       </Head>
@@ -163,15 +163,15 @@ export default function ProductsHome() {
         </div>
         {products ? (
           products.length > 0 ? (
-            <div className="grid grid-cols-5 gap-5">
+            <div className="grid 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
               {products.map((product) => {
                 return (
                   <div key={product.id} className="m-auto">
                     <div
-                      className="hover:opacity-95 cursor-pointer rounded-md shadow-lg p-3 transition ease-in-out duration-300"
+                      className="hover:opacity-95 hover:bg-zinc-50 cursor-pointer rounded-sm shadow-md p-3 transition ease-in-out duration-200"
                       style={{
-                        border: '1px solid rgba(200,200,200,0.6)',
                         maxWidth: 300,
+                        minWidth: 200,
                       }}
                       onClick={() => {
                         router.push(`/products/${product.id}`)

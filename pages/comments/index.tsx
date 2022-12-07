@@ -14,10 +14,10 @@ export default function Comments() {
           content={`${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/comments`}
         />
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="럽콩(LoveKong) Comments" />
+        <meta property="og:title" content="러브콩(LoveKong) Comments" />
         <meta
           property="og:description"
-          content="럽콩의 아이덴티티를 여러 제품을 통해 만나보세요."
+          content="러브콩의 스테인드 글라스 제품들을 만나보세요."
         />
         <meta property="og:image" content="" />
       </Head>

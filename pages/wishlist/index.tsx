@@ -38,21 +38,21 @@ export default function Wishlist() {
           content={`${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/wishlist`}
         />
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="럽콩(LoveKong) Wishlist" />
+        <meta property="og:title" content="러브콩(LoveKong) Wishlist" />
         <meta
           property="og:description"
-          content="럽콩의 아이덴티티를 여러 제품을 통해 만나보세요."
+          content="러브콩의 스테인드 글라스 제품들을 만나보세요."
         />
         <meta property="og:image" content="" />
       </Head>
 
-      <main className="font-sans-kr-light px-36 my-10">
+      <main className="font-sans-kr px-36 my-10">
         <p className="text-2xl mb-10">
           찜한 목록 ({products && products?.length})
         </p>
         {products ? (
           products.length > 0 ? (
-            <div className="grid grid-cols-5 gap-5">
+            <div className="grid 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
               {products.map((product) => {
                 return (
                   <div key={product.id} className="m-auto">
@@ -61,6 +61,7 @@ export default function Wishlist() {
                       style={{
                         border: '1px solid rgba(200,200,200,0.6)',
                         maxWidth: 300,
+                        minWidth: 200,
                       }}
                       onClick={() => {
                         router.push(`/products/${product.id}`)

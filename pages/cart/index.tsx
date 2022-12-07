@@ -122,10 +122,10 @@ export default function Cart() {
           content={`${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/cart`}
         />
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="럽콩(LoveKong) Cart" />
+        <meta property="og:title" content="러브콩(LoveKong) Cart" />
         <meta
           property="og:description"
-          content="럽콩의 아이덴티티를 여러 제품을 통해 만나보세요."
+          content="러브콩의 스테인드 글라스 제품들을 만나보세요."
         />
         <meta property="og:image" content="" />
       </Head>
@@ -229,7 +229,7 @@ export default function Cart() {
           {products ? (
             products.length > 0 ? (
               <div
-                className="grid grid-cols-4 gap-5"
+                className="grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-5"
                 style={{ width: '1080px' }}
               >
                 {products.map((product) => {
@@ -240,6 +240,7 @@ export default function Cart() {
                         style={{
                           border: '1px solid rgba(200,200,200,0.6)',
                           maxWidth: 300,
+                          minWidth: 200,
                         }}
                         onClick={() => {
                           router.push(`/products/${product.id}`)

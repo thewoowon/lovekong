@@ -59,15 +59,15 @@ export default function My() {
           content={`${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/my`}
         />
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="럽콩(LoveKong) My" />
+        <meta property="og:title" content="러브콩(LoveKong) My" />
         <meta
           property="og:description"
-          content="럽콩의 아이덴티티를 여러 제품을 통해 만나보세요."
+          content="러브콩의 스테인드 글라스 제품들을 만나보세요."
         />
         <meta property="og:image" content="" />
       </Head>
 
-      <main className="font-sans-kr-light my-10 px-36">
+      <main className="font-sans-kr my-10 px-36">
         <p className="text-2xl mb-2">주문내역 ({data && data.length})</p>
         <div className="flex">
           <div className="flex flex-col p-4 space-y-4 flex-1">
