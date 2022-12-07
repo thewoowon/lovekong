@@ -1,4 +1,4 @@
-import { authOptions } from './auth/[...nextauth]'
+import { authOptions, CustomDefaultSession } from './auth/[...nextauth]'
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { PrismaClient } from '@prisma/client'
@@ -26,13 +26,14 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   // const session = await getSession({ req });
-  const session = await getSession({ req })
+  const session = (await getSession({ req })) as CustomDefaultSession
+  console.log(session)
   if (session == null) {
     res.status(401).json({ items: [], message: 'Unauthorized' })
     return
   }
   try {
-    const wishlist = await getCart(String(session.id))
+    const wishlist = await getCart(String(session?.id ?? ''))
     res.status(200).json({ items: wishlist ?? [], message: 'Success' })
   } catch (error) {
     res.status(400).json({ message: 'Failed' })
