@@ -1,9 +1,19 @@
-import NextAuth, { NextAuthOptions, Session } from 'next-auth'
+import NextAuth, { ISODateString, NextAuthOptions, Session } from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
 import prisma from '../../../lib/prismadb'
 import KakaoProvider from 'next-auth/providers/kakao'
 import NaverProvider from 'next-auth/providers/naver'
+
+export interface CustomDefaultSession {
+  user?: {
+    name?: string | null
+    email?: string | null
+    image?: string | null
+  }
+  expires: ISODateString
+  id?: string
+}
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
@@ -29,8 +39,9 @@ export const authOptions: NextAuthOptions = {
 
   callbacks: {
     session: async ({ session, token, user }) => {
-      session.id = user.id
-      return Promise.resolve(session)
+      const newSession = session as CustomDefaultSession
+      newSession.id = user.id
+      return Promise.resolve(newSession)
     },
   },
   debug: true,

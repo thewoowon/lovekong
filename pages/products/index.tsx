@@ -98,7 +98,10 @@ export default function ProductsHome() {
         <meta name="description" content="LoveKong Stained Glass" />
 
         <link rel="icon" href="/favicon.ico" />
-        <meta property="og:url" content={`http://localhost:3000/products`} />
+        <meta
+          property="og:url"
+          content={`${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/products`}
+        />
         <meta property="og:type" content="article" />
         <meta property="og:title" content="럽콩(LoveKong) Goods" />
         <meta

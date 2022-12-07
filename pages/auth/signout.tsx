@@ -3,7 +3,7 @@ import { signOut } from 'next-auth/react'
 import { Loader } from '@mantine/core'
 
 export default function SignOut() {
-  signOut({ callbackUrl: 'http://localhost:3000/bye' })
+  signOut({ callbackUrl: `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/bye` })
   return (
     <div
       style={{ height: '600px' }}

@@ -12,7 +12,10 @@ export default function Home() {
         <title>LoveKong</title>
         <meta name="description" content="LoveKong Stained Glass" />
         <link rel="icon" href="/favicon.ico" />
-        <meta property="og:url" content={`http://localhost:3000/comments`} />
+        <meta
+          property="og:url"
+          content={`${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/comments`}
+        />
         <meta property="og:type" content="article" />
         <meta property="og:title" content="럽콩(LoveKong) Comments" />
         <meta

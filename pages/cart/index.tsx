@@ -117,7 +117,10 @@ export default function Cart() {
         <meta name="description" content="LoveKong Stained Glass" />
 
         <link rel="icon" href="/favicon.ico" />
-        <meta property="og:url" content={`http://localhost:3000/cart`} />
+        <meta
+          property="og:url"
+          content={`${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/cart`}
+        />
         <meta property="og:type" content="article" />
         <meta property="og:title" content="럽콩(LoveKong) Cart" />
         <meta
