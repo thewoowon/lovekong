@@ -111,7 +111,7 @@ export default function ProductsHome() {
         <meta property="og:image" content="" />
       </Head>
 
-      <main className="my-20 px-36">
+      <main className="my-20 lg:px-36 md:px-30 sm:px-24 xs:px-18 xss:px-12">
         <div className="flex flex-col justify-center items-center z-10">
           <div
             style={{ fontFamily: 'Kashie-Mercy' }}
@@ -141,7 +141,7 @@ export default function ProductsHome() {
             />
           )}
         </div>
-        <div className="mb-4 flex flex-wrap">
+        <div className="mb-4 flex xss:justify-center xs:justify-center sm:justify-between flex-wrap">
           <div>
             <Input
               icon={<IconSearch />}
@@ -151,16 +151,15 @@ export default function ProductsHome() {
                 currentTarget: { value: React.SetStateAction<string> }
               }) => setKeyword(e.currentTarget.value)}
               color="dark"
-              className="w-56"
+              className="w-56 my-2"
             />
           </div>
-          <span className="mx-auto py-2"></span>
           <div>
             <Select
               value={selectedFilter}
               onChange={setSelectedFilter}
               data={FITERS}
-              className="w-56"
+              className="w-56 my-2"
             />
           </div>
         </div>

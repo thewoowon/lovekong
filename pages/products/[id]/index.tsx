@@ -223,7 +223,7 @@ export default function ProductsId(props: {
 
   return product != null && productId != null ? (
     <div className="flex flex-wrap justify-center font-sans-kr-light my-10 px-36">
-      <div style={{ maxWidth: '450px', minWidth: '300px' }} className="mr-10">
+      <div style={{ maxWidth: '450px', minWidth: '360px' }} className="mx-10">
         <Carousel
           animation="fade"
           withoutControls
@@ -275,7 +275,7 @@ export default function ProductsId(props: {
       <div
         style={{
           maxWidth: '700px',
-          minWidth: '400px',
+          minWidth: '360px',
           border: '0.5px solid rgba(200,200,200,1)',
         }}
         className="p-10 flex flex-col space-y-4 rounded-md"
@@ -325,8 +325,8 @@ export default function ProductsId(props: {
           />
         </div>
         <div className="text-2xl py-5 flex justify-between">
-          <div className="text-2xl md:text-3xl">총 상품금액</div>
-          <div className="text-2xl md:text-3xl">
+          <div className="text-xl sm:text-2xl md:text-3xl">총 상품금액</div>
+          <div className="text-xl sm:text-2xl md:text-3xl">
             <span className="text-sm">{`(선택 수량 : ${quantity}) `}</span>
             {(quantity
               ? product.price * quantity

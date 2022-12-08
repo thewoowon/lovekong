@@ -27,10 +27,13 @@ export default function Home() {
           content="https://imagedelivery.net/6qzLODAqs2g1LZbVYqtuQw/bb63b50a-7d84-464c-249a-9da9aa993900/public"
         />
       </Head>
-      <section style={{ height: '800px' }} className="relative pb-36">
+      <section
+        style={{ height: '800px' }}
+        className="relative pb-36 overflow-hidden"
+      >
         <div className="flex flex-col justify-center items-center h-full">
           <div className="grid grid-flow-col grid-rows-2 grid-cols-3 gap-8">
-            <div className="transform scale-110 -rotate-6 -translate-y-10 bg-green-200 w-24 h-36 rounded-md hover:bg-green-300 transition duration-300 ease-in-out hover:scale-125 hover:shadow-lg"></div>
+            <div className="transform scale-110 -rotate-6 -translate-y-10 w-24 h-36 bg-green-200 rounded-md hover:bg-green-300 transition duration-300 ease-in-out hover:scale-125 hover:shadow-lg"></div>
             <div className="row-start-1 rotate-6 col-start-2 col-span-2 transform translate-x-20 -translate-y-12 bg-purple-200 rounded-md hover:bg-purple-300 transition duration-300 ease-in-out hover:scale-110 hover:shadow-lg"></div>
 
             <div className="transform scale-125 -rotate-3 -translate-x-10 translate-y-2 bg-rose-200 rounded-md hover:bg-rose-300 transition duration-300 ease-in-out hover:scale-150 hover:shadow-lg"></div>
@@ -39,15 +42,15 @@ export default function Home() {
           </div>
           <div className="absolute flex flex-col justify-center items-center z-10">
             <div
-              className="relative lg:text-[80px] md:text-[60px] sm:text-[40px] text-[40px]"
+              className="relative lg:text-[60px] md:text-[50px] sm:text-[40px] xs:text-[35px] xss:text-[30px]"
               style={{ fontFamily: 'Kashie-Mercy' }}
             >
               LoveKong Stained Glass
             </div>
-            <div className="relative font-sans-kr text-zinc-700 text-3xl pb-2">
+            <div className="relative lg:text-[35px] md:text-[30px] sm:text-[25px] xs:text-[20px] xss:text-[15px] font-sans-kr text-zinc-700 pb-2">
               러브콩 스테인드 글라스
             </div>
-            <div className="relative font-sans-kr text-lg text-zinc-500">
+            <div className="relative lg:text-[20px] md:text-[18px] sm:text-[16px] xs:text-[14px] xss:text-[12px] font-sans-kr text-zinc-500">
               Since 2020
             </div>
           </div>
