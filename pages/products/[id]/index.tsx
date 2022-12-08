@@ -222,8 +222,8 @@ export default function ProductsId(props: {
   // }, [productId])
 
   return product != null && productId != null ? (
-    <div className="flex flex-row justify-center font-sans-kr-light my-10 px-36">
-      <div style={{ maxWidth: '400px', minWidth: '250px' }} className="mr-10">
+    <div className="flex flex-wrap justify-center font-sans-kr-light my-10 px-36">
+      <div style={{ maxWidth: '450px', minWidth: '300px' }} className="mr-10">
         <Carousel
           animation="fade"
           withoutControls
@@ -259,20 +259,23 @@ export default function ProductsId(props: {
           })}
         </div>
         {editorState != null && (
-          <CustomEditor editorState={editorState} readOnly />
+          <CustomEditor editorState={editorState} readOnly={true} />
         )}
         <div>
-          <div className="font-semibold text-xl">☘️ 후기</div>
-          {props.comments &&
+          <div className="font-semibold text-xl">제품 후기</div>
+          {props.comments && props.comments.length > 0 ? (
             props.comments.map((comment, iter) => (
               <CommentItem key={iter} item={comment}></CommentItem>
-            ))}
+            ))
+          ) : (
+            <div className="h-60 bg-white">아직 후기가 없습니다.</div>
+          )}
         </div>
       </div>
       <div
         style={{
           maxWidth: '700px',
-          minWidth: '500px',
+          minWidth: '400px',
           border: '0.5px solid rgba(200,200,200,1)',
         }}
         className="p-10 flex flex-col space-y-4 rounded-md"
@@ -322,8 +325,8 @@ export default function ProductsId(props: {
           />
         </div>
         <div className="text-2xl py-5 flex justify-between">
-          <div className="text-3xl">총 상품금액</div>
-          <div className="text-3xl">
+          <div className="text-2xl md:text-3xl">총 상품금액</div>
+          <div className="text-2xl md:text-3xl">
             <span className="text-sm">{`(선택 수량 : ${quantity}) `}</span>
             {(quantity
               ? product.price * quantity

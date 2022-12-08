@@ -39,8 +39,8 @@ export default function Home() {
           </div>
           <div className="absolute flex flex-col justify-center items-center z-10">
             <div
-              className="relative"
-              style={{ fontFamily: 'Kashie-Mercy', fontSize: '80px' }}
+              className="relative lg:text-[80px] md:text-[60px] sm:text-[40px] text-[40px]"
+              style={{ fontFamily: 'Kashie-Mercy' }}
             >
               LoveKong Stained Glass
             </div>
@@ -67,23 +67,23 @@ export default function Home() {
           autoPlay
           muted
           loop
-          style={{ width: '100%', height: 'auto', opacity: 0.1 }}
-          className="absolute"
+          style={{ opacity: 0.1 }}
+          className="absolute top-0 left-0 w-full h-full object-fill"
         >
           <source src="/assets/video/AdobeStock_444088961_AdobeExpress.mp4" />
         </video>
         <div className="video-div">
           <div
-            className="bg-white rounded-md shadow-md"
-            style={{ width: '600px', height: '450px' }}
+            className="lg:w-[600px] md:w-[500px] sm:w-[360px] w-[360px]  bg-white rounded-md shadow-md"
+            style={{ height: '600px' }}
           ></div>
         </div>
       </section>
-      <section className="bg-zinc-50 flex flex-col justify-center items-center px-36 py-20">
-        <div className="font-sans-kr text-3xl pb-20">
+      <section className="bg-zinc-50 flex flex-col justify-center items-center py-20">
+        <div className="font-sans-kr lg:text-3xl md:text-2xl sm:text-lg text-sm pb-20">
           러브콩의 아이덴티티를 만나보세요.
         </div>
-        <div className="grid grid-flow-row grid-rows-3 grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-8">
           <Card image="/assets/mainCategory/light.jpeg" title={'Light'}></Card>
           <Card image="/assets/mainCategory/tray.jpeg" title={'Case'}></Card>
           <Card image="/assets/mainCategory/tray.jpeg" title={'Vase'}></Card>
@@ -95,11 +95,11 @@ export default function Home() {
           <Card image="/assets/mainCategory/etc.jpeg" title={'Others'}></Card>
         </div>
       </section>
-      <section className="bg-white flex flex-col justify-center items-center px-36 py-20">
+      <section className="bg-white flex flex-col justify-center items-center py-20">
         <div className="font-sans-kr text-3xl pb-20">
           고객님들의 후기를 들어보세요.
         </div>
-        <div className="grid grid-flow-row grid-rows-3 grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-8">
           {mainComment.map((comment) => {
             return (
               <MainCommentItem

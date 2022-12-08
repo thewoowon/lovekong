@@ -32,10 +32,8 @@ export default function CustomEditor({
     <Wrapper readOnly={readOnly} noPadding={noPadding}>
       <Editor
         editorStyle={{
-          border: '1px solid #ddd',
-          minHeight: `${minHeight != 100 ? minHeight : 100}px`,
-          padding: '20px',
-          marginBottom: '10px',
+          padding: '5px',
+          minHeight: `${minHeight != 100 ? minHeight : 400}px`,
         }}
         readOnly={readOnly}
         editorState={editorState}
@@ -69,7 +67,10 @@ export default function CustomEditor({
 }
 
 const Wrapper = styled.div<{ readOnly: boolean; noPadding: boolean }>`
-  ${(props) => (props.noPadding ? '' : 'padding: 16px;')}
   ${(props) =>
-    props.readOnly ? '' : 'border: 1px solid #e0e0e0;border-radius:10px;'}
+    props.readOnly
+      ? 'border:0.5px solid rgba(200,200,200,1); margin-top:20px; margin-bottom:20px; border-radius:5px;'
+      : 'border: 0.5px solid rgba(200,200,200,1) ;border-radius:5px;'}
 `
+
+// ${(props) => (props.noPadding ? '' : 'padding: 16px;')}

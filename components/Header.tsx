@@ -79,7 +79,7 @@ export default function Header() {
         ) : (
           <div className="rounded-full p-2 cursor-pointer hover:bg-blue-200 transition duration-300 ease-in-out">
             <IconUser
-              stroke={0.5}
+              stroke={1}
               onClick={() => {
                 signIn()
               }}

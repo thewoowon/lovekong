@@ -115,7 +115,7 @@ export default function ProductsHome() {
         <div className="flex flex-col justify-center items-center z-10">
           <div
             style={{ fontFamily: 'Kashie-Mercy' }}
-            className="relative font-sans-kr-light text-3xl"
+            className="relative font-sans-kr-light md:text-3xl sm:text-2xl text-xl"
           >
             LoveKong Stained Glass
           </div>
@@ -135,13 +135,13 @@ export default function ProductsHome() {
                   value: String(category.id),
                 })),
               ]}
-              className="bg-white font-sans-kr-light"
+              className="bg-white flex flex-wrap text-xs font-sans-kr"
               css={{ outline: 'none' }}
               size="md"
             />
           )}
         </div>
-        <div className="mb-4 flex justify-between">
+        <div className="mb-4 flex flex-wrap">
           <div>
             <Input
               icon={<IconSearch />}
@@ -151,13 +151,16 @@ export default function ProductsHome() {
                 currentTarget: { value: React.SetStateAction<string> }
               }) => setKeyword(e.currentTarget.value)}
               color="dark"
+              className="w-56"
             />
           </div>
+          <span className="mx-auto py-2"></span>
           <div>
             <Select
               value={selectedFilter}
               onChange={setSelectedFilter}
               data={FITERS}
+              className="w-56"
             />
           </div>
         </div>

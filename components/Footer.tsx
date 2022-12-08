@@ -5,13 +5,12 @@ import Image from 'next/image'
 export default function Footer() {
   return (
     <footer
-      className="px-36"
       style={{ height: '500px', backgroundColor: 'rgba(230,230,230,0.5)' }}
     >
       <div className="flex justify-center items-center pt-10">
         <Image src={'/kong.png'} alt="" width={200} height={300}></Image>
       </div>
-      <div className="max-w-5xl m-auto grid grid-flow-col grid-rows-1 grid-cols-4 text-zinc-500 pb-5 border-b-2 border-gray-100">
+      <div className="gap-2 max-w-5xl m-auto grid grid-cols-2 xl:text-sm lg:text-sm md:text-xs sm:text-xs text-xs xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 text-zinc-500 pb-5 border-b-2 border-gray-100">
         <div className="flex flex-col items-center">
           <div className="font-sans-kr-light">PRODUCTS</div>
           <ol className="p-5">
@@ -65,8 +64,8 @@ export default function Footer() {
           </ol>
         </div>
       </div>
-      <div className="flex justify-center items-center text-zinc-500 pt-5">
-        <div className="font-sans-kr-light text-md text-zinc-400">
+      <div className="flex bg-zinc-100 py-10 justify-center items-center text-zinc-500 pt-5">
+        <div className="font-sans-kr-light xl:text-sm lg:text-sm md:text-xs sm:text-xs text-xs text-zinc-400">
           © 2020 LoveKong. All rights reserved.
         </div>
       </div>

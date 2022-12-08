@@ -65,7 +65,7 @@
 }
 .video-div{
     position: absolute;
-    top: 35%;
+    top: 25%;
     left: 50%;
     /* background-color: aliceblue; */
     height: 10rem;
@@ -74,3 +74,11 @@
     /* box-shadow: 1px 1px 10px 10px powderblue; */
     transform: translate(-50%, -50%);
 }
+
+@media screen and (max-aspect-ratio: 1219/685) {
+    #background_video {
+        width: auto;
+        height: 100vh;
+     }
+ }
+ 
