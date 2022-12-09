@@ -32,22 +32,37 @@ export default function Home() {
         className="relative pb-36 overflow-hidden"
       >
         <div className="flex flex-col justify-center items-center h-full">
-          <div className="grid grid-flow-col grid-rows-2 grid-cols-3 gap-8">
-            <div className="transform scale-110 -rotate-6 -translate-y-10 w-24 h-36 bg-green-200 rounded-md hover:bg-green-300 transition duration-300 ease-in-out hover:scale-125 hover:shadow-lg"></div>
+          <img
+            alt=""
+            src="/assets/gif/AdobeStock_348993411_AdobeExpress.gif"
+            className="absolute top-0 left-0 w-full h-full object-fill"
+          ></img>
+          {/* <video
+          autoPlay
+          muted
+          loop
+          style={{ opacity: 1}}
+          className="absolute top-0 left-0 w-full h-full object-fill"
+        >
+          <source src="/assets/video/AdobeStock_348993411_AdobeExpress.mp4" />
+        </video> */}
+          {/* <div className="grid grid-flow-col grid-rows-2 grid-cols-3 gap-8">
+            <div style={{"borderLeft":"100px solid transparent"}} className="transform scale-110 -rotate-6 -translate-y-10 w-24 h-36 bg-green-200 rounded-md hover:bg-green-300 transition duration-300 ease-in-out hover:scale-125 hover:shadow-lg"></div>
             <div className="row-start-1 rotate-6 col-start-2 col-span-2 transform translate-x-20 -translate-y-12 bg-purple-200 rounded-md hover:bg-purple-300 transition duration-300 ease-in-out hover:scale-110 hover:shadow-lg"></div>
 
             <div className="transform scale-125 -rotate-3 -translate-x-10 translate-y-2 bg-rose-200 rounded-md hover:bg-rose-300 transition duration-300 ease-in-out hover:scale-150 hover:shadow-lg"></div>
             <div className="transform translate-y-24 bg-blue-200 rounded-md hover:bg-blue-300 transition duration-300 ease-in-out hover:scale-110 hover:shadow-lg"></div>
             <div className="col-start-3 transform scale-75 rotate-6 translate-x-2 -translate-y-8 bg-yellow-200 rounded-md hover:bg-yellow-300 transition duration-300 ease-in-out hover:scale-100 hover:shadow-lg"></div>
-          </div>
-          <div className="absolute flex flex-col justify-center items-center z-10">
+          </div> */}
+
+          <div className="flex flex-col justify-center items-center z-10">
             <div
-              className="relative lg:text-[60px] md:text-[50px] sm:text-[40px] xs:text-[35px] xss:text-[30px]"
+              className="relative text-black lg:text-[80px] md:text-[70px] sm:text-[60px] xs:text-[45px] xss:text-[35px]"
               style={{ fontFamily: 'Kashie-Mercy' }}
             >
               LoveKong Stained Glass
             </div>
-            <div className="relative lg:text-[35px] md:text-[30px] sm:text-[25px] xs:text-[20px] xss:text-[15px] font-sans-kr text-zinc-700 pb-2">
+            <div className="text-black font-light relative lg:text-[35px] md:text-[30px] sm:text-[25px] xs:text-[20px] xss:text-[20px] font-sans-kr text-zinc-700 pb-2">
               러브콩 스테인드 글라스
             </div>
             <div className="relative lg:text-[20px] md:text-[18px] sm:text-[16px] xs:text-[14px] xss:text-[12px] font-sans-kr text-zinc-500">
@@ -66,15 +81,7 @@ export default function Home() {
         </div>
       </section> */}
       <section style={{ height: '900px' }} className="relative overflow-hidden">
-        <video
-          autoPlay
-          muted
-          loop
-          style={{ opacity: 0.1 }}
-          className="absolute top-0 left-0 w-full h-full object-fill"
-        >
-          <source src="/assets/video/AdobeStock_444088961_AdobeExpress.mp4" />
-        </video>
+        {/* <img style={{"opacity":0.2}}  src="/assets/gif/AdobeStock_444088961_AdobeExpress.gif" alt=''></img> */}
         <div className="video-div">
           <div
             className="lg:w-[600px] md:w-[500px] sm:w-[360px] w-[360px]  bg-white rounded-md shadow-md"
@@ -83,7 +90,7 @@ export default function Home() {
         </div>
       </section>
       <section className="bg-zinc-50 flex flex-col justify-center items-center py-20">
-        <div className="font-sans-kr lg:text-3xl md:text-2xl sm:text-lg text-sm pb-20">
+        <div className="font-sans-kr lg:text-3xl md:text-2xl sm:text-lg text-lg pb-20">
           러브콩의 아이덴티티를 만나보세요.
         </div>
         <div className="grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-8">
@@ -99,7 +106,7 @@ export default function Home() {
         </div>
       </section>
       <section className="bg-white flex flex-col justify-center items-center py-20">
-        <div className="font-sans-kr text-3xl pb-20">
+        <div className="font-sans-kr lg:text-3xl md:text-2xl sm:text-lg text-lg pb-20">
           고객님들의 후기를 들어보세요.
         </div>
         <div className="grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-8">

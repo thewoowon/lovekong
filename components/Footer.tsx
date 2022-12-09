@@ -5,7 +5,8 @@ import Image from 'next/image'
 export default function Footer() {
   return (
     <footer
-      style={{ height: '500px', backgroundColor: 'rgba(230,230,230,0.5)' }}
+      className="pb-5"
+      style={{ backgroundColor: 'rgba(230,230,230,0.5)' }}
     >
       <div className="flex justify-center items-center pt-10">
         <Image src={'/kong.png'} alt="" width={200} height={300}></Image>
@@ -64,7 +65,7 @@ export default function Footer() {
           </ol>
         </div>
       </div>
-      <div className="flex bg-zinc-100 py-10 justify-center items-center text-zinc-500 pt-5">
+      <div className="flex py-10 justify-center items-center text-zinc-500 pt-5">
         <div className="font-sans-kr-light xl:text-sm lg:text-sm md:text-xs sm:text-xs text-xs text-zinc-400">
           © 2020 LoveKong. All rights reserved.
         </div>

@@ -153,9 +153,15 @@ export default function Cart() {
       <main className="font-sans-kr mx-auto bg-zinc-50">
         <div
           className="text-2xl flex justify-center py-10 bg-white"
-          style={{ borderBottom: '0.5px solid rgba(200,200,200,1)' }}
+          style={{
+            borderBottom: '0.5px solid rgba(200,200,200,1)',
+            minWidth: '360px',
+          }}
         >
-          <div style={{ width: '1080px' }}>
+          <div
+            className="w-full"
+            style={{ maxWidth: '1080px', minWidth: '360px' }}
+          >
             장바구니 ({data && data.length})
           </div>
         </div>
@@ -163,7 +169,12 @@ export default function Cart() {
           className="text-xl flex justify-center py-10 bg-white"
           style={{ borderBottom: '0.5px solid rgba(200,200,200,1)' }}
         >
-          <div style={{ width: '1080px' }}>✅ 일반배송 </div>
+          <div
+            className="w-full"
+            style={{ maxWidth: '1080px', minWidth: '360px' }}
+          >
+            ✅ 일반배송
+          </div>
         </div>
         <div className="flex flex-col justify-center items-center space-y-10 py-10">
           {data ? (
@@ -179,8 +190,8 @@ export default function Cart() {
           )}
         </div>
         <div
-          className="flex flex-col py-6 px-12 space-y-4 shadow-lg rounded-md bg-white mx-auto"
-          style={{ width: '1080px', border: '0.5px solid rgba(200,200,200,1)' }}
+          className="xl:w-[1080px] lg:w-[900px] md:w-[700px] sm:w-[560px] xs:w-[400px] xss:w-[360px] flex flex-col py-6 px-12 space-y-4 shadow-lg rounded-md bg-white mx-auto"
+          style={{ border: '0.5px solid rgba(200,200,200,1)' }}
         >
           <p className="text-xl font-semibold">주문정보</p>
           <Row>
@@ -378,11 +389,9 @@ const Items = (props: ICartItem) => {
 
   return (
     <div
-      className="flex-col py-6 px-12 shadow-lg rounded-xl bg-white"
+      className="xl:w-[1080px] lg:w-[900px] md:w-[700px] sm:w-[560px] xs:w-[400px] xss:w-[360px] flex-col py-6 px-12 shadow-lg rounded-xl bg-white"
       style={{
         border: '1px solid rgba(200,200,200,0.6)',
-        width: '1080px',
-        height: '430px',
       }}
     >
       <div className="flex justify-between text-2xl py-2 border-b-2 border-b-zinc-700">
@@ -400,13 +409,13 @@ const Items = (props: ICartItem) => {
           ></IconX>
         </div>
       </div>
-      <div className="flex flex-row justify-start items-center">
-        <div className="px-10">
+      <div className="flex xl:flex-row flex-col justify-start items-center">
+        <div className="px-10 w-full">
           <div className="text-sm font-sans-kr py-4">
             수제작 평균 소요시간
             <span className="text-green-500 font-sans-kr-bold px-2">5~7일</span>
           </div>
-          <div className="flex border-r-2 border-zinc-400 pr-20">
+          <div className="flex xl:border-r-2 border-zinc-400 pr-20">
             <Image
               className="mr-6"
               src={props.image_url}

@@ -33,6 +33,7 @@ export default function MainCommentItem({
                   className={
                     value <= comment.rate ? 'text-yellow-400' : 'text-gray-300'
                   }
+                  size={'1.4rem'}
                 ></IconStar>
               )
             })}{' '}
@@ -42,10 +43,10 @@ export default function MainCommentItem({
         <p className="px-4 py-1 text-start text-sm text-zinc-400">
           {comment.userId} - {comment.createdAt}
         </p>
-        <p className="px-4 py-1 text-start text-sm text-zinc-600">
+        <p className="px-4 py-1 text-start text-xs text-zinc-600">
           size : {comment.size} / {comment.color}
         </p>
-        <p className="px-4 py-4 h-48 mb-10 text-start text-md text-zinc-600">
+        <p className="px-4 py-2 h-32 mb-10 text-start text-sm text-zinc-600">
           {comment.comment}
         </p>
         <Image

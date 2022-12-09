@@ -28,41 +28,66 @@ export default function Header() {
       style={{ borderBottom: '0.5px solid rgba(240,240,240,0.8)' }}
     >
       <div
-        className="m-auto flex h-12 items-center"
+        className="m-auto flex h-12 items-center w-full"
         style={{ maxWidth: '1080px' }}
       >
-        <div className="rounded-full p-2 cursor-pointer hover:bg-zinc-200 transition duration-300 ease-in-out">
-          <IconHome
+        <div
+          className="flex justify-center items-center"
+          style={{ fontFamily: 'Kashie-Mercy' }}
+          onClick={() => {
+            router.push('/')
+          }}
+        >
+          LoveKong Stained Glass
+          {/* <IconHome
             stroke={1}
             onClick={() => {
               router.push('/')
             }}
-          ></IconHome>
+          ></IconHome> */}
         </div>
         <span className="m-auto"></span>
-        <div className="rounded-full p-2 cursor-pointer hover:bg-yellow-200 transition duration-300 ease-in-out">
-          <IconBox
+        <div
+          className="flex justify-center items-center px-2 hover:bg-zinc-50 transition duration-200 ease-in-out h-full"
+          onClick={() => {
+            router.push('/products')
+          }}
+        >
+          제품 목록
+          {/* <IconBox
             stroke={1}
             onClick={() => {
               router.push('/products')
             }}
-          ></IconBox>
+          ></IconBox> */}
         </div>
-        <div className="rounded-full p-2 cursor-pointer hover:bg-red-200 transition duration-300 ease-in-out">
-          <IconHeart
+        <div
+          className="flex justify-center items-center px-2 hover:bg-zinc-50 transition duration-200 ease-in-out h-full"
+          onClick={() => {
+            router.push('/wishlist')
+          }}
+        >
+          찜한 상품
+          {/* <IconHeart
             stroke={1}
             onClick={() => {
               router.push('/wishlist')
             }}
-          ></IconHeart>
+          ></IconHeart> */}
         </div>
-        <div className="rounded-full p-2 cursor-pointer hover:bg-green-200 transition duration-300 ease-in-out">
-          <IconShoppingCart
+        <div
+          className="flex justify-center items-center px-2 hover:bg-zinc-50 transition duration-200 ease-in-out h-full"
+          onClick={() => {
+            router.push('/cart')
+          }}
+        >
+          장바구니
+          {/* <IconShoppingCart
             stroke={1}
             onClick={() => {
               router.push('/cart')
             }}
-          ></IconShoppingCart>
+          ></IconShoppingCart> */}
         </div>
         {session ? (
           <div className="mr-4 flex justify-center items-center relative">
@@ -77,13 +102,19 @@ export default function Header() {
             {toggle && <ProfileMenu />}
           </div>
         ) : (
-          <div className="rounded-full p-2 cursor-pointer hover:bg-blue-200 transition duration-300 ease-in-out">
-            <IconUser
+          <div
+            className="flex justify-center items-center px-2 hover:bg-zinc-50 transition duration-200 ease-in-out h-full"
+            onClick={() => {
+              signIn()
+            }}
+          >
+            프로필
+            {/* <IconUser
               stroke={1}
               onClick={() => {
                 signIn()
               }}
-            ></IconUser>
+            ></IconUser> */}
           </div>
         )}
       </div>

@@ -119,7 +119,7 @@ export default function ProductsHome() {
           >
             LoveKong Stained Glass
           </div>
-          <div className="relative font-sans-kr-light text-md">
+          <div className="text-green-800 relative font-sans-kr-light text-md">
             러브콩 스테인드 글라스
           </div>
         </div>
