@@ -46,7 +46,7 @@ export default function MainCommentItem({
         <p className="px-4 py-1 text-start text-xs text-zinc-600">
           size : {comment.size} / {comment.color}
         </p>
-        <p className="px-4 py-2 h-32 mb-10 text-start text-sm text-zinc-600">
+        <p className="px-4 py-2 h-24 mb-10 text-start text-sm text-zinc-600">
           {comment.comment}
         </p>
         <Image

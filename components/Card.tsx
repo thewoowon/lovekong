@@ -11,9 +11,21 @@ import Image from 'next/image'
 export default function Card({
   title,
   image,
+  content,
+  tag,
+  comment1Id,
+  comment2Id,
+  comment1,
+  comment2,
 }: {
   title: string
   image: string
+  content: string
+  tag: string
+  comment1Id: string
+  comment2Id: string
+  comment1: string
+  comment2: string
 }) {
   return (
     <div
@@ -65,31 +77,32 @@ export default function Card({
             alt="Sunset in the mountains"
           ></Image>
           <span className="px-2">
-            <span className="font-semibold">thejobyouhate</span>님 외 여러명이
+            <span className="font-semibold">lovekong_zip</span>님 외 여러명이
             좋아합니다
           </span>
         </div>
         <div className="px-4 pt-3 flex items-center justify-start text-xs">
           <span>
-            <span className="font-semibold pr-2">lovekong_zip</span>취향저격
-            러브콩😍
+            <span className="font-semibold pr-2">lovekong_zip</span>
+            {content}
           </span>
         </div>
         <div className="text-blue-900 px-4 pb-2 flex items-center justify-start text-xs">
-          #lovekong #love #jinju #예쁨주의
+          {tag}
         </div>
         <div className="text-zinc-500 px-4 pb-2 flex items-center justify-start text-xs">
           댓글 297개 모두 보기
         </div>
         <div className="px-4 pb-1 flex items-center justify-start text-xs">
           <span>
-            <span className="font-semibold pr-2">thejobyouhate</span>너무
-            예뻐요!😆
+            <span className="font-semibold pr-2">{comment1Id}</span>
+            {comment1}
           </span>
         </div>
         <div className="px-4 pb-1 items-center justify-start text-xs">
           <span>
-            <span className="font-semibold pr-2">iamwoowon</span>완전 취저...
+            <span className="font-semibold pr-2">{comment2Id}</span>
+            {comment2}
           </span>
         </div>
         <div

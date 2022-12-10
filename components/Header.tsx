@@ -103,7 +103,7 @@ export default function Header() {
           </div>
         ) : (
           <div
-            className="flex justify-center items-center px-2 hover:bg-zinc-50 transition duration-200 ease-in-out h-full"
+            className="text-xs xs:text-sm flex justify-center items-center px-2 hover:bg-zinc-50 transition duration-200 ease-in-out h-full"
             onClick={() => {
               signIn()
             }}
