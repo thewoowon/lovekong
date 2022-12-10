@@ -53,7 +53,7 @@ export default function Header() {
             router.push('/products')
           }}
         >
-          제품 목록
+          Products
           {/* <IconBox
             stroke={1}
             onClick={() => {
@@ -67,7 +67,7 @@ export default function Header() {
             router.push('/wishlist')
           }}
         >
-          찜한 상품
+          Wish
           {/* <IconHeart
             stroke={1}
             onClick={() => {
@@ -81,13 +81,21 @@ export default function Header() {
             router.push('/cart')
           }}
         >
-          장바구니
+          Cart
           {/* <IconShoppingCart
             stroke={1}
             onClick={() => {
               router.push('/cart')
             }}
           ></IconShoppingCart> */}
+        </div>
+        <div
+          className="text-xs xs:text-sm flex justify-center items-center px-2 hover:bg-zinc-50 transition duration-200 ease-in-out h-full"
+          onClick={() => {
+            router.push('/cart')
+          }}
+        >
+          {'Q&A'}
         </div>
         {session ? (
           <div className="mr-4 flex justify-center items-center relative">
@@ -108,7 +116,7 @@ export default function Header() {
               signIn()
             }}
           >
-            프로필
+            Profile
             {/* <IconUser
               stroke={1}
               onClick={() => {

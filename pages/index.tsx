@@ -1,12 +1,35 @@
 import Card from '@components/Card'
 import MainCommentItem from '@components/MainCommentItem'
 import { Button } from '@mantine/core'
+import { Products } from '@prisma/client'
 import { mainComment } from 'constants/goods'
 import Head from 'next/head'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
+import { useCallback, useEffect, useState } from 'react'
 import styles from '../styles/Home.module.css'
 
+const TAKE = 9
 export default function Home() {
+  const router = useRouter()
+  const [skip, setSkip] = useState(0)
+  const [products, setProducts] = useState<Products[]>([])
+  useEffect(() => {
+    fetch(`/api/get-products?skip=0&take=${TAKE}`)
+      .then((res) => res.json())
+      .then((data) => setProducts(data.items))
+  }, [])
+
+  const getProducts = useCallback(() => {
+    const next = skip + TAKE
+    fetch(`/api/get-products?skip=${next}&take=${TAKE}`)
+      .then((res) => res.json())
+      .then((data) => {
+        const list = products.concat(data.items)
+        setProducts(list)
+      })
+    setSkip(next)
+  }, [skip, products])
   return (
     <div className="scroll-smooth">
       <Head>
@@ -65,7 +88,7 @@ export default function Home() {
 
           <div className="flex flex-col justify-center items-center z-10">
             <div
-              className="relative text-black lg:text-[45px] md:text-[33px] sm:text-[25px] xs:text-[20px] xss:text-[18px]"
+              className="relative text-black lg:text-[40px] md:text-[28px] sm:text-[21px] xs:text-[16px] xss:text-[14px]"
               style={{ fontFamily: 'Kashie-Mercy' }}
             >
               Beautiful Color Waves
@@ -98,10 +121,10 @@ export default function Home() {
         style={{ height: '700px' }}
         className="flex flex-col justify-center items-center py-20"
       >
-        <div className="font-sans-kr-bold lg:text-2xl md:text-xl sm:text-lg text-md">
+        <div className="font-sans-kr lg:text-3xl md:text-2xl sm:text-xl text-lg">
           LoveKong Top Seller
         </div>
-        <div className="font-sans-kr lg:text-lg md:text-md sm:text-sm text-xs pt-2 pb-10">
+        <div className="text-green-800 font-sans-kr lg:text-lg md:text-md sm:text-sm text-xs pt-2 pb-10">
           로투스 홀더
         </div>
         <div className="flex justify-center items-center">
@@ -119,26 +142,26 @@ export default function Home() {
         <div className="flex justify-center flex-wrap h-full">
           <div className="flex flex-col justify-start items-center">
             <Image
-              width={'520'}
+              width={'360'}
               height={100}
               style={{ minWidth: '360px', maxWidth: '520px' }}
-              className="pr-3 pb-3"
-              src="/assets/lotus/left-lotus-1.jpeg"
-              alt="lotus left 1"
-            ></Image>
-            <Image
-              width={'520'}
-              height={100}
-              style={{ minWidth: '360px', maxWidth: '520px' }}
-              className="pr-3 pb-3"
+              className="pl-3 pb-3"
               src="/assets/lotus/left-lotus-2.jpeg"
               alt="lotus left 2"
+            ></Image>
+            <Image
+              width={'360'}
+              height={100}
+              style={{ minWidth: '360px', maxWidth: '520px' }}
+              className="pl-3"
+              src="/assets/lotus/left-lotus-1.jpeg"
+              alt="lotus left 1"
             ></Image>
             {/* <img style={{ "minWidth": "360px", "maxWidth": "520px" }} className="pr-3 pb-3" src="/assets/lotus/left-lotus-1.jpeg" alt="lotus left 1"></img>
             <img style={{ "minWidth": "360px", "maxWidth": "520px" }} className="pr-3 pb-3" src="/assets/lotus/left-lotus-2.jpeg" alt="lotus left 2"></img> */}
             <div
               style={{ minWidth: '360px', maxWidth: '520px' }}
-              className="text-sm text-end p-3 w-full"
+              className="text-sm text-end p-1 w-full"
             >
               2021 LoveKong Collection
             </div>
@@ -156,20 +179,24 @@ export default function Home() {
               특별한 오브제가 되어줄거예요!
             </div>
             <Image
-              width={'520'}
+              width={'360'}
               height={100}
               style={{ minWidth: '360px', maxWidth: '520px' }}
-              className="p-3"
+              className="pl-3"
               src="/assets/lotus/right-lotus-1.jpeg"
               alt="lotus right 1"
             ></Image>
             {/* <img style={{ "minWidth": "360px", "maxWidth": "520px" }} className="p-3" src="/assets/lotus/right-lotus-1.jpeg" alt="lotus right 1"></img> */}
           </div>
+        </div>
+      </section>
+      <section className="py-10 relative">
+        <div className="flex justify-center flex-wrap h-full">
           <div className="overflow-hidden flex justify-center items-center pt-10 pb-5">
             <Image
-              width={'820'}
+              width={'720'}
               height={100}
-              style={{ minWidth: '360px', maxWidth: '820px' }}
+              style={{ minWidth: '360px', maxWidth: '1020px' }}
               src="/assets/lotus/lotus.jpeg"
               alt=""
             ></Image>
@@ -178,8 +205,8 @@ export default function Home() {
         </div>
       </section>
       <section className="bg-white flex flex-col justify-center items-center py-16 relative">
-        <div className="font-sans-kr lg:text-2xl md:text-xl sm:text-lg text-md pb-20">
-          고객님들의 후기를 들어보세요.
+        <div className="font-sans-kr lg:text-3xl md:text-2xl sm:text-xl text-lg pb-20">
+          고객님들의 실제 후기
         </div>
         <div className="grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-8">
           {mainComment.map((comment) => {
@@ -192,23 +219,70 @@ export default function Home() {
           })}
         </div>
       </section>
-      <section className="py-20 bg-rose-200">
-        <div className="text-center text-2xl py-4">
-          러브콩의 로투스 홀더를 지금 바로 구매하세요.
-        </div>
-        <div className="flex justify-center items-center">
-          <button className="px-4 py-2 bg-rose-400 text-white rounded-md animate-bounce hover:bg-rose-500 transition duration-200 ease-in-out">
-            로투스 홀더 바로 구매하기
-          </button>
+      <section style={{ height: '300px' }} className="bg-rose-200">
+        <div className="flex flex-col justify-center items-center h-full">
+          <div className="text-center lg:text-3xl md:text-2xl sm:text-xl text-lg py-6">
+            러브콩의 로투스 홀더를 지금 바로 만나보세요!
+          </div>
+          <div className="flex justify-center items-center">
+            <button
+              onClick={() => {
+                router.push('/products')
+              }}
+              className="px-4 py-2 bg-rose-400 text-white rounded-md animate-bounce hover:bg-rose-500 transition duration-200 ease-in-out"
+            >
+              로투스 홀더 바로 구매하기
+            </button>
+          </div>
         </div>
       </section>
       <section>
-        <div className="text-center text-2xl py-4">
+        <div className="text-center lg:text-3xl md:text-2xl sm:text-xl text-lg py-20">
           러브콩 스테인드 글라스 판매제품
+        </div>
+        <div className="flex flex-col justify-center items-center">
+          <div
+            className="grid 2xl:grid-cols-3 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-5"
+            style={{ minWidth: '360px', maxWidth: '1020px' }}
+          >
+            {products &&
+              products.map((product) => {
+                return (
+                  <div key={product.id}>
+                    <Image
+                      className="rounded-lg"
+                      src={product.image_url ?? ''}
+                      alt={product.name}
+                      width={300}
+                      height={200}
+                      placeholder="blur"
+                      blurDataURL={
+                        'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMUFROtBwABSQDB93Z92QAAAABJRU5ErkJggg=='
+                      }
+                    ></Image>
+                    <div className="flex">
+                      <span>{product.name}</span>
+                      <span className="ml-auto">
+                        {product.price.toLocaleString('ko-KR')}₩
+                      </span>
+                    </div>
+                    <span className="text-zinc-400">
+                      {product.category_id === 1 && '의류'}
+                    </span>
+                  </div>
+                )
+              })}
+          </div>
+          <button
+            className="my-20 px-4 py-2 bg-rose-400 text-white rounded-md hover:bg-rose-500 transition duration-200 ease-in-out"
+            onClick={getProducts}
+          >
+            더보기
+          </button>
         </div>
       </section>
       <section className="bg-zinc-50 flex flex-col justify-center items-center py-20">
-        <div className="font-sans-kr lg:text-2xl md:text-xl sm:text-lg text-md pb-20">
+        <div className="font-sans-kr lg:text-3xl md:text-2xl sm:text-xl text-lg pb-20">
           러브콩의 인스타 엿보기
         </div>
         <div className="grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-8">
@@ -316,25 +390,47 @@ export default function Home() {
         </div>
       </section>
       <section className="flex flex-col justify-center items-center py-20">
-        <div className="text-center text-2xl py-4">배송 및 반품/교환 안내</div>
-        <div>러브콩의 모든 제품은 수작업으로 진행됩니다.</div>
-        <div>핸드메이드 특성상 모양이 조금씩 다를 수 있고</div>
-        <div>
+        <div className="text-center lg:text-3xl md:text-2xl sm:text-xl text-md py-4">
+          배송 및 반품/교환 안내
+        </div>
+        <div className="py-1 lg:text-md md:text-md sm:text-sm text-xs ">
+          러브콩의 모든 제품은 수작업으로 진행됩니다.
+        </div>
+        <div className="py-1 lg:text-md md:text-md sm:text-sm text-xs ">
+          핸드메이드 특성상 모양이 조금씩 다를 수 있고
+        </div>
+        <div className="py-1 lg:text-md md:text-md sm:text-sm text-xs ">
           유리 특성상 같은 유리로 만들어도 조금씩 다르게 보일 수 있다는 점 양해
           바랍니다.
         </div>
-        <div>제작기간은 7~14일 소요됩니다.</div>
-        <div>{'주문 기간은 넉넉하게 생각하고 주문해주세요 :)'}</div>
-        <div>구매자 단순 변심 반품/교환 요청은 불가합니다.</div>
-        <div>
+        <div className="py-1 lg:text-md md:text-md sm:text-sm text-xs ">
+          제작기간은 7~14일 소요됩니다.
+        </div>
+        <div className="py-1 lg:text-md md:text-md sm:text-sm text-xs ">
+          {'주문 기간은 넉넉하게 생각하고 주문해주세요 :)'}
+        </div>
+        <div className="py-1 lg:text-md md:text-md sm:text-sm text-xs ">
+          구매자 단순 변심 반품/교환 요청은 불가합니다.
+        </div>
+        <div className="py-1 lg:text-md md:text-md sm:text-sm text-xs ">
           주문과 동시에 유리주문이 이루어지기 때문에 주문 취소가 어렵습니다.
           신중한 구매 부탁드립니다.
         </div>
-        <div>
+        <div className="py-1 lg:text-md md:text-md sm:text-sm text-xs ">
           납땜 작업 특성상 굴곡이 생길 수 있지만 자연스러운 현상이니 환불의
           사유가 되지 않습니다.
         </div>
-        <div>{'기타 문의는 홈페이지 게시판을 이용해 주세요 :)'}</div>
+        <div className="py-1 lg:text-md md:text-md sm:text-sm text-xs ">
+          {'기타 문의는 홈페이지 게시판을 이용해 주세요 :)'}
+        </div>
+      </section>
+      <section className="flex flex-col justify-center items-center py-20">
+        <div className="text-center lg:text-3xl md:text-2xl sm:text-xl text-md py-2">
+          이메일 주소
+        </div>
+        <div className="py-1 lg:text-md md:text-md sm:text-sm text-xs ">
+          smj091@nate.com
+        </div>
       </section>
       {/* <section
         style={{ height: '600px' }}
