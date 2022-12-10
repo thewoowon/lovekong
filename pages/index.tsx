@@ -57,12 +57,18 @@ export default function Home() {
 
           <div className="flex flex-col justify-center items-center z-10">
             <div
+              className="relative text-black lg:text-[45px] md:text-[33px] sm:text-[25px] xs:text-[20px] xss:text-[18px]"
+              style={{ fontFamily: 'Kashie-Mercy' }}
+            >
+              Beautiful Color Waves
+            </div>
+            <div
               className="relative text-black lg:text-[80px] md:text-[70px] sm:text-[60px] xs:text-[45px] xss:text-[35px]"
               style={{ fontFamily: 'Kashie-Mercy' }}
             >
               LoveKong Stained Glass
             </div>
-            <div className="text-black font-light relative lg:text-[35px] md:text-[30px] sm:text-[25px] xs:text-[20px] xss:text-[20px] font-sans-kr text-zinc-700 pb-2">
+            <div className="relative lg:text-[31px] md:text-[26px] sm:text-[21px] xs:text-[18px] xss:text-[16px] font-sans-kr text-zinc-800 pb-2">
               러브콩 스테인드 글라스
             </div>
             <div className="relative lg:text-[20px] md:text-[18px] sm:text-[16px] xs:text-[14px] xss:text-[12px] font-sans-kr text-zinc-500">
@@ -71,6 +77,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <section style={{ height: '800px' }}></section>
+      <section style={{ height: '800px' }}></section>
       {/* <section className="culture video-section">
         <video autoPlay muted loop style={{ "width": '100%',"height":"100%" }}>
           <source src="/videos/main_video.mp4"/>
