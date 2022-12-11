@@ -248,27 +248,34 @@ export default function Home() {
             {products &&
               products.map((product) => {
                 return (
-                  <div key={product.id}>
+                  <div
+                    key={product.id}
+                    style={{
+                      border: '1px solid rgba(229, 231, 235, 1)',
+                    }}
+                    className="p-3 rounded-md"
+                  >
                     <Image
-                      className="rounded-lg"
+                      className="rounded-sm"
                       src={product.image_url ?? ''}
                       alt={product.name}
-                      width={300}
-                      height={200}
+                      width={500}
+                      height={500}
                       placeholder="blur"
                       blurDataURL={
                         'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMUFROtBwABSQDB93Z92QAAAABJRU5ErkJggg=='
                       }
                     ></Image>
-                    <div className="flex">
-                      <span>{product.name}</span>
-                      <span className="ml-auto">
-                        {product.price.toLocaleString('ko-KR')}₩
+                    <div className="flex p-2">
+                      <span className="font-sans-kr text-md">
+                        {product.name}
                       </span>
                     </div>
-                    <span className="text-zinc-400">
-                      {product.category_id === 1 && '의류'}
-                    </span>
+                    <div className="flex px-2 pb-2">
+                      <span className="font-semibold text-lg">
+                        {product.price.toLocaleString('ko-KR')}
+                      </span>
+                    </div>
                   </div>
                 )
               })}

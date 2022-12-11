@@ -141,7 +141,10 @@ export default function ProductsHome() {
             />
           )}
         </div>
-        <div className="mb-4 flex xss:justify-center xs:justify-center sm:justify-between flex-wrap">
+        <div
+          className="mb-4 flex xss:justify-center xs:justify-center sm:justify-between flex-wrap mx-auto"
+          style={{ minWidth: '360px', maxWidth: '1020px' }}
+        >
           <div>
             <Input
               icon={<IconSearch />}
@@ -165,15 +168,17 @@ export default function ProductsHome() {
         </div>
         {products ? (
           products.length > 0 ? (
-            <div className="grid 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
+            <div
+              className="grid 2xl:grid-cols-3 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-5 mx-auto"
+              style={{ minWidth: '360px', maxWidth: '1020px' }}
+            >
               {products.map((product) => {
                 return (
                   <div key={product.id} className="m-auto">
                     <div
-                      className="hover:opacity-95 hover:bg-zinc-50 cursor-pointer rounded-sm shadow-md p-3 transition ease-in-out duration-200"
+                      className="hover:opacity-95 hover:bg-zinc-50 cursor-pointer rounded-md p-3 transition ease-in-out duration-200"
                       style={{
-                        maxWidth: 300,
-                        minWidth: 200,
+                        border: '1px solid rgba(229, 231, 235, 1)',
                       }}
                       onClick={() => {
                         router.push(`/products/${product.id}`)
@@ -183,7 +188,7 @@ export default function ProductsHome() {
                         className="rounded-sm"
                         src={product.image_url ?? ''}
                         alt={product.name}
-                        width={400}
+                        width={500}
                         height={500}
                         placeholder="blur"
                         blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
@@ -192,13 +197,10 @@ export default function ProductsHome() {
                         <span className="font-sans-kr text-md">
                           {product.name}
                         </span>
-                        <span className="font-sans-kr-light ml-auto">
-                          {product.price.toLocaleString('ko-KR')} ₩
-                        </span>
                       </div>
                       <div className="flex px-2 pb-2">
-                        <span className="text-zinc-500 font-sans-kr-light">
-                          type : {CATEGORY_MAP[product.category_id - 1]}
+                        <span className="font-semibold text-lg">
+                          {product.price.toLocaleString('ko-KR')}
                         </span>
                       </div>
                     </div>

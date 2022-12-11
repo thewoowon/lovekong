@@ -67,27 +67,38 @@ export default function My() {
         <meta property="og:image" content="" />
       </Head>
 
-      <main className="font-sans-kr my-10 px-36">
-        <p className="text-2xl mb-2">주문내역 ({data && data.length})</p>
-        <div className="flex">
-          <div className="flex flex-col p-4 space-y-4 flex-1">
-            {data ? (
-              data.length > 0 ? (
-                data.map((value, iter) => {
-                  return <DetailItem key={iter} {...value}></DetailItem>
-                })
-              ) : (
-                <div
-                  style={{ height: '600px' }}
-                  className="flex flex-col justify-center items-center font-sans-kr-light"
-                >
-                  <div>주문내역이 비었어요.</div>
-                </div>
-              )
-            ) : (
-              <div>Loading....</div>
-            )}
+      <main className="font-sans-kr mx-auto bg-zinc-50">
+        <div
+          className="text-2xl flex justify-center py-10 bg-white"
+          style={{
+            borderBottom: '0.5px solid rgba(200,200,200,1)',
+            minWidth: '360px',
+          }}
+        >
+          <div
+            className="w-full"
+            style={{ maxWidth: '1080px', minWidth: '360px' }}
+          >
+            주문내역 ({data && data.length})
           </div>
+        </div>
+        <div className="flex flex-col justify-center items-center space-y-10 py-10">
+          {data ? (
+            data.length > 0 ? (
+              data.map((value, iter) => {
+                return <DetailItem key={iter} {...value}></DetailItem>
+              })
+            ) : (
+              <div
+                style={{ height: '600px' }}
+                className="flex flex-col justify-center items-center font-sans-kr-light"
+              >
+                <div>주문내역이 비었어요.</div>
+              </div>
+            )
+          ) : (
+            <div>Loading....</div>
+          )}
         </div>
       </main>
     </div>
@@ -96,7 +107,12 @@ export default function My() {
 
 const DetailItem = (props: IOrderDetail) => {
   return (
-    <div className="w-full flex-col border-2 border-gray-200 flex p-4 rounded-lg">
+    <div
+      className="xl:w-[1080px] lg:w-[900px] md:w-[700px] sm:w-[560px] xs:w-[400px] xss:w-[360px] flex-col py-6 px-12 shadow-lg rounded-xl bg-white"
+      style={{
+        border: '1px solid rgba(200,200,200,0.6)',
+      }}
+    >
       <div className="flex">
         <Badge
           className="mx-6"
@@ -167,8 +183,8 @@ const Items = (props: IOrderItemsDetail & { status: number }) => {
     <div className="w-full flex p-4 shadow-xl rounded-md">
       <Image
         src={props.image_url}
-        width={600}
-        height={360}
+        width={200}
+        height={200}
         alt="image"
         onClick={() => {
           router.push(`/products/${props.productId}`)
