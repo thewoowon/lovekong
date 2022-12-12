@@ -130,3 +130,15 @@ model Comments {
   updatedAt DateTime @updatedAt
   createdAt DateTime @default(now())
 }
+
+
+model QnAs{
+  id        Int      @id @default(autoincrement())
+  userId   String
+  title String
+  contents String
+  status Int
+  views Int
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+}
