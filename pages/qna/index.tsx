@@ -1,8 +1,51 @@
-import { Pagination } from '@mantine/core'
+import { Input, Loader, Pagination } from '@mantine/core'
+import { QnAs } from '@prisma/client'
+import { IconSearch } from '@tabler/icons'
+import { useQuery } from '@tanstack/react-query'
+import { QNA_STATUS, TAKE } from 'constants/goods'
+import useDebounce from 'hooks/useDebounce'
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useState } from 'react'
 
 export default function QNA() {
+  const [activePage, setPage] = useState(1)
+  const [keyword, setKeyword] = useState<string>('')
+  const deboundecKeyword = useDebounce(keyword, 500)
+  const router = useRouter()
+  const { data: total } = useQuery(
+    [`/api/get-questions-count?contains=${deboundecKeyword}`],
+    () =>
+      fetch(`/api/get-questions-count?contains=${deboundecKeyword}`)
+        .then((res) => res.json())
+        .then((data) => Math.ceil(data.items / TAKE))
+  )
+
+  // useEffect(() => {
+  //   const skip = TAKE * (activePage - 1)
+  //   fetch(`/api/get-products?skip=${skip}&take=${TAKE}&category_id=${selectedCategory}&orderBy=${selectedFilter}&contains=${keyword}`)
+  //     .then((res) => res.json())
+  //     .then((data) => setProducts(data.items))
+  // }, [activePage,selectedCategory,selectedFilter,keyword])
+  const { data: qnas } = useQuery<{ items: QnAs[] }, unknown, QnAs[]>(
+    [
+      `/api/get-questions?skip=${
+        TAKE * (activePage - 1)
+      }&take=${TAKE}&contains=${keyword}`,
+    ],
+    () =>
+      fetch(
+        `/api/get-questions?skip=${
+          TAKE * (activePage - 1)
+        }&take=${TAKE}&contains=${keyword}`
+      ).then((res) => res.json()),
+    {
+      select: (data) => data.items,
+    }
+  )
+
   return (
     <div>
       <Head>
@@ -38,7 +81,33 @@ export default function QNA() {
             {'Q&A'}
           </div>
         </div>
-        <div className="xs:text-sm text-xs flex justify-center py-10 bg-white">
+
+        <div className="xs:text-sm text-xs flex justify-center py-4 bg-white">
+          <div
+            className="flex justify-between w-full"
+            style={{ maxWidth: '1080px', minWidth: '360px' }}
+          >
+            <Input
+              icon={<IconSearch />}
+              placeholder="Search Title"
+              value={keyword}
+              onChange={(e: {
+                currentTarget: { value: React.SetStateAction<string> }
+              }) => setKeyword(e.currentTarget.value)}
+              color="dark"
+              className="w-56"
+            />
+            <button
+              className="px-4 py-2 bg-rose-400 text-white rounded-md hover:bg-rose-500 transition duration-200 ease-in-out"
+              onClick={() => {
+                router.push('/qna/write')
+              }}
+            >
+              글작성
+            </button>
+          </div>
+        </div>
+        <div className="xs:text-sm text-xs flex justify-center bg-white">
           <table style={{ maxWidth: '1080px', minWidth: '360px' }}>
             <thead className="bg-zinc-100">
               <tr>
@@ -51,51 +120,51 @@ export default function QNA() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Argentina</td>
-                <td>Spanish (official), English, Italian, German, French</td>
-                <td>41,803,125</td>
-                <td>31.3</td>
-                <td>2,780,387</td>
-                <td>2,780,387</td>
-              </tr>
-              <tr>
-                <td>Australia</td>
-                <td>English 79%, native and other languages</td>
-                <td>23,630,169</td>
-                <td>37.3</td>
-                <td>7,739,983</td>
-                <td>2,780,387</td>
-              </tr>
-              <tr>
-                <td>Australia</td>
-                <td>English 79%, native and other languages</td>
-                <td>23,630,169</td>
-                <td>37.3</td>
-                <td>7,739,983</td>
-                <td>2,780,387</td>
-              </tr>
-              <tr>
-                <td>Australia</td>
-                <td>English 79%, native and other languages</td>
-                <td>23,630,169</td>
-                <td>37.3</td>
-                <td>7,739,983</td>
-                <td>2,780,387</td>
-              </tr>
-              <tr>
-                <td>Australia</td>
-                <td>English 79%, native and other languages</td>
-                <td>23,630,169</td>
-                <td>37.3</td>
-                <td>7,739,983</td>
-                <td>2,780,387</td>
-              </tr>
+              {qnas ? (
+                qnas.map((qna, index) => (
+                  <tr key={qna.id}>
+                    <td>{qna.id}</td>
+                    <td>
+                      <Link
+                        href={`/qna/${qna.id}`}
+                        className="text-blue-500 border-b hover:border-b-blue-600"
+                      >
+                        {qna.title}
+                      </Link>
+                    </td>
+                    <td>{qna.writer}</td>
+                    <td>{qna.createdAt.toString().substring(0, 10)}</td>
+                    <td>{QNA_STATUS[qna.status]}</td>
+                    <td>{qna.viewCount}</td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan={6}>
+                    QNA 목록을 가져오는 중입니다. 다른 페이지로 이동하지 마세요.
+                    <div className="w-full flex justify-center items-center my-5">
+                      <Loader
+                        variant="bars"
+                        color={'gray'}
+                        size={'lg'}
+                      ></Loader>
+                    </div>
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>
-        <div className="flex justify-center pb-20 pt-10 bg-white">
-          <Pagination className="m-auto" total={10} color="dark" />
+        <div className="flex justify-center pb-10 pt-10 bg-white">
+          {total && total !== 0 ? (
+            <Pagination
+              className="m-auto"
+              page={activePage}
+              onChange={setPage}
+              total={total}
+              color="dark"
+            />
+          ) : null}
         </div>
       </main>
     </div>

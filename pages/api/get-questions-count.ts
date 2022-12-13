@@ -4,26 +4,18 @@ import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
-async function getQuestionsCount(category_id: number, contains: string) {
+async function getQuestionsCount(contains: string) {
   const containsCondition =
     contains && contains !== ''
       ? {
-          name: { contains: contains },
+          title: { contains: contains },
         }
       : undefined
 
-  const where =
-    category_id && category_id !== -1
-      ? {
-          category_id: category_id,
-          ...containsCondition,
-        }
-      : containsCondition
-      ? containsCondition
-      : undefined
+  const where = containsCondition ? containsCondition : undefined
 
   try {
-    const response = await prisma.products.count({ where: where })
+    const response = await prisma.qnAs.count({ where: where })
     return response
   } catch (error) {
     console.error(error)
@@ -39,13 +31,10 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const { category_id, contains } = req.query
+  const { contains } = req.query
   try {
-    const products = await getQuestionsCount(
-      Number(category_id),
-      String(contains)
-    )
-    res.status(200).json({ items: products, message: 'Success' })
+    const qnas = await getQuestionsCount(String(contains))
+    res.status(200).json({ items: qnas, message: 'Success' })
   } catch (error) {
     res.status(400).json({ message: 'Failed' })
   }

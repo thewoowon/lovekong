@@ -240,8 +240,8 @@ export default function Cart() {
           {products ? (
             products.length > 0 ? (
               <div
-                className="grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-5"
-                style={{ width: '1080px' }}
+                className="grid 2xl:grid-cols-3 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-5 mx-auto"
+                style={{ minWidth: '360px', maxWidth: '1020px' }}
               >
                 {products.map((product) => {
                   return (

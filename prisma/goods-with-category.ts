@@ -1,48 +1,38 @@
 import { PrismaClient, Prisma } from '@prisma/client'
 import { CATEGORY_MAP } from 'constants/goods'
+import { now } from 'next-auth/client/_utils'
 
 const prisma = new PrismaClient()
 
-const productData: Prisma.ProductsCreateInput[] = Array.apply(
-  null,
-  Array(100)
-).map((_, index) => ({
-  name: `gray hoodies ${index + 1}`,
-  contents: `{"blocks":[{"key":"9g027","text":"gray hoodies ${
-    index + 1
-  }","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}`,
-  category_id: 5,
-  image_url: `https://picsum.photos/id/${index + 401}/1000/600/`,
-  price: Math.floor(Math.random() * (100000 - 20000)),
-}))
+const qnaData: Prisma.QnAsCreateInput[] = Array.apply(null, Array(100)).map(
+  (_, index) => ({
+    userId: `userId${index}`,
+    writer: `writer${index}`,
+    title: `test${index}`,
+    contents: `{"blocks":[{"key":"9g027","text":"꽃잎을 닮은 베이직한 램프",
+    "type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}`,
+    status: 0,
+    viewCount: 0,
+    updatedAt: new Date(now()),
+    createdAt: new Date(now()),
+  })
+)
 
 async function main() {
-  CATEGORY_MAP.forEach(async (category, index) => {
-    const product = await prisma.categories.upsert({
-      where: {
-        id: index + 1,
-      },
-      update: {
-        name: category,
-      },
-      create: {
-        name: category,
-      },
-    })
-    console.log(`Created Category : ${product.id}`)
-  })
-
-  for (const p of productData) {
-    const product = await prisma.products.create({
+  for (const qna of qnaData) {
+    const qnaa = await prisma.qnAs.create({
       data: {
-        name: p.name,
-        image_url: p.image_url,
-        category_id: p.category_id,
-        contents: p.contents,
-        price: p.price,
+        userId: qna.userId,
+        writer: qna.writer,
+        title: qna.title,
+        contents: qna.contents,
+        status: qna.status,
+        viewCount: qna.viewCount,
+        updatedAt: qna.updatedAt,
+        createdAt: qna.createdAt,
       },
     })
-    console.log(`Created Id : ${product.id}`)
+    console.log(`Created Id : ${qnaa.id}`)
   }
 }
 

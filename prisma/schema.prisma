@@ -135,10 +135,11 @@ model Comments {
 model QnAs{
   id        Int      @id @default(autoincrement())
   userId   String
+  writer String
   title String
   contents String
   status Int
-  views Int
+  viewCount Int
   updatedAt DateTime @updatedAt
   createdAt DateTime @default(now())
 }

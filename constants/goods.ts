@@ -2,6 +2,8 @@ import { format } from 'date-fns'
 
 export const CATEGORY_MAP = ['LIGHT', 'TRAY', 'CASE', 'VASE', 'ACCESORY', 'ETC']
 
+export const QNA_STATUS = ['답변 등록 전', '답변 등록 완료', '문의 종료']
+
 export const TAKE = 12
 
 export const FITERS = [
