@@ -5,18 +5,26 @@ import { Carts, PrismaClient } from '@prisma/client'
 import { getSession, useSession } from 'next-auth/react'
 
 const prisma = new PrismaClient()
-
-async function addQuestion(userId: string, item: Omit<Carts, 'id' | 'userId'>) {
+async function addQuestion(
+  userId: string,
+  userName: string,
+  email: string,
+  title: string,
+  contents: string
+) {
   try {
-    const cart = await prisma.carts.create({
+    const qna = await prisma.qnAs.create({
       data: {
         userId: userId,
-        productId: item.productId,
-        quantity: item.quantity,
-        amount: item.amount,
+        title: title,
+        email: email,
+        contents: contents,
+        writer: userName,
+        status: 0,
+        viewCount: 0,
       },
     })
-    return cart
+    return qna
   } catch (error) {
     console.error(error)
   }
@@ -33,13 +41,19 @@ export default async function handler(
 ) {
   // const session = await getSession({ req });
   const session = (await getSession({ req })) as CustomDefaultSession
-  const { item } = JSON.parse(req.body)
+  const { title, contents } = JSON.parse(req.body)
   if (session == null) {
     res.status(401).json({ items: [], message: 'Unauthorized' })
     return
   }
   try {
-    const wishlist = await addQuestion(String(session.id), item)
+    const wishlist = await addQuestion(
+      String(session.id),
+      String(session.user?.name),
+      String(session.user?.email),
+      title,
+      contents
+    )
     res.status(200).json({ items: wishlist, message: 'Success' })
   } catch (error) {
     res.status(400).json({ message: 'Failed' })

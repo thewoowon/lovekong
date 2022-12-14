@@ -11,16 +11,20 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 
-export default function QNA() {
+export default function QNAMy() {
   const session = useSession()
   const [activePage, setPage] = useState(1)
   const [keyword, setKeyword] = useState<string>('')
   const deboundecKeyword = useDebounce(keyword, 500)
   const router = useRouter()
   const { data: total } = useQuery(
-    [`/api/get-questions-count?contains=${deboundecKeyword}`],
+    [
+      `/api/get-questions-count?contains=${deboundecKeyword}&email=${session.data?.user?.email}`,
+    ],
     () =>
-      fetch(`/api/get-questions-count?contains=${deboundecKeyword}`)
+      fetch(
+        `/api/get-questions-count?contains=${deboundecKeyword}&email=${session.data?.user?.email}`
+      )
         .then((res) => res.json())
         .then((data) => Math.ceil(data.items / TAKE))
   )
@@ -35,13 +39,13 @@ export default function QNA() {
     [
       `/api/get-questions?skip=${
         TAKE * (activePage - 1)
-      }&take=${TAKE}&contains=${keyword}`,
+      }&take=${TAKE}&contains=${keyword}&email=${session.data?.user?.email}`,
     ],
     () =>
       fetch(
         `/api/get-questions?skip=${
           TAKE * (activePage - 1)
-        }&take=${TAKE}&contains=${keyword}`
+        }&take=${TAKE}&contains=${keyword}&email=${session.data?.user?.email}`
       ).then((res) => res.json()),
     {
       select: (data) => data.items,
@@ -100,14 +104,6 @@ export default function QNA() {
             />
             <span className="mx-auto"></span>
             <div className="flex items-center">
-              <button
-                className="px-4 py-2 bg-rose-400 text-white rounded-md hover:bg-rose-500 transition duration-200 ease-in-out mx-1"
-                onClick={() => {
-                  router.push('/qna/my')
-                }}
-              >
-                나의 글만 보기
-              </button>
               <button
                 className="px-4 py-2 bg-rose-400 text-white rounded-md hover:bg-rose-500 transition duration-200 ease-in-out mx-1"
                 onClick={() => {

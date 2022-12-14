@@ -8,16 +8,24 @@ type qnasQuery = {
   skip: number
   take: number
   contains: string
+  email: string
 }
 
-async function getQuestions({ skip, take, contains }: qnasQuery) {
+async function getQuestions({ skip, take, contains, email }: qnasQuery) {
   const containsCondition =
     contains && contains !== ''
       ? {
           title: { contains: contains },
         }
       : undefined
-  const where = containsCondition ? containsCondition : undefined
+  const where = containsCondition
+    ? email && email !== ''
+      ? {
+          email: email,
+          ...containsCondition,
+        }
+      : containsCondition
+    : undefined
 
   try {
     const response = await prisma.qnAs.findMany({
@@ -40,7 +48,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const { skip, take, contains } = req.query
+  const { skip, take, contains, email } = req.query
   if (skip == null || take == null) {
     res.status(400).json({ message: 'No skip or No take' })
   }
@@ -50,6 +58,7 @@ export default async function handler(
       skip: Number(skip),
       take: Number(take),
       contains: contains ? String(contains) : '',
+      email: email ? String(email) : '',
     })
     res.status(200).json({ items: qnas, message: 'Success' })
   } catch (error) {
