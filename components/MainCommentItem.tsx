@@ -13,6 +13,8 @@ export default function MainCommentItem({
 }: {
   comment: MainCommentItemType
 }) {
+  const [contents, setContents] = useState<string[]>(comment.comment.split('|'))
+
   return (
     <div
       style={{
@@ -40,15 +42,17 @@ export default function MainCommentItem({
             / {comment.rate}
           </div>
         </div>
-        <p className="px-4 py-1 text-start text-sm text-zinc-400">
+        <div className="px-4 py-1 text-start text-sm text-zinc-400">
           {comment.userId} - {comment.createdAt}
-        </p>
-        <p className="px-4 py-1 text-start text-xs text-zinc-600">
+        </div>
+        <div className="px-4 py-1 text-start text-xs text-zinc-600">
           size : {comment.size} / {comment.color}
-        </p>
-        <p className="px-4 py-2 h-24 mb-10 text-start text-sm text-zinc-600">
-          {comment.comment}
-        </p>
+        </div>
+        <div className="px-4 py-2 h-32 mb-10 text-start text-sm text-zinc-600">
+          {contents.map((contents, iter) => {
+            return <div key={iter}>{contents}</div>
+          })}
+        </div>
         <Image
           src={comment.user_img}
           alt="Comment Image"

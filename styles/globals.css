@@ -93,4 +93,45 @@
     padding: 10px;
     text-align: center;
   }
+
+
+  .my-swiper{
+    width: 100%;
+    height:1000px;
+}
+
+.my-swiper-slide{
+    width: 100%;
+    height: 100%;
+}
+.my-swiper-slide>span{
+    width: 100% !important;
+    height: 100% !important;
+}
+.swiper-button-prev{
+    left:4rem !important;
+}
+
+.swiper-button-next{
+    right: 4rem !important;
+}
+
+.carousel-fit{
+    object-fit: cover !important;
+}
+
+:root{
+    --swiper-theme-color:white !important;
+    --swiper-pagination-bullet-inactive-color:#ffffff !important;
+    --swiper-pagination-bullet-width:10px !important;
+    --swiper-pagination-bullet-size:10px !important;
+    --swiper-navigation-size:60px !important;
+}
+
+.swiper-button-prev{
+    color: white;
+}
+.swiper-button-next{
+    color: white;
+}
  

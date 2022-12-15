@@ -1,5 +1,6 @@
 import Card from '@components/Card'
 import MainCommentItem from '@components/MainCommentItem'
+import VideoWatcher from '@components/VideoWatcher'
 import { Button } from '@mantine/core'
 import { Products } from '@prisma/client'
 import { IconHeart, IconStar } from '@tabler/icons'
@@ -204,6 +205,9 @@ export default function Home() {
             {/* <img style={{ "minWidth": "360px", "maxWidth": "820px" }} src="/assets/lotus/lotus.jpeg" alt=""></img> */}
           </div>
         </div>
+      </section>
+      <section>
+        <VideoWatcher></VideoWatcher>
       </section>
       <section className="bg-white flex flex-col justify-center items-center py-16 relative">
         <div className="font-sans-kr lg:text-3xl md:text-2xl sm:text-xl text-lg pb-20">
