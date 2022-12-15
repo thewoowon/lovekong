@@ -249,7 +249,7 @@ export default function Home() {
             {products &&
               products.map((product) => {
                 return (
-                  <div key={product.id} className="py-3 rounded-md">
+                  <div key={product.id} className="p-3 rounded-md">
                     <Image
                       className="rounded-sm"
                       src={product.image_url ?? ''}

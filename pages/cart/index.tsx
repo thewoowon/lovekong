@@ -507,7 +507,7 @@ const Items = (props: ICartItem) => {
           <div className="font-sans-kr-bold pb-2">3,000원</div>
         </div>
       </div>
-      <div className="flex justify-center items-center ml-auto space-x-4 py-12">
+      <div className="flex flex-wrap justify-center items-center ml-auto space-x-4 py-12">
         <div className="flex flex-col items-center justify-center px-8">
           <div>선택상품금액</div>
           <div className="font-sans-kr-bold">

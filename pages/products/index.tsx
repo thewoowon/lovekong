@@ -111,7 +111,7 @@ export default function ProductsHome() {
         <meta property="og:image" content="" />
       </Head>
 
-      <main className="my-20 lg:px-36 md:px-30 sm:px-24 xs:px-18 xss:px-12">
+      <main className="my-20">
         <div className="flex flex-col justify-center items-center z-10">
           <div
             style={{ fontFamily: 'Kashie-Mercy' }}
@@ -145,7 +145,7 @@ export default function ProductsHome() {
           className="mb-4 flex xss:justify-center xs:justify-center sm:justify-between flex-wrap mx-auto"
           style={{ minWidth: '360px', maxWidth: '1020px' }}
         >
-          <div>
+          <div className="px-2">
             <Input
               icon={<IconSearch />}
               placeholder="Search Title"
@@ -157,7 +157,7 @@ export default function ProductsHome() {
               className="w-56 my-2"
             />
           </div>
-          <div>
+          <div className="px-2">
             <Select
               value={selectedFilter}
               onChange={setSelectedFilter}
