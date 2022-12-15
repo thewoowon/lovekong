@@ -119,6 +119,9 @@ export default function Home() {
           <p className="video-p-2">임직원이 행복한 유비케어</p>
         </div>
       </section> */}
+      <section>
+        <VideoWatcher></VideoWatcher>
+      </section>
       <section
         style={{ height: '700px' }}
         className="flex flex-col justify-center items-center py-20"
@@ -131,10 +134,10 @@ export default function Home() {
         </div>
         <div className="flex justify-center items-center">
           <Image
-            width={100}
-            height={100}
+            width={800}
+            height={1000}
             className="w-96"
-            src="/assets/gif/KakaoTalk_Video_2022-12-10-15-30-24.gif"
+            src="/assets/lotus/lotus-main.jpeg"
             alt=""
           ></Image>
           {/* <img className='w-96' src="/assets/gif/KakaoTalk_Video_2022-12-10-15-30-24.gif" alt=""></img> */}
@@ -144,16 +147,16 @@ export default function Home() {
         <div className="flex justify-center flex-wrap h-full">
           <div className="flex flex-col justify-start items-center">
             <Image
-              width={'360'}
-              height={100}
+              width={360}
+              height={200}
               style={{ minWidth: '360px', maxWidth: '520px' }}
               className="pl-3 pb-3"
               src="/assets/lotus/left-lotus-2.jpeg"
               alt="lotus left 2"
             ></Image>
             <Image
-              width={'360'}
-              height={100}
+              width={360}
+              height={200}
               style={{ minWidth: '360px', maxWidth: '520px' }}
               className="pl-3"
               src="/assets/lotus/left-lotus-1.jpeg"
@@ -205,9 +208,6 @@ export default function Home() {
             {/* <img style={{ "minWidth": "360px", "maxWidth": "820px" }} src="/assets/lotus/lotus.jpeg" alt=""></img> */}
           </div>
         </div>
-      </section>
-      <section>
-        <VideoWatcher></VideoWatcher>
       </section>
       <section className="bg-white flex flex-col justify-center items-center py-16 relative">
         <div className="font-sans-kr lg:text-3xl md:text-2xl sm:text-xl text-lg pb-20">
