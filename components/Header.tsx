@@ -32,7 +32,7 @@ export default function Header() {
         style={{ maxWidth: '1080px' }}
       >
         <div
-          className="text-xs xs:text-sm flex justify-center items-center ml-4"
+          className="cursor-pointer text-xs xs:text-sm flex justify-center items-center ml-4"
           style={{ fontFamily: 'Kashie-Mercy' }}
           onClick={() => {
             router.push('/')
@@ -48,7 +48,7 @@ export default function Header() {
         </div>
         <span className="m-auto"></span>
         <div
-          className="text-xs xs:text-sm flex justify-center items-center px-2 hover:bg-zinc-50 transition duration-200 ease-in-out h-full"
+          className="cursor-pointer text-xs xs:text-sm flex justify-center items-center px-2 h-full"
           onClick={() => {
             router.push('/products')
           }}
@@ -62,7 +62,7 @@ export default function Header() {
           ></IconBox> */}
         </div>
         <div
-          className="text-xs xs:text-sm flex justify-center items-center px-2 hover:bg-zinc-50 transition duration-200 ease-in-out h-full"
+          className="cursor-pointer text-xs xs:text-sm flex justify-center items-center px-2 h-full"
           onClick={() => {
             router.push('/wishlist')
           }}
@@ -76,7 +76,7 @@ export default function Header() {
           ></IconHeart> */}
         </div>
         <div
-          className="text-xs xs:text-sm flex justify-center items-center px-2 hover:bg-zinc-50 transition duration-200 ease-in-out h-full"
+          className="cursor-pointer text-xs xs:text-sm flex justify-center items-center px-2 h-full"
           onClick={() => {
             router.push('/cart')
           }}
@@ -90,7 +90,7 @@ export default function Header() {
           ></IconShoppingCart> */}
         </div>
         <div
-          className="text-xs xs:text-sm flex justify-center items-center px-2 hover:bg-zinc-50 transition duration-200 ease-in-out h-full"
+          className="cursor-pointer text-xs xs:text-sm flex justify-center items-center px-2 h-full"
           onClick={() => {
             router.push('/qna')
           }}

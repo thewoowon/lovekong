@@ -13,7 +13,7 @@ import {
   SegmentedControl,
   Select,
 } from '@mantine/core'
-import { IconSearch } from '@tabler/icons'
+import { IconHeart, IconSearch, IconStar } from '@tabler/icons'
 
 export default function ProductsHome() {
   const router = useRouter()
@@ -169,7 +169,7 @@ export default function ProductsHome() {
         {products ? (
           products.length > 0 ? (
             <div
-              className="grid 2xl:grid-cols-3 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-5 mx-auto"
+              className="grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-3 grid-cols-2 gap-5 mx-auto"
               style={{ minWidth: '360px', maxWidth: '1020px' }}
             >
               {products.map((product) => {
@@ -177,9 +177,6 @@ export default function ProductsHome() {
                   <div key={product.id} className="m-auto">
                     <div
                       className="hover:opacity-95 hover:bg-zinc-50 cursor-pointer rounded-md p-3 transition ease-in-out duration-200"
-                      style={{
-                        border: '1px solid rgba(229, 231, 235, 1)',
-                      }}
                       onClick={() => {
                         router.push(`/products/${product.id}`)
                       }}
@@ -193,15 +190,39 @@ export default function ProductsHome() {
                         placeholder="blur"
                         blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
                       ></Image>
-                      <div className="flex p-2">
+                      <div className="flex pt-4 pb-1">
+                        <span
+                          style={{ fontFamily: 'Kashie-Mercy' }}
+                          className="text-md"
+                        >
+                          LoveKong
+                        </span>
+                      </div>
+                      <div className="flex py-1">
                         <span className="font-sans-kr text-md">
                           {product.name}
                         </span>
                       </div>
-                      <div className="flex px-2 pb-2">
+                      <div className="flex">
                         <span className="font-semibold text-lg">
+                          <span className="text-red-400">10% </span>
                           {product.price.toLocaleString('ko-KR')}
                         </span>
+                      </div>
+                      <div>
+                        <span className="bg-gray-100 p-1 font-sans-kr text-xs rounded-sm">
+                          무료배송
+                        </span>
+                      </div>
+                      <div className="flex justify-start items-center pt-5">
+                        <div className="flex mr-6">
+                          <IconHeart color="gray" stroke={1.5}></IconHeart>
+                          <span className="px-1">{0}</span>
+                        </div>
+                        <div className="flex">
+                          <IconStar color="gray" stroke={1.5}></IconStar>
+                          <span className="px-1">{0}</span>
+                        </div>
                       </div>
                     </div>
                   </div>

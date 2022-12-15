@@ -1,5 +1,6 @@
 import { Loader } from '@mantine/core'
 import { Products } from '@prisma/client'
+import { IconHeart, IconStar } from '@tabler/icons'
 import { useQuery } from '@tanstack/react-query'
 import { CATEGORY_MAP } from 'constants/goods'
 import { useSession } from 'next-auth/react'
@@ -46,7 +47,7 @@ export default function Wishlist() {
         <meta property="og:image" content="" />
       </Head>
 
-      <main className="font-sans-kr mx-auto bg-zinc-50">
+      <main className="font-sans-kr mx-auto">
         <div
           className="text-2xl flex justify-center py-10 bg-white"
           style={{
@@ -65,19 +66,14 @@ export default function Wishlist() {
           {products ? (
             products.length > 0 ? (
               <div
-                className="grid 2xl:grid-cols-3 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-5 mx-auto"
+                className="grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-3 grid-cols-2 gap-5 mx-auto"
                 style={{ minWidth: '360px', maxWidth: '1020px' }}
               >
                 {products.map((product) => {
                   return (
                     <div key={product.id} className="m-auto">
                       <div
-                        className="hover:opacity-95 cursor-pointer rounded-md shadow-lg p-3 transition ease-in-out duration-300"
-                        style={{
-                          border: '1px solid rgba(200,200,200,0.6)',
-                          maxWidth: 300,
-                          minWidth: 200,
-                        }}
+                        className="hover:opacity-95 hover:bg-zinc-50 cursor-pointer rounded-md p-3 transition ease-in-out duration-200"
                         onClick={() => {
                           router.push(`/products/${product.id}`)
                         }}
@@ -91,18 +87,39 @@ export default function Wishlist() {
                           placeholder="blur"
                           blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
                         ></Image>
-                        <div className="flex p-2">
+                        <div className="flex pt-4 pb-1">
+                          <span
+                            style={{ fontFamily: 'Kashie-Mercy' }}
+                            className="text-md"
+                          >
+                            LoveKong
+                          </span>
+                        </div>
+                        <div className="flex py-1">
                           <span className="font-sans-kr text-md">
                             {product.name}
                           </span>
-                          <span className="font-sans-kr-light ml-auto">
-                            {product.price.toLocaleString('ko-KR')} ₩
+                        </div>
+                        <div className="flex">
+                          <span className="font-semibold text-lg">
+                            <span className="text-red-400">10% </span>
+                            {product.price.toLocaleString('ko-KR')}
                           </span>
                         </div>
-                        <div className="flex px-2 pb-2">
-                          <span className="text-zinc-500 font-sans-kr-light">
-                            type : {CATEGORY_MAP[product.category_id - 1]}
+                        <div>
+                          <span className="bg-gray-100 p-1 font-sans-kr text-xs rounded-sm">
+                            무료배송
                           </span>
+                        </div>
+                        <div className="flex justify-start items-center pt-5">
+                          <div className="flex mr-6">
+                            <IconHeart color="gray" stroke={1.5}></IconHeart>
+                            <span className="px-1">{0}</span>
+                          </div>
+                          <div className="flex">
+                            <IconStar color="gray" stroke={1.5}></IconStar>
+                            <span className="px-1">{0}</span>
+                          </div>
                         </div>
                       </div>
                     </div>

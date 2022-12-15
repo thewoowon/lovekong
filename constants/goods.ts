@@ -38,7 +38,7 @@ export const mainComment: MainCommentItemType[] = [
     size: '스몰',
     color: '2 오로라',
     comment:
-      '영롱하고 심플하면서 포인트 되는 제품이에요. 정말 예뻐요!!! 종류, 색감별로 잇어도 좋은 오브제가 되어 줄 것 같아요!',
+      '영롱하고 심플하면서 포인트 되는 제품이에요. 정말 예뻐요!!! 종류, 색깔별로 있어도 좋은 오브제가 되어 줄 것 같아요!',
     createdAt: '2021-09-05',
     rate: 5,
     user_img:

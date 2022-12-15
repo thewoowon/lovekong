@@ -7,6 +7,7 @@ import {
   IconSend,
 } from '@tabler/icons'
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
 
 export default function Card({
   title,
@@ -27,6 +28,7 @@ export default function Card({
   comment1: string
   comment2: string
 }) {
+  const [contentSplit, setContentSplit] = useState<string[]>(content.split('|'))
   return (
     <div
       style={{
@@ -83,8 +85,12 @@ export default function Card({
         </div>
         <div className="px-4 pt-3 flex items-center justify-start text-xs">
           <span>
-            <span className="font-semibold pr-2">lovekong_zip</span>
-            {content}
+            <span className="font-semibold pr-2">
+              lovekong_zip<br></br>
+            </span>
+            {contentSplit.map((content, index) => {
+              return <div key={index}>{content}</div>
+            })}
           </span>
         </div>
         <div className="text-blue-900 px-4 pb-2 flex items-center justify-start text-xs">

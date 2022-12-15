@@ -2,6 +2,7 @@ import Card from '@components/Card'
 import MainCommentItem from '@components/MainCommentItem'
 import { Button } from '@mantine/core'
 import { Products } from '@prisma/client'
+import { IconHeart, IconStar } from '@tabler/icons'
 import { mainComment } from 'constants/goods'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -9,7 +10,7 @@ import { useRouter } from 'next/router'
 import { useCallback, useEffect, useState } from 'react'
 import styles from '../styles/Home.module.css'
 
-const TAKE = 9
+const TAKE = 8
 export default function Home() {
   const router = useRouter()
   const [skip, setSkip] = useState(0)
@@ -242,19 +243,13 @@ export default function Home() {
         </div>
         <div className="flex flex-col justify-center items-center">
           <div
-            className="grid 2xl:grid-cols-3 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-5"
+            className="grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-3 grid-cols-2 gap-5"
             style={{ minWidth: '360px', maxWidth: '1020px' }}
           >
             {products &&
               products.map((product) => {
                 return (
-                  <div
-                    key={product.id}
-                    style={{
-                      border: '1px solid rgba(229, 231, 235, 1)',
-                    }}
-                    className="p-3 rounded-md"
-                  >
+                  <div key={product.id} className="py-3 rounded-md">
                     <Image
                       className="rounded-sm"
                       src={product.image_url ?? ''}
@@ -266,15 +261,39 @@ export default function Home() {
                         'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMUFROtBwABSQDB93Z92QAAAABJRU5ErkJggg=='
                       }
                     ></Image>
-                    <div className="flex p-2">
+                    <div className="flex pt-4 pb-1">
+                      <span
+                        style={{ fontFamily: 'Kashie-Mercy' }}
+                        className="text-md"
+                      >
+                        LoveKong
+                      </span>
+                    </div>
+                    <div className="flex py-1">
                       <span className="font-sans-kr text-md">
                         {product.name}
                       </span>
                     </div>
-                    <div className="flex px-2 pb-2">
+                    <div className="flex">
                       <span className="font-semibold text-lg">
+                        <span className="text-red-400">10% </span>
                         {product.price.toLocaleString('ko-KR')}
                       </span>
+                    </div>
+                    <div>
+                      <span className="bg-gray-100 p-1 font-sans-kr text-xs rounded-sm">
+                        무료배송
+                      </span>
+                    </div>
+                    <div className="flex justify-start items-center pt-5">
+                      <div className="flex mr-6">
+                        <IconHeart color="gray" stroke={1.5}></IconHeart>
+                        <span className="px-1">{0}</span>
+                      </div>
+                      <div className="flex">
+                        <IconStar color="gray" stroke={1.5}></IconStar>
+                        <span className="px-1">{0}</span>
+                      </div>
                     </div>
                   </div>
                 )
@@ -302,10 +321,13 @@ export default function Home() {
             }
             image="/assets/mainCategory/main-1.jpeg"
             title={'Light'}
-            content={`주말에도 럽콩 
-              유리공장 open 로투스홀더는 낮에도 예쁘지만 특히! 밤에 더 예뻐요✨
-              오랜만에 모아두니 너무 예뿐걸? 낮엔 홈카페, 밤엔 와인바느낌으로...🥂❤️‍🔥
-              모든 유리제품 문의는 디엠 또는 카톡 lovekong_glass로 문의 주세요😉`}
+            content={`주말에도 럽콩 유리공장 open🚪|
+               로투스홀더는 낮에도 예쁘지만|
+               특히! 밤에 더 예뻐요✨|
+               오랜만에 모아두니 너무 예뿐걸?|
+               낮엔 홈카페, 밤엔 와인바느낌으로...🥂❤️‍🔥 |
+               모든 유리제품 문의는 디엠 또는 |
+               카톡 lovekong_glass로 문의 주세요😉`}
             tag={'#러브콩 #러브콩스테인드글라스 #스테인드글라스'}
           ></Card>
           <Card
@@ -315,15 +337,16 @@ export default function Home() {
             comment2={`어머 럽콩님 작품 너무 보러가고싶어영😍❤️ 너무예뻐요!`}
             image="/assets/mainCategory/main-2.jpeg"
             title={'Case'}
-            content={`하루종일 정신 없는 하루여서
-              이제야 올리는 피드..💡
-              많은 분들이 예쁘다 해주시고
-              너무 잘 만들었다고 칭찬도 많이 해주셔서
-              기분 좋고 감사한 하루였어용
-              한번에 두개 주문해가신 분도 계셨다는👍🏻💕
-              다음주 수요일까지 진행합니당🙇‍♀️
-              ✨부산 신세계 센텀시티 지하1층(이벤트)
-              ✨22/3/24(목) ~ 22/3/30(수)
+            content={`하루종일 정신 없는 하루여서|
+              이제야 올리는 피드..💡|
+              많은 분들이 예쁘다 해주시고|
+              너무 잘 만들었다고 칭찬도 많이 해주셔서|
+              기분 좋고 감사한 하루였어용|
+              한번에 두개 주문해가신 분도 계셨다는👍🏻💕|
+              다음주 수요일까지 진행합니당🙇‍♀️|
+              ~|
+              ✨부산 신세계 센텀시티 지하1층(이벤트)|
+              ✨22/3/24(목) ~ 22/3/30(수)|
               ✨영업시간 10:30~20:00 (금,토,일20:30)`}
             tag={'#러브콩 #러브콩스테인드글라스 #스테인드글라스'}
           ></Card>
@@ -334,14 +357,14 @@ export default function Home() {
             comment2={`이렇게 보니 또 색다른 느낌 같아요😍준비하시느라 정말 고생 많으셨어요👏앞으로도 예쁜 작품 부탁뜨려요~❤️💗`}
             image="/assets/mainCategory/main-3.jpeg"
             title={'Vase'}
-            content={`✨캠핑 & 피크닉 페어
-              ✨3/10(목) ~ 3/13(일) 까지
-              ✨일산 킨텍스 제2전시장 7,8홀
-              ✨부스 A105 (폴라리스)
-              ⠀
-              이번 전시참여로 처음 선보이는
-              골제로 쉐이드, 캠들리에 쉐이드도 있어용!
-              베스트셀러 로투스홀더도 잔뜩 있답니다😊
+            content={`✨캠핑 & 피크닉 페어|
+              ✨3/10(목) ~ 3/13(일) 까지|
+              ✨일산 킨텍스 제2전시장 7,8홀|
+              ✨부스 A105 (폴라리스)|
+              ~|
+              이번 전시참여로 처음 선보이는|
+              골제로 쉐이드, 캠들리에 쉐이드도 있어용!|
+              베스트셀러 로투스홀더도 잔뜩 있답니다😊|
               놀러오세효💓 `}
             tag={'#러브콩 #러브콩스테인드글라스 #스테인드글라스'}
           ></Card>
@@ -352,10 +375,9 @@ export default function Home() {
             comment2={'와 대박… 진짜 멋져요ㅠㅠㅠ🤍🤍'}
             image="/assets/mainCategory/main-4.jpeg"
             title={'Tray'}
-            content={`러브콩 스테인드글라스 전시 안내
-              4/19(화)-4/24(일)
-              더현대서울 지하1층 대행사장✨
-              `}
+            content={`러브콩 스테인드글라스 전시 안내|
+              4/19(화)-4/24(일)|
+              더현대서울 지하1층 대행사장✨`}
             tag={
               '#디어마이 #룸토피아 #디어마이더현대 #더현대 #더현대서울 #Dearmy #러브콩 #러브콩스테인드글라스 #스테인드글라스'
             }
@@ -367,16 +389,15 @@ export default function Home() {
             comment2={`오옷 !! 분위기 모예요 😍❤️❤️ 가고싶따아ㅏㅏㅏㅏ`}
             image="/assets/mainCategory/main-5.jpeg"
             title={'Accesory'}
-            content={`2022.12.10-12.11
-            진주 카페AAM에서
-            크리스마스 마켓이 열립니다🎄♥️
+            content={`2022.12.10-12.11|
+            진주 카페AAM에서|
+            크리스마스 마켓이 열립니다🎄♥️|
             
-            유리제품뿐만 아니라
-            러브콩 빈티지 소장품들도 판매해요😄
-            너무 갑자기 참여하게 되서
-            제대로 공지를 못 올렸네요!
-            진주분들 많이 놀러 오세요~!🧚🏻‍♀️ 
-            `}
+            유리제품뿐만 아니라|
+            러브콩 빈티지 소장품들도 판매해요😄|
+            너무 갑자기 참여하게 되서|
+            제대로 공지를 못 올렸네요!|
+            진주분들 많이 놀러 오세요~!🧚🏻‍♀️ `}
             tag={'#러브콩 #러브콩스테인드글라스 #스테인드글라스 #진주aam'}
           ></Card>
           <Card
@@ -386,12 +407,11 @@ export default function Home() {
             comment2={`햇살받으니 더 예쁜걸요 😍 무리하지 마시고 화이팅이예요 ❤️`}
             image="/assets/mainCategory/main-6.jpeg"
             title={'Others'}
-            content={`해들어올때 모아놓고 한컷📸
-            초록이들 옆에 두니까 더 예뻐보이는 매직🪄
+            content={`해들어올때 모아놓고 한컷📸|
+            초록이들 옆에 두니까 더 예뻐보이는 매직🪄|
 
-            모든 유리제품 문의는 디엠 또는
-            카톡 lovekong_glass로 문의 주세요😉
-            `}
+            모든 유리제품 문의는 디엠 또는|
+            카톡 lovekong_glass로 문의 주세요😉`}
             tag={'#러브콩 #러브콩스테인드글라스 #스테인드글라스'}
           ></Card>
         </div>
