@@ -1,18 +1,49 @@
 import Card from '@components/Card'
 import MainCommentItem from '@components/MainCommentItem'
 import VideoWatcher from '@components/VideoWatcher'
+import styled from '@emotion/styled'
 import { Button } from '@mantine/core'
 import { Products } from '@prisma/client'
 import { IconHeart, IconStar } from '@tabler/icons'
 import { mainComment } from 'constants/goods'
+import useScrollFadeIn from 'hooks/useScrollFadeIn'
+import useScrollFadeInImage from 'hooks/useScrollFadeInImage'
 import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import styles from '../styles/Home.module.css'
 
 const TAKE = 8
 export default function Home() {
+  const animatedItem_main_1 = useScrollFadeIn()
+  const animatedItem_main_2 = useScrollFadeIn()
+  const animatedItem_main_3 = useScrollFadeIn()
+  const animatedItem_main_4 = useScrollFadeIn()
+  const animatedItem_main_5 = useScrollFadeIn()
+  const animatedItem_main_6 = useScrollFadeIn()
+  const animatedItem_main_7 = useScrollFadeIn()
+  const animatedItem_main_8 = useScrollFadeIn()
+  const animatedItem_main_9 = useScrollFadeIn()
+  const animatedItem_main_10 = useScrollFadeIn()
+  const animatedItem_main_11 = useScrollFadeIn()
+  const animatedItem_main_12 = useScrollFadeIn()
+  const animatedItem_main_13 = useScrollFadeIn()
+  const animatedItem_main_14 = useScrollFadeIn()
+  const animatedItem_main_15 = useScrollFadeIn()
+  const animatedItem_main_16 = useScrollFadeIn()
+  const animatedItem_main_17 = useScrollFadeIn()
+  const animatedItem_main_18 = useScrollFadeIn()
+  const animatedItem_main_19 = useScrollFadeIn()
+  const animatedItem_main_20 = useScrollFadeIn()
+  const animatedItem_main_21 = useScrollFadeIn()
+  const animatedItem_main_22 = useScrollFadeIn()
+  const animatedItem_main_image_1 = useScrollFadeInImage()
+  const animatedItem_main_image_2 = useScrollFadeInImage()
+  const animatedItem_main_image_3 = useScrollFadeInImage()
+  const animatedItem_main_image_4 = useScrollFadeInImage()
+  const animatedItem_main_image_5 = useScrollFadeInImage()
+  const animatedItem_main_image_6 = useScrollFadeInImage()
   const router = useRouter()
   const [skip, setSkip] = useState(0)
   const [products, setProducts] = useState<Products[]>([])
@@ -101,14 +132,33 @@ export default function Home() {
             >
               LoveKong Stained Glass
             </div>
-            <div className="relative lg:text-[31px] md:text-[26px] sm:text-[21px] xs:text-[18px] xss:text-[16px] font-sans-kr text-zinc-800 pb-2">
+            <div className="relative lg:text-[31px] md:text-[26px] sm:text-[21px] xs:text-[18px] xss:text-[16px] font-sans-kr-bold text-zinc-800 pb-2">
               러브콩 스테인드 글라스
             </div>
-            <div className="relative lg:text-[20px] md:text-[18px] sm:text-[16px] xs:text-[14px] xss:text-[12px] font-sans-kr text-zinc-500">
+            <div className="relative lg:text-[20px] md:text-[18px] sm:text-[16px] xs:text-[14px] xss:text-[12px] font-sans-kr-bold text-zinc-500">
               Since 2020
             </div>
           </div>
         </div>
+      </section>
+      <section
+        style={{ height: '600px' }}
+        className="flex flex-col justify-center items-center py-20"
+      >
+        <div
+          {...animatedItem_main_1}
+          className="font-sans-kr-bold lg:text-5xl md:text-4xl sm:text-3xl text-2xl"
+        >
+          I LoveKong
+        </div>
+        {/* <div style={{"maxWidth":"500px"}} className="flex justify-center items-center">
+          <Image
+            width={700}
+            height={850}
+            src="/assets/lotus/lotus-main.jpeg"
+            alt=""
+          ></Image>
+        </div> */}
       </section>
       {/* <section className="culture video-section">
         <video autoPlay muted loop style={{ "width": '100%',"height":"100%" }}>
@@ -123,58 +173,68 @@ export default function Home() {
         <VideoWatcher></VideoWatcher>
       </section>
       <section
-        style={{ height: '700px' }}
-        className="flex flex-col justify-center items-center py-20"
+        style={{ height: '500px' }}
+        className="flex flex-col justify-center items-center"
       >
-        <div className="font-sans-kr lg:text-3xl md:text-2xl sm:text-xl text-lg">
+        <div
+          {...animatedItem_main_2}
+          className="font-sans-kr-bold lg:text-5xl md:text-4xl sm:text-3xl text-2xl"
+        >
           LoveKong Top Seller
         </div>
-        <div className="text-green-800 font-sans-kr lg:text-lg md:text-md sm:text-sm text-xs pt-2 pb-10">
+        <div
+          {...animatedItem_main_3}
+          className="text-green-800 font-sans-kr-bold lg:text-3xl md:text-2xl sm:text-xl text-lg py-10"
+        >
           로투스 홀더
         </div>
-        <div className="flex justify-center items-center">
+        {/* <div style={{"maxWidth":"500px"}} className="flex justify-center items-center">
           <Image
-            width={800}
-            height={1000}
-            className="w-96"
+            width={700}
+            height={850}
             src="/assets/lotus/lotus-main.jpeg"
             alt=""
           ></Image>
-          {/* <img className='w-96' src="/assets/gif/KakaoTalk_Video_2022-12-10-15-30-24.gif" alt=""></img> */}
-        </div>
+        </div> */}
       </section>
       <section className="py-10 relative">
-        <div className="flex justify-center flex-wrap h-full">
-          <div className="flex flex-col justify-start items-center">
+        <div className="flex justify-center flex-wrap w-full h-full">
+          <div
+            {...animatedItem_main_image_1}
+            className="overflow-hidden flex flex-col justify-center items-center"
+          >
             <Image
-              width={360}
-              height={200}
-              style={{ minWidth: '360px', maxWidth: '520px' }}
-              className="pl-3 pb-3"
+              width={620}
+              height={413}
+              style={{ minWidth: '360px', maxWidth: '620px' }}
+              className="pb-3"
               src="/assets/lotus/left-lotus-2.jpeg"
               alt="lotus left 2"
             ></Image>
             <Image
-              width={360}
-              height={200}
-              style={{ minWidth: '360px', maxWidth: '520px' }}
-              className="pl-3"
+              width={620}
+              height={413}
+              style={{ minWidth: '360px', maxWidth: '620px' }}
               src="/assets/lotus/left-lotus-1.jpeg"
               alt="lotus left 1"
             ></Image>
             {/* <img style={{ "minWidth": "360px", "maxWidth": "520px" }} className="pr-3 pb-3" src="/assets/lotus/left-lotus-1.jpeg" alt="lotus left 1"></img>
             <img style={{ "minWidth": "360px", "maxWidth": "520px" }} className="pr-3 pb-3" src="/assets/lotus/left-lotus-2.jpeg" alt="lotus left 2"></img> */}
             <div
-              style={{ minWidth: '360px', maxWidth: '520px' }}
-              className="text-sm text-end p-1 w-full"
+              style={{ minWidth: '360px', maxWidth: '620px' }}
+              className="text-lg text-end p-1 w-full"
             >
               2021 LoveKong Collection
             </div>
           </div>
-          <div className="flex flex-col justify-end items-center">
+          <div
+            {...animatedItem_main_image_2}
+            className="overflow-hidden flex flex-col justify-end items-center"
+          >
             <div
-              style={{ minWidth: '360px', maxWidth: '520px' }}
-              className="w-full p-3 text-end text-sm"
+              {...animatedItem_main_4}
+              style={{ minWidth: '360px', maxWidth: '620px' }}
+              className="w-full p-3 text-end font-sans-kr-bold lg:text-lg  text-md"
             >
               연꽃을 닮은 스테인드글라스 캔들 홀더 입니다.<br></br>
               티라이트 캔들 홀더로 제작 되었지만,<br></br>
@@ -184,9 +244,9 @@ export default function Home() {
               특별한 오브제가 되어줄거예요!
             </div>
             <Image
-              width={'360'}
-              height={100}
-              style={{ minWidth: '360px', maxWidth: '520px' }}
+              width={620}
+              height={800}
+              style={{ minWidth: '360px', maxWidth: '620px' }}
               className="pl-3"
               src="/assets/lotus/right-lotus-1.jpeg"
               alt="lotus right 1"
@@ -195,13 +255,21 @@ export default function Home() {
           </div>
         </div>
       </section>
+      {/* <section>
+        <Form {...animatedItem} className='bg-blue-500 p-10 text-5xl'>
+          hell
+        </Form>
+      </section> */}
       <section className="py-10 relative">
         <div className="flex justify-center flex-wrap h-full">
-          <div className="overflow-hidden flex justify-center items-center pt-10 pb-5">
+          <div
+            {...animatedItem_main_image_3}
+            className="overflow-hidden flex justify-center items-center pt-10 pb-5"
+          >
             <Image
-              width={'720'}
-              height={100}
-              style={{ minWidth: '360px', maxWidth: '1020px' }}
+              width={1280}
+              height={600}
+              style={{ minWidth: '360px', maxWidth: '1280px' }}
               src="/assets/lotus/lotus.jpeg"
               alt=""
             ></Image>
@@ -209,11 +277,17 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="bg-white flex flex-col justify-center items-center py-16 relative">
-        <div className="font-sans-kr lg:text-3xl md:text-2xl sm:text-xl text-lg pb-20">
+      <section className="bg-white flex flex-col justify-center items-center py-20 relative">
+        <div
+          {...animatedItem_main_5}
+          className="font-sans-kr-bold lg:text-4xl md:text-3xl sm:text-2xl text-xl pb-36"
+        >
           고객님들의 실제 후기
         </div>
-        <div className="grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-8">
+        <div
+          {...animatedItem_main_image_4}
+          className="grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-8"
+        >
           {mainComment.map((comment) => {
             return (
               <MainCommentItem
@@ -224,29 +298,39 @@ export default function Home() {
           })}
         </div>
       </section>
-      <section style={{ height: '300px' }} className="bg-rose-200">
+      <section style={{ height: '500px' }} className="bg-blue-300">
         <div className="flex flex-col justify-center items-center h-full">
-          <div className="text-center lg:text-3xl md:text-2xl sm:text-xl text-lg py-6">
+          <div
+            {...animatedItem_main_6}
+            className="text-center font-sans-kr-bold lg:text-4xl md:text-3xl sm:text-2xl text-xl py-6"
+          >
             러브콩의 로투스 홀더를 지금 바로 만나보세요!
           </div>
-          <div className="flex justify-center items-center">
+          <div
+            {...animatedItem_main_7}
+            className="flex justify-center items-center my-4"
+          >
             <button
               onClick={() => {
                 router.push('/products')
               }}
-              className="px-4 py-2 bg-rose-400 text-white rounded-md animate-bounce hover:bg-rose-500 transition duration-200 ease-in-out"
+              className="text-2xl px-10 py-5 bg-blue-500 text-white rounded-md animate-bounce hover:bg-blue-600 transition duration-200 ease-in-out"
             >
               로투스 홀더 바로 구매하기
             </button>
           </div>
         </div>
       </section>
-      <section>
-        <div className="text-center lg:text-3xl md:text-2xl sm:text-xl text-lg py-20">
+      <section className="bg-white flex flex-col justify-center items-center py-36">
+        <div
+          {...animatedItem_main_8}
+          className="text-center font-sans-kr-bold lg:text-4xl md:text-3xl sm:text-2xl text-xl pb-36"
+        >
           러브콩 스테인드 글라스 판매제품
         </div>
         <div className="flex flex-col justify-center items-center">
           <div
+            {...animatedItem_main_image_5}
             className="grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-3 grid-cols-2 gap-5"
             style={{ minWidth: '360px', maxWidth: '1020px' }}
           >
@@ -284,11 +368,6 @@ export default function Home() {
                         {product.price.toLocaleString('ko-KR')}
                       </span>
                     </div>
-                    <div>
-                      <span className="bg-gray-100 p-1 font-sans-kr text-xs rounded-sm">
-                        무료배송
-                      </span>
-                    </div>
                     <div className="flex justify-start items-center pt-5">
                       <div className="flex mr-6">
                         <IconHeart color="gray" stroke={1.5}></IconHeart>
@@ -304,18 +383,24 @@ export default function Home() {
               })}
           </div>
           <button
-            className="my-20 px-4 py-2 bg-rose-400 text-white rounded-md hover:bg-rose-500 transition duration-200 ease-in-out"
+            className="text-2xl my-20 px-10 py-5 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-200 ease-in-out"
             onClick={getProducts}
           >
             더보기
           </button>
         </div>
       </section>
-      <section className="bg-zinc-50 flex flex-col justify-center items-center py-20">
-        <div className="font-sans-kr lg:text-3xl md:text-2xl sm:text-xl text-lg pb-20">
+      <section className="bg-zinc-50 flex flex-col justify-center items-center py-36">
+        <div
+          {...animatedItem_main_9}
+          className="font-sans-kr-bold lg:text-4xl md:text-3xl sm:text-2xl text-xl pb-36"
+        >
           러브콩의 인스타 엿보기
         </div>
-        <div className="grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-8">
+        <div
+          {...animatedItem_main_image_6}
+          className="grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-8"
+        >
           <Card
             comment1Id={'viz_zle_yunn'}
             comment1={'로투스 제품은 진짜 저의 최애 캔들 홀더 입니다….🥂🤍'}
@@ -420,46 +505,82 @@ export default function Home() {
           ></Card>
         </div>
       </section>
-      <section className="flex flex-col justify-center items-center py-20">
-        <div className="text-center lg:text-3xl md:text-2xl sm:text-xl text-md py-4">
+      <section className="flex flex-col justify-center items-center py-36">
+        <div
+          {...animatedItem_main_11}
+          className="text-center font-sans-kr-bold lg:text-4xl md:text-3xl sm:text-2xl text-xl py-10"
+        >
           배송 및 반품/교환 안내
         </div>
-        <div className="py-1 lg:text-md md:text-md sm:text-sm text-xs ">
+        <div
+          {...animatedItem_main_12}
+          className="py-1 lg:text-2xl md:text-xl sm:text-lg text-md "
+        >
           러브콩의 모든 제품은 수작업으로 진행됩니다.
         </div>
-        <div className="py-1 lg:text-md md:text-md sm:text-sm text-xs ">
+        <div
+          {...animatedItem_main_13}
+          className="py-1 lg:text-2xl md:text-xl sm:text-lg text-md "
+        >
           핸드메이드 특성상 모양이 조금씩 다를 수 있고
         </div>
-        <div className="py-1 lg:text-md md:text-md sm:text-sm text-xs ">
+        <div
+          {...animatedItem_main_14}
+          className="py-1 lg:text-2xl md:text-xl sm:text-lg text-md "
+        >
           유리 특성상 같은 유리로 만들어도 조금씩 다르게 보일 수 있다는 점 양해
           바랍니다.
         </div>
-        <div className="py-1 lg:text-md md:text-md sm:text-sm text-xs ">
+        <div
+          {...animatedItem_main_15}
+          className="py-1 lg:text-2xl md:text-xl sm:text-lg text-md "
+        >
           제작기간은 7~14일 소요됩니다.
         </div>
-        <div className="py-1 lg:text-md md:text-md sm:text-sm text-xs ">
+        <div
+          {...animatedItem_main_16}
+          className="py-1 lg:text-2xl md:text-xl sm:text-lg text-md "
+        >
           {'주문 기간은 넉넉하게 생각하고 주문해주세요 :)'}
         </div>
-        <div className="py-1 lg:text-md md:text-md sm:text-sm text-xs ">
+        <div
+          {...animatedItem_main_17}
+          className="py-1 lg:text-2xl md:text-xl sm:text-lg text-md "
+        >
           구매자 단순 변심 반품/교환 요청은 불가합니다.
         </div>
-        <div className="py-1 lg:text-md md:text-md sm:text-sm text-xs ">
+        <div
+          {...animatedItem_main_18}
+          className="py-1 lg:text-2xl md:text-xl sm:text-lg text-md "
+        >
           주문과 동시에 유리주문이 이루어지기 때문에 주문 취소가 어렵습니다.
           신중한 구매 부탁드립니다.
         </div>
-        <div className="py-1 lg:text-md md:text-md sm:text-sm text-xs ">
+        <div
+          {...animatedItem_main_19}
+          className="py-1 lg:text-2xl md:text-xl sm:text-lg text-md "
+        >
           납땜 작업 특성상 굴곡이 생길 수 있지만 자연스러운 현상이니 환불의
           사유가 되지 않습니다.
         </div>
-        <div className="py-1 lg:text-md md:text-md sm:text-sm text-xs ">
+        <div
+          {...animatedItem_main_20}
+          className="py-1 lg:text-2xl md:text-xl sm:text-lg text-md "
+        >
           {'기타 문의는 홈페이지 게시판을 이용해 주세요 :)'}
         </div>
       </section>
-      <section className="flex flex-col justify-center items-center py-20">
-        <div className="text-center lg:text-3xl md:text-2xl sm:text-xl text-md py-2">
+      <section className="flex flex-col justify-center items-center py-36">
+        <div
+          {...animatedItem_main_21}
+          className="text-center font-sans-kr-bold lg:text-4xl md:text-4xl sm:text-2xl text-xl py-6"
+        >
           이메일 주소
         </div>
-        <div className="py-1 lg:text-md md:text-md sm:text-sm text-xs ">
+        <div
+          {...animatedItem_main_22}
+          className="py-5 lg:text-3xl md:text-2xl sm:text-xl text-md "
+        >
           smj091@nate.com
         </div>
       </section>
@@ -561,3 +682,43 @@ export default function Home() {
     </div>
   )
 }
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: #f5f5f5;
+`
+
+const Title = styled.div`
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1rem;
+`
+
+const SubTitle = styled.div`
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1rem;
+`
+
+const Description = styled.div`
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 1rem;
+`
+
+const Form = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+`
