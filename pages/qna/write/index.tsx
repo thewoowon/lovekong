@@ -1,5 +1,6 @@
 import CustomEditor from '@components/Editor'
 import Editor from '@components/Editor'
+import CustomReadOnlyEditor from '@components/EditorForReadOnly'
 import { Input, Pagination } from '@mantine/core'
 import { IconDashboard } from '@tabler/icons'
 import { convertFromRaw, convertToRaw, EditorState } from 'draft-js'
@@ -82,7 +83,7 @@ export default function QNAWrite() {
           className="w-full"
           style={{ maxWidth: '560px', minWidth: '360px' }}
         >
-          <CustomEditor
+          <CustomReadOnlyEditor
             onSave={handleSave}
             editorState={editorState ?? EditorState.createEmpty()}
             onEditorStateChange={setEditorState}

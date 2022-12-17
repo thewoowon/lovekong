@@ -337,7 +337,13 @@ export default function Home() {
             {products &&
               products.map((product) => {
                 return (
-                  <div key={product.id} className="p-3 rounded-md">
+                  <div
+                    key={product.id}
+                    className="hover:opacity-95 hover:bg-zinc-50 cursor-pointer rounded-md p-3 transition ease-in-out duration-200"
+                    onClick={() => {
+                      router.push(`/products/${product.id}`)
+                    }}
+                  >
                     <Image
                       className="rounded-sm"
                       src={product.image_url ?? ''}
@@ -365,7 +371,17 @@ export default function Home() {
                     <div className="flex">
                       <span className="font-semibold text-lg">
                         <span className="text-red-400">10% </span>
-                        {product.price.toLocaleString('ko-KR')}
+                        <span className="line-through text-zinc-500">
+                          {product.price.toLocaleString('ko-KR')}
+                        </span>
+                        <span className="px-2">
+                          {(product.price * 0.9).toLocaleString('ko-KR')}
+                        </span>
+                      </span>
+                    </div>
+                    <div>
+                      <span className="text-xs px-2 py-1 bg-blue-200 rounded-sm">
+                        오픈할인
                       </span>
                     </div>
                     <div className="flex justify-start items-center pt-5">

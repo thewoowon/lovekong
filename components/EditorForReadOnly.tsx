@@ -19,7 +19,7 @@ const Editor = dynamic<EditorProps>(
   }
 )
 
-export default function CustomEditor({
+export default function CustomReadOnlyEditor({
   editorState,
   readOnly = false,
   onSave,
@@ -36,7 +36,7 @@ export default function CustomEditor({
 }) {
   return (
     <Wrapper readOnly={readOnly} noPadding={noPadding}>
-      <div>
+      <div className="border border-zinc-100">
         <Editor
           editorStyle={{
             paddingLeft: '20px',
@@ -45,7 +45,6 @@ export default function CustomEditor({
             width: '100%',
           }}
           readOnly={readOnly}
-          toolbarHidden={readOnly}
           editorState={editorState}
           wrapperClassName="wrapper-class"
           toolbarClassName="editorToolbar-hidden"
@@ -86,8 +85,8 @@ export default function CustomEditor({
 const Wrapper = styled.div<{ readOnly: boolean; noPadding: boolean }>`
   ${(props) =>
     props.readOnly
-      ? 'margin-top:20px; margin-bottom:20px; border:1px solid rgba(220,220,220,0.8); display:flex; flex-direction:column; justify-content:center; align-items:start;'
-      : 'margin-top:20px; margin-bottom:20px; border:1px solid rgba(220,220,220,0.8); display:flex; flex-direction:column; justify-content:center; align-items:start;'}
+      ? 'display:flex; flex-direction:column; justify-content:center; align-items:center;'
+      : 'display:flex; flex-direction:column; justify-content:center; align-items:center;'}
 `
 
 // ${(props) => (props.noPadding ? '' : 'padding: 16px;')}

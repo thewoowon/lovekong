@@ -1,4 +1,5 @@
 import CustomEditor from '@components/Editor'
+import CustomReadOnlyEditor from '@components/EditorForReadOnly'
 import { Input, Pagination } from '@mantine/core'
 import { QnAs } from '@prisma/client'
 import { IconDashboard } from '@tabler/icons'
@@ -86,7 +87,7 @@ export default function QNADetail() {
           className="w-full"
           style={{ maxWidth: '560px', minWidth: '360px' }}
         >
-          <CustomEditor
+          <CustomReadOnlyEditor
             editorState={editorState ?? EditorState.createEmpty()}
             readOnly={true}
           />

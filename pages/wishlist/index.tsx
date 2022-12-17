@@ -103,12 +103,17 @@ export default function Wishlist() {
                         <div className="flex">
                           <span className="font-semibold text-lg">
                             <span className="text-red-400">10% </span>
-                            {product.price.toLocaleString('ko-KR')}
+                            <span className="line-through text-zinc-500">
+                              {product.price.toLocaleString('ko-KR')}
+                            </span>
+                            <span className="px-2">
+                              {(product.price * 0.9).toLocaleString('ko-KR')}
+                            </span>
                           </span>
                         </div>
                         <div>
-                          <span className="bg-gray-100 p-1 font-sans-kr text-xs rounded-sm">
-                            무료배송
+                          <span className="text-xs px-2 py-1 bg-blue-200 rounded-sm">
+                            오픈할인
                           </span>
                         </div>
                         <div className="flex justify-start items-center pt-5">
