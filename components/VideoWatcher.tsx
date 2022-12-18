@@ -25,7 +25,7 @@ const VideoWatcher = (): JSX.Element => {
       height={1000}
     >
       <SwiperSlide className="my-swiper-slide">
-        <div className="bg-blue-400 w-full h-full flex flex-col justify-center items-center">
+        <div className="bg-blue-50 w-full h-full flex flex-col justify-center items-center">
           <div>테스트 이미지입니다.</div>
           <div className="w-96">
             <Image
@@ -38,7 +38,7 @@ const VideoWatcher = (): JSX.Element => {
         </div>
       </SwiperSlide>
       <SwiperSlide className="my-swiper-slide">
-        <div className="bg-blue-500 w-full h-full flex flex-col justify-center items-center">
+        <div className="bg-blue-50 w-full h-full flex flex-col justify-center items-center">
           <div>테스트 이미지입니다.</div>
           <div className="w-96">
             <Image
@@ -51,7 +51,7 @@ const VideoWatcher = (): JSX.Element => {
         </div>
       </SwiperSlide>
       <SwiperSlide className="my-swiper-slide">
-        <div className="bg-blue-600 w-full h-full flex flex-col justify-center items-center">
+        <div className="bg-blue-50 w-full h-full flex flex-col justify-center items-center">
           <div>테스트 이미지입니다.</div>
           <div className="w-96">
             <Image
@@ -64,7 +64,7 @@ const VideoWatcher = (): JSX.Element => {
         </div>
       </SwiperSlide>
       <SwiperSlide className="my-swiper-slide">
-        <div className="bg-blue-700 w-full h-full flex flex-col justify-center items-center">
+        <div className="bg-blue-50 w-full h-full flex flex-col justify-center items-center">
           <div>테스트 이미지입니다.</div>
           <div className="w-96">
             <Image

@@ -184,7 +184,7 @@ export default function Home() {
         </div>
         <div
           {...animatedItem_main_3}
-          className="text-green-800 font-sans-kr-bold lg:text-3xl md:text-2xl sm:text-xl text-lg py-10"
+          className="text-blue-800 font-sans-kr-bold lg:text-3xl md:text-2xl sm:text-xl text-lg py-10"
         >
           로투스 홀더
         </div>

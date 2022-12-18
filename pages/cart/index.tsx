@@ -185,10 +185,23 @@ export default function Cart() {
                 return <Items key={iter} {...value}></Items>
               })
             ) : (
-              <div>장바구니가 비었어요.</div>
+              <div
+                style={{ height: '200px' }}
+                className="flex flex-col justify-center items-center font-sans-kr-light"
+              >
+                <div>장바구니가 비었어요.</div>
+              </div>
             )
           ) : (
-            <div>Loading....</div>
+            <div
+              style={{ height: '200px' }}
+              className="flex flex-col justify-center items-center font-sans-kr-light"
+            >
+              <div>
+                제품 목록을 가져오는 중입니다. 다른 페이지로 이동하지 마세요.
+              </div>
+              <Loader variant="bars" color={'gray'} size={'lg'}></Loader>
+            </div>
           )}
         </div>
         <div
@@ -210,7 +223,7 @@ export default function Cart() {
           </Row>
           <Row>
             <p className="font-semibold">결제 금액</p>
-            <p className="text-green-500 font-semibold">
+            <p className="text-blue-500 font-semibold">
               {(amount + deliveryAmount - discountAmount).toLocaleString(
                 'ko-KR'
               )}{' '}
@@ -219,7 +232,7 @@ export default function Cart() {
           </Row>
           <Button
             leftIcon={<IconCoin size={20} stroke={1.5} />}
-            className={`bg-green-400 hover:bg-green-500 transition duration-200 ease-in-out`}
+            className={`bg-blue-500 hover:bg-blue-600 transition duration-200 ease-in-out`}
             onClick={() => {
               if (session == null) {
                 alert('로그인이 필요합니다.')
@@ -422,7 +435,7 @@ const Items = (props: ICartItem) => {
           <span className="px-2">{props.name}</span>
           <IconBox></IconBox>
         </div>
-        <div className="cursor-pointer transition duration-200 ease-in-out flex justify-center items-center p-1 hover:bg-green-200 rounded-full">
+        <div className="cursor-pointer transition duration-200 ease-in-out flex justify-center items-center p-1 hover:bg-blue-200 rounded-full">
           <IconX
             onClick={() => {
               handleDelete()
@@ -436,7 +449,7 @@ const Items = (props: ICartItem) => {
         <div className="px-10 w-full">
           <div className="text-sm font-sans-kr py-4">
             수제작 평균 소요시간
-            <span className="text-green-500 font-sans-kr-bold px-2">5~7일</span>
+            <span className="text-blue-500 font-sans-kr-bold px-2">5~7일</span>
           </div>
           <div className="flex xl:border-r-2 border-zinc-400 pr-20">
             <Image
@@ -493,7 +506,7 @@ const Items = (props: ICartItem) => {
           <div>
             <Button
               leftIcon={<IconCoin size={20} stroke={1.5} />}
-              className={`bg-green-400 hover:bg-green-500 transition duration-200 ease-in-out`}
+              className={`bg-blue-500 hover:bg-blue-600 transition duration-200 ease-in-out`}
               // onClick={() => {
               //   if (session == null) {
               //     alert('로그인이 필요합니다.')
@@ -534,7 +547,7 @@ const Items = (props: ICartItem) => {
         <IconEqual stroke={1} size={25}></IconEqual>
         <div className="px-8">
           주문 금액
-          <span className="text-green-600 font-sans-kr-bold px-2">
+          <span className="text-blue-500 font-sans-kr-bold px-2">
             {(amount + delivery).toLocaleString('ko-KR')}원
           </span>
         </div>

@@ -292,12 +292,17 @@ export default function ProductsId(props: {
           }}
           className="p-10 flex flex-col space-y-4 rounded-md"
         >
-          <div className="text-sm border-b-2 border-b-green-400 py-2">
-            {CATEGORY_MAP[product.category_id]}
+          <div className="text-sm border-b-2 border-b-blue-400 py-2">
+            {CATEGORY_MAP[product.category_id - 1]}
           </div>
           <div className="text-3xl font-sans-kr">{product.name}</div>
-          <div className="text-2xl py-5 text-end">
-            {product.price.toLocaleString('ko-KR')} ₩
+          <div className="text-2xl py-5 text-end =">
+            <span className="line-through text-zinc-500">
+              {product.price.toLocaleString('ko-KR')}
+            </span>
+            <span className="px-2">
+              {(product.price * 0.9).toLocaleString('ko-KR')}
+            </span>
           </div>
           <div
             style={{ border: '0.5px solid rgba(200,200,200,1)' }}
@@ -305,18 +310,18 @@ export default function ProductsId(props: {
           >
             <div className="text-md text-start font-light">
               함께 구매하면 좋은 상품 :{' '}
-              {product.category_id === 0 ? (
+              {product.category_id === 1 ? (
                 <Link href="/">Vase</Link>
-              ) : product.category_id === 1 ? (
-                <Link href="/">Case</Link>
               ) : product.category_id === 2 ? (
-                <Link href="/">Accessory</Link>
-              ) : product.category_id === 3 ? (
-                <Link href="/">Light</Link>
-              ) : product.category_id === 4 ? (
                 <Link href="/">Case</Link>
+              ) : product.category_id === 3 ? (
+                <Link href="/">Accessory</Link>
+              ) : product.category_id === 4 ? (
+                <Link href="/">Lamp</Link>
               ) : product.category_id === 5 ? (
-                <Link href="/">Light</Link>
+                <Link href="/">Case</Link>
+              ) : product.category_id === 6 ? (
+                <Link href="/">Lamp</Link>
               ) : null}
             </div>
             <div className="text-md text-start font-light">
@@ -341,8 +346,8 @@ export default function ProductsId(props: {
             <div className="text-xl sm:text-2xl md:text-3xl">
               <span className="text-sm">{`(선택 수량 : ${quantity}) `}</span>
               {(quantity
-                ? product.price * quantity
-                : product.price
+                ? product.price * quantity * 0.9
+                : product.price * 0.9
               ).toLocaleString('ko-KR')}{' '}
               ₩
             </div>
@@ -353,7 +358,7 @@ export default function ProductsId(props: {
                 leftIcon={
                   <IconShoppingCart size={20} stroke={1.5}></IconShoppingCart>
                 }
-                className={`bg-green-400 w-full hover:bg-green-500 transition duration-200 ease-in-out`}
+                className={`bg-blue-500 w-full hover:bg-blue-600 transition duration-200 ease-in-out`}
                 onClick={() => {
                   if (session == null) {
                     alert('로그인이 필요합니다.')
@@ -379,7 +384,7 @@ export default function ProductsId(props: {
                 }
                 className={
                   isWishlisted
-                    ? `bg-green-400 w-full hover:bg-green-500 transition duration-200 ease-in-out`
+                    ? `bg-blue-500 w-full hover:bg-blue-600 transition duration-200 ease-in-out`
                     : `bg-zinc-400 w-full hover:bg-zinc-500 transition duration-200 ease-in-out`
                 }
                 onClick={() => {
@@ -399,7 +404,7 @@ export default function ProductsId(props: {
             // loading={isLoading}
             disabled={wishlist == null}
             leftIcon={<IconCoin size={20} stroke={1.5} />}
-            className={`bg-green-400 hover:bg-green-500 transition duration-200 ease-in-out`}
+            className={`bg-blue-500 hover:bg-blue-600 transition duration-200 ease-in-out`}
             onClick={() => {
               if (session == null) {
                 alert('로그인이 필요합니다.')
@@ -416,7 +421,7 @@ export default function ProductsId(props: {
             쇼핑할 때 필독{' '}
             <Link
               href={'/'}
-              className="text-green-500 border-b-green-400 hover:border-b-2 "
+              className="text-blue-500 border-b-blue-400 hover:border-b-2 "
             >
               안전거래 TIP!
             </Link>
@@ -426,7 +431,7 @@ export default function ProductsId(props: {
             상품정보에 문제가 있나요?{' '}
             <Link
               href={'/'}
-              className="text-green-500 border-b-green-400 hover:border-b-2 "
+              className="text-blue-500 border-b-blue-400 hover:border-b-2 "
             >
               신고하기
             </Link>
@@ -436,7 +441,7 @@ export default function ProductsId(props: {
             대량 주문이 필요한가요?{' '}
             <Link
               href={'/'}
-              className="text-green-500 border-b-green-400 hover:border-b-2 "
+              className="text-blue-500 border-b-blue-400 hover:border-b-2 "
             >
               연락하기
             </Link>
@@ -452,32 +457,32 @@ export default function ProductsId(props: {
       </div>
       <div className="flex flex-wrap justify-center font-sans-kr-light my-10">
         <Tabs
-          color="green"
+          color="#3b82f6"
           defaultValue="detailImage"
           style={{ width: '1020px' }}
         >
           <Tabs.List>
             <Tabs.Tab
               value="detailImage"
-              icon={<IconPhoto color="green" size={30} />}
+              icon={<IconPhoto color="#3b82f6" size={30} />}
             >
               상세 이미지
             </Tabs.Tab>
             <Tabs.Tab
               value="comment"
-              icon={<IconMessage color="green" size={30} />}
+              icon={<IconMessage color="#3b82f6" size={30} />}
             >
               상품 후기
             </Tabs.Tab>
             <Tabs.Tab
               value="information"
-              icon={<IconListDetails color="green" size={30} />}
+              icon={<IconListDetails color="#3b82f6" size={30} />}
             >
               제품 설명
             </Tabs.Tab>
             <Tabs.Tab
               value="delivery"
-              icon={<IconTruckDelivery color="green" size={30} />}
+              icon={<IconTruckDelivery color="#3b82f6" size={30} />}
             >
               배송 문의
             </Tabs.Tab>

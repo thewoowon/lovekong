@@ -141,7 +141,7 @@ const DetailItem = (props: IOrderDetail) => {
         <div className="flex flex-col ml-auto mr-4 text-right">
           <span className="font-semibold text-lg my-3">
             결제 금액 :{' '}
-            <span className="font-light text-green-500">
+            <span className="font-light text-blue-500">
               {props.orderItems
                 .map((item) => item.amount)
                 .reduce((prev, curr) => prev + curr, 0)
@@ -154,7 +154,7 @@ const DetailItem = (props: IOrderDetail) => {
             {format(new Date(props.createdAt), 'yyyy년 MM월 dd일 HH:mm:ss')}
           </span>
           <Button
-            className={`bg-green-400 w-full hover:bg-green-500 transition duration-200 ease-in-out`}
+            className={`bg-blue-500 w-full hover:bg-blue-600 transition duration-200 ease-in-out`}
           >
             결제 처리
           </Button>
@@ -213,7 +213,7 @@ const Items = (props: IOrderItemsDetail & { status: number }) => {
               onClick={() => {
                 handleComment()
               }}
-              className="bg-green-400 w-full hover:bg-green-500 transition duration-200 ease-in-out"
+              className="bg-blue-500 w-full hover:bg-blue-600 transition duration-200 ease-in-out"
             >
               후기 작성
             </Button>

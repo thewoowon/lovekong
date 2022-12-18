@@ -101,7 +101,7 @@ export default function QNA() {
             <span className="mx-auto"></span>
             <div className="flex items-center">
               <button
-                className="px-4 py-2 bg-rose-400 text-white rounded-md hover:bg-rose-500 transition duration-200 ease-in-out mx-1"
+                className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-200 ease-in-out mx-1"
                 onClick={() => {
                   router.push('/qna/my')
                 }}
@@ -109,7 +109,7 @@ export default function QNA() {
                 나의 글만 보기
               </button>
               <button
-                className="px-4 py-2 bg-rose-400 text-white rounded-md hover:bg-rose-500 transition duration-200 ease-in-out mx-1"
+                className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-200 ease-in-out mx-1"
                 onClick={() => {
                   router.push('/qna/write')
                 }}
