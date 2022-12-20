@@ -62,18 +62,19 @@ export default function Footer() {
       >
         <div>
           <div>
-            상호명 : 러브콩 스테인드 글라스<span>사업자등록번호 : 서명진</span>
+            상호명 : 러브콩 스테인드 글라스
+            <span className="px-4">사업자등록번호 : 서명진</span>
           </div>
           <div>
             대표자 : 서명진
-            <span>
+            <span className="px-4">
               사업장 소재지 : 경남 진주시 초전북로62번길 26 러브콩
               스테인드글라스
             </span>
           </div>
           <div>
             고객센터 : 010-5489-4545
-            <span>통신판매업번호 : 2021-경남의령-0028</span>
+            <span className="px-4">통신판매업번호 : 2021-경남의령-0028</span>
           </div>
           <div>e-mail : alrnrdls@naver.com</div>
         </div>
