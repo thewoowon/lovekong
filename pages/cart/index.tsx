@@ -501,7 +501,7 @@ const Items = (props: ICartItem) => {
           <div className="flex flex-col justify-center items-center text-sm font-sans-kr py-4 px-10"></div>
           <div className="text-sm">상품 금액</div>
           <div className="font-sans-kr-bold pb-2">
-            {props.amount.toLocaleString('kr-KR')}
+            {props.amount.toLocaleString('ko-KR')}
           </div>
           <div>
             <Button

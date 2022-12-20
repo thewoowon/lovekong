@@ -22,59 +22,19 @@ const VideoWatcher = (): JSX.Element => {
       pagination={{ clickable: true }}
       className="my-swiper"
       loop={true}
-      height={1000}
+      height={800}
     >
       <SwiperSlide className="my-swiper-slide">
-        <div className="bg-blue-50 w-full h-full flex flex-col justify-center items-center">
-          <div>테스트 이미지입니다.</div>
-          <div className="w-96">
-            <Image
-              alt=""
-              src="/assets/light/light3.jpeg"
-              width={800}
-              height={1000}
-            ></Image>
-          </div>
-        </div>
+        <div className="bg-white w-full h-full flex flex-col justify-center items-center"></div>
       </SwiperSlide>
       <SwiperSlide className="my-swiper-slide">
-        <div className="bg-blue-50 w-full h-full flex flex-col justify-center items-center">
-          <div>테스트 이미지입니다.</div>
-          <div className="w-96">
-            <Image
-              alt=""
-              src="/assets/light/light4.jpeg"
-              width={800}
-              height={1000}
-            ></Image>
-          </div>
-        </div>
+        <div className="bg-white w-full h-full flex flex-col justify-center items-center"></div>
       </SwiperSlide>
       <SwiperSlide className="my-swiper-slide">
-        <div className="bg-blue-50 w-full h-full flex flex-col justify-center items-center">
-          <div>테스트 이미지입니다.</div>
-          <div className="w-96">
-            <Image
-              alt=""
-              src="/assets/light/light5.jpeg"
-              width={800}
-              height={1000}
-            ></Image>
-          </div>
-        </div>
+        <div className="bg-white w-full h-full flex flex-col justify-center items-center"></div>
       </SwiperSlide>
       <SwiperSlide className="my-swiper-slide">
-        <div className="bg-blue-50 w-full h-full flex flex-col justify-center items-center">
-          <div>테스트 이미지입니다.</div>
-          <div className="w-96">
-            <Image
-              alt=""
-              src="/assets/light/light6.jpeg"
-              width={800}
-              height={1000}
-            ></Image>
-          </div>
-        </div>
+        <div className="bg-white w-full h-full flex flex-col justify-center items-center"></div>
       </SwiperSlide>
     </Swiper>
   )

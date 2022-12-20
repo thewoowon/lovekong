@@ -32,7 +32,7 @@ export default function Header() {
         style={{ maxWidth: '1080px' }}
       >
         <div
-          className="cursor-pointer text-xs xs:text-sm flex justify-center items-center ml-4"
+          className="cursor-pointer text-xs xs:text-sm flex flex-col justify-center items-center ml-4"
           style={{ fontFamily: 'Kashie-Mercy' }}
           onClick={() => {
             router.push('/')
@@ -45,6 +45,15 @@ export default function Header() {
               router.push('/')
             }}
           ></IconHome> */}
+          <div className="flex justify-center items-center">
+            <div className="bg-red-400 w-5 h-2"></div>
+            <div className="bg-orange-400 w-5 h-2"></div>
+            <div className="bg-yellow-400 w-5 h-2"></div>
+            <div className="bg-green-400 w-5 h-2"></div>
+            <div className="bg-blue-400 w-5 h-2"></div>
+            <div className="bg-blue-800 w-5 h-2"></div>
+            <div className="bg-purple-400 w-5 h-2"></div>
+          </div>
         </div>
         <span className="m-auto"></span>
         <div

@@ -94,7 +94,7 @@ export default function SignIn({
             <span className="px-2">카카오 로그인</span>
           </ButtonBig> */}
             <ButtonBig
-              className="m-2 flex justify-center items-center shadow-lg hover:bg-blue-600 bg-blue-500 text-white"
+              className="m-2 flex justify-center items-center shadow-lg hover:bg-green-600 bg-green-500 text-white"
               onClick={() => signIn('naver')}
             >
               <IconBrandNextjs

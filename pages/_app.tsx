@@ -9,6 +9,7 @@ import Footer from '@components/Footer'
 import 'public/static/fonts/style.css'
 import Head from 'next/head'
 import Script from 'next/script'
+import { Toaster } from 'react-hot-toast'
 
 function MyApp({
   Component,
@@ -31,6 +32,7 @@ function MyApp({
         <Header></Header>
         <Script src="https://nsp.pay.naver.com/sdk/js/naverpay.min.js"></Script>
         <Component {...pageProps} />
+        <Toaster></Toaster>
         <Footer></Footer>
       </QueryClientProvider>
     </SessionProvider>
