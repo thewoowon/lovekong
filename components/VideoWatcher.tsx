@@ -17,7 +17,7 @@ const VideoWatcher = (): JSX.Element => {
       slidesPerView={'auto'}
       centeredSlides={true}
       navigation
-      autoplay={{ delay: 4000 }}
+      autoplay={{ delay: 5000 }}
       //   disableOnInteraction:false}}
       pagination={{ clickable: true }}
       className="my-swiper"
@@ -25,16 +25,54 @@ const VideoWatcher = (): JSX.Element => {
       height={800}
     >
       <SwiperSlide className="my-swiper-slide">
-        <div className="bg-white w-full h-full flex flex-col justify-center items-center"></div>
+        <div className="bg-black w-full h-full flex flex-col justify-center items-center">
+          <Image
+            src={'/assets/others/lovekong_thumb_1.png'}
+            alt="lovekong_thumb"
+            width={4968}
+            height={2475}
+          ></Image>
+        </div>
       </SwiperSlide>
       <SwiperSlide className="my-swiper-slide">
-        <div className="bg-white w-full h-full flex flex-col justify-center items-center"></div>
+        <div className="bg-white w-full h-full flex flex-col justify-center items-center">
+          <Image
+            src={'/assets/others/lovekong_thumb_2.png'}
+            alt="lovekong_thumb"
+            width={4905}
+            height={2469}
+          ></Image>
+        </div>
       </SwiperSlide>
       <SwiperSlide className="my-swiper-slide">
-        <div className="bg-white w-full h-full flex flex-col justify-center items-center"></div>
+        <div className="bg-white w-full h-full flex flex-col justify-center items-center">
+          <Image
+            src={'/assets/others/lovekong_thumb_3.png'}
+            alt="lovekong_thumb"
+            width={4931}
+            height={2488}
+          ></Image>
+        </div>
       </SwiperSlide>
       <SwiperSlide className="my-swiper-slide">
-        <div className="bg-white w-full h-full flex flex-col justify-center items-center"></div>
+        <div className="bg-white w-full h-full flex flex-col justify-center items-center">
+          <Image
+            src={'/assets/others/lovekong_thumb_4.png'}
+            alt="lovekong_thumb"
+            width={4915}
+            height={2501}
+          ></Image>
+        </div>
+      </SwiperSlide>
+      <SwiperSlide className="my-swiper-slide">
+        <div className="bg-white w-full h-full flex flex-col justify-center items-center">
+          <Image
+            src={'/assets/others/lovekong_thumb_5.png'}
+            alt="lovekong_thumb"
+            width={4933}
+            height={2465}
+          ></Image>
+        </div>
       </SwiperSlide>
     </Swiper>
   )

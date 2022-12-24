@@ -116,7 +116,6 @@ export default function Home() {
             </div>
             <div className="relative lg:text-[31px] md:text-[26px] sm:text-[21px] xs:text-[18px] xss:text-[16px] font-sans-kr-bold pb-2">
               러브콩 스테인드 글라스
-              {/* 러<span className='text-orange-400'>브</span><span className='text-yellow-400'>콩</span><span className='text-green-400'> 스</span><span className='text-blue-400'>테</span><span className='text-blue-800'>인</span><span className='text-purple-400'>드 </span><span className='text-red-400'>글</span><span className='text-orange-400'>라</span><span className='text-yellow-400'>스</span> */}
             </div>
             <div className="relative lg:text-[20px] md:text-[18px] sm:text-[16px] xs:text-[14px] xss:text-[12px] font-sans-kr-bold text-zinc-500">
               Since 2021
@@ -124,32 +123,15 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section
+      {/* <section
         style={{ height: '600px' }}
         className="flex flex-col justify-center items-center py-20"
       >
         <div
           {...animatedItem_main_1}
-          className="font-sans-kr-bold lg:text-5xl md:text-4xl sm:text-3xl text-2xl"
+          className="font-sans-kr-bold lg:text-6xl md:text-5xl sm:text-4xl text-3xl"
         >
           I LoveKong
-        </div>
-        {/* <div style={{"maxWidth":"500px"}} className="flex justify-center items-center">
-          <Image
-            width={700}
-            height={850}
-            src="/assets/lotus/lotus-main.jpeg"
-            alt=""
-          ></Image>
-        </div> */}
-      </section>
-      {/* <section className="culture video-section">
-        <video autoPlay muted loop style={{ "width": '100%',"height":"100%" }}>
-          <source src="/videos/main_video.mp4"/>
-        </video>
-        <div className="video-div">
-          <p className="video-p-1">함께 만들어 가는 유비케어</p>
-          <p className="video-p-2">임직원이 행복한 유비케어</p>
         </div>
       </section> */}
       <section>
@@ -161,13 +143,13 @@ export default function Home() {
       >
         <div
           {...animatedItem_main_2}
-          className="font-sans-kr-bold lg:text-5xl md:text-4xl sm:text-3xl text-2xl"
+          className="font-sans-kr-bold lg:text-6xl md:text-5xl sm:text-4xl text-3xl"
         >
           LoveKong Top Seller
         </div>
         <div
           {...animatedItem_main_3}
-          className="text-blue-500 font-sans-kr-bold lg:text-3xl md:text-2xl sm:text-xl text-lg py-10"
+          className="text-blue-500 font-sans-kr-bold lg:text-4xl md:text-3xl sm:text-2xl text-xl py-10"
         >
           로투스 홀더
         </div>
@@ -263,7 +245,7 @@ export default function Home() {
       <section className="bg-white flex flex-col justify-center items-center py-20 relative">
         <div
           {...animatedItem_main_5}
-          className="font-sans-kr-bold lg:text-4xl md:text-3xl sm:text-2xl text-xl pb-36"
+          className="font-sans-kr-bold lg:text-5xl md:text-4xl sm:text-3xl text-2xl pb-36"
         >
           고객님들의 실제 후기
         </div>
@@ -285,7 +267,7 @@ export default function Home() {
         <div className="flex flex-col justify-center items-center h-full">
           <div
             {...animatedItem_main_6}
-            className="text-center font-sans-kr-bold lg:text-4xl md:text-3xl sm:text-2xl text-xl py-6"
+            className="text-center font-sans-kr-bold lg:text-5xl md:text-4xl sm:text-3xl text-2xl py-6"
           >
             러브콩의 로투스 홀더를 지금 바로 만나보세요!
           </div>
@@ -297,7 +279,7 @@ export default function Home() {
               onClick={() => {
                 router.push('/products')
               }}
-              className="text-2xl px-10 py-5 bg-blue-500 text-white rounded-md animate-bounce hover:bg-blue-600 transition duration-200 ease-in-out"
+              className="text-3xl px-10 py-5 bg-blue-500 text-white rounded-md animate-bounce hover:bg-blue-600 transition duration-200 ease-in-out"
             >
               로투스 홀더 바로 구매하기
             </button>
@@ -307,7 +289,7 @@ export default function Home() {
       <section className="bg-white flex flex-col justify-center items-center py-36">
         <div
           {...animatedItem_main_8}
-          className="text-center font-sans-kr-bold lg:text-4xl md:text-3xl sm:text-2xl text-xl pb-36"
+          className="text-center font-sans-kr-bold lg:text-5xl md:text-4xl sm:text-2xl text-xl pb-36"
         >
           러브콩 스테인드 글라스 판매제품
         </div>
@@ -392,7 +374,7 @@ export default function Home() {
       <section className="bg-zinc-50 flex flex-col justify-center items-center py-36">
         <div
           {...animatedItem_main_9}
-          className="font-sans-kr-bold lg:text-4xl md:text-3xl sm:text-2xl text-xl pb-36"
+          className="font-sans-kr-bold lg:text-5xl md:text-4xl sm:text-3xl text-2xl pb-36"
         >
           러브콩의 인스타 엿보기
         </div>
@@ -507,7 +489,7 @@ export default function Home() {
       <section className="flex flex-col justify-center items-center py-36">
         <div
           {...animatedItem_main_11}
-          className="text-center font-sans-kr-bold lg:text-4xl md:text-3xl sm:text-2xl text-xl py-10"
+          className="text-center font-sans-kr-bold lg:text-5xl md:text-4xl sm:text-3xl text-2xl py-10"
         >
           배송 및 반품/교환 안내
         </div>
@@ -572,7 +554,7 @@ export default function Home() {
       <section className="flex flex-col justify-center items-center py-36">
         <div
           {...animatedItem_main_21}
-          className="text-center font-sans-kr-bold lg:text-4xl md:text-4xl sm:text-2xl text-xl py-6"
+          className="text-center font-sans-kr-bold lg:text-5xl md:text-4xl sm:text-3xl text-2xl py-6"
         >
           이메일 주소
         </div>

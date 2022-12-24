@@ -73,7 +73,7 @@ export default function Footer() {
             </span>
           </div>
           <div>
-            고객센터 : 010-5489-4545
+            고객센터 : 0507-1367-4547
             <span className="px-4">통신판매업번호 : 2021-경남의령-0028</span>
           </div>
           <div>e-mail : alrnrdls@naver.com</div>
