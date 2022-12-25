@@ -54,8 +54,8 @@ export default function Card({
         </div>
         <Image
           height={500}
-          width={400}
-          className="w-full h-96"
+          width={500}
+          className="w-full h-72 object-cover"
           src={image}
           alt="Sunset in the mountains"
         ></Image>

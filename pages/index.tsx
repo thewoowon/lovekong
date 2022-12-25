@@ -5,7 +5,7 @@ import styled from '@emotion/styled'
 import { Button } from '@mantine/core'
 import { Products } from '@prisma/client'
 import { IconHeart, IconStar } from '@tabler/icons'
-import { mainComment } from 'constants/goods'
+import { instagramItem, mainComment } from 'constants/goods'
 import useScrollFadeIn from 'hooks/useScrollFadeIn'
 import useScrollFadeInImage from 'hooks/useScrollFadeInImage'
 import Head from 'next/head'
@@ -13,9 +13,12 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import styles from '../styles/Home.module.css'
+import Modal from 'react-modal'
 
 const TAKE = 8
 export default function Home() {
+  const [windowSize, setWindowSize] = useState<number>()
+
   const animatedItem_main_1 = useScrollFadeIn()
   const animatedItem_main_2 = useScrollFadeIn()
   const animatedItem_main_3 = useScrollFadeIn()
@@ -47,6 +50,29 @@ export default function Home() {
   const router = useRouter()
   const [skip, setSkip] = useState(0)
   const [products, setProducts] = useState<Products[]>([])
+  const [instaId, setInstaId] = useState<number | undefined>()
+  const [modalIsOpen, setIsOpen] = useState(false)
+
+  function openModal() {
+    setIsOpen(true)
+  }
+
+  function closeModal() {
+    setIsOpen(false)
+  }
+
+  const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      transform: 'translate(-50%, -50%)',
+      width: '500px',
+      height: '900px',
+    },
+  }
+
   useEffect(() => {
     fetch(`/api/get-products?skip=0&take=${TAKE}`)
       .then((res) => res.json())
@@ -135,7 +161,36 @@ export default function Home() {
         </div>
       </section> */}
       <section>
-        <VideoWatcher></VideoWatcher>
+        {
+          //   <div>
+          //     <Image
+          //       src={'/assets/others/lovekong_thumb_1.png'}
+          //       alt="lovekong_thumb"
+          //       width={4968}
+          //       height={2475}
+          //     ></Image>
+          //     <Image
+          //   src={'/assets/others/lovekong_thumb_2.png'}
+          //   alt="lovekong_thumb"
+          //   width={4905}
+          //   height={2469}
+          // ></Image>
+          //     <Image
+          //   src={'/assets/others/lovekong_thumb_3.png'}
+          //   alt="lovekong_thumb"
+          //   width={4931}
+          //   height={2488}
+          // ></Image>
+          //   <Image
+          //   src={'/assets/others/lovekong_thumb_5.png'}
+          //   alt="lovekong_thumb"
+          //   width={4933}
+          //   height={2465}
+          // ></Image>
+          //   </div>
+
+          <VideoWatcher></VideoWatcher>
+        }
       </section>
       <section
         style={{ height: '500px' }}
@@ -171,7 +226,7 @@ export default function Home() {
             <Image
               width={620}
               height={413}
-              style={{ minWidth: '360px', maxWidth: '620px' }}
+              style={{ minWidth: '360px', maxWidth: '600px' }}
               className="pb-3"
               src="/assets/lotus/left-lotus-2.jpeg"
               alt="lotus left 2"
@@ -179,14 +234,14 @@ export default function Home() {
             <Image
               width={620}
               height={413}
-              style={{ minWidth: '360px', maxWidth: '620px' }}
+              style={{ minWidth: '360px', maxWidth: '600px' }}
               src="/assets/lotus/left-lotus-1.jpeg"
               alt="lotus left 1"
             ></Image>
             {/* <img style={{ "minWidth": "360px", "maxWidth": "520px" }} className="pr-3 pb-3" src="/assets/lotus/left-lotus-1.jpeg" alt="lotus left 1"></img>
             <img style={{ "minWidth": "360px", "maxWidth": "520px" }} className="pr-3 pb-3" src="/assets/lotus/left-lotus-2.jpeg" alt="lotus left 2"></img> */}
             <div
-              style={{ minWidth: '360px', maxWidth: '620px' }}
+              style={{ minWidth: '360px', maxWidth: '600px' }}
               className="text-lg text-end p-1 w-full"
             >
               2021 LoveKong Collection
@@ -198,7 +253,7 @@ export default function Home() {
           >
             <div
               {...animatedItem_main_4}
-              style={{ minWidth: '360px', maxWidth: '620px' }}
+              style={{ minWidth: '360px', maxWidth: '560px' }}
               className="w-full p-3 text-end font-sans-kr-bold lg:text-lg  text-md"
             >
               연꽃을 닮은 스테인드글라스 캔들 홀더 입니다.<br></br>
@@ -211,7 +266,7 @@ export default function Home() {
             <Image
               width={620}
               height={800}
-              style={{ minWidth: '360px', maxWidth: '620px' }}
+              style={{ minWidth: '360px', maxWidth: '560px' }}
               className="pl-3"
               src="/assets/lotus/right-lotus-1.jpeg"
               alt="lotus right 1"
@@ -234,7 +289,7 @@ export default function Home() {
             <Image
               width={1280}
               height={600}
-              style={{ minWidth: '360px', maxWidth: '1280px' }}
+              style={{ minWidth: '360px', maxWidth: '1160px' }}
               src="/assets/lotus/lotus.jpeg"
               alt=""
             ></Image>
@@ -251,7 +306,7 @@ export default function Home() {
         </div>
         <div
           {...animatedItem_main_image_4}
-          className="grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-8"
+          className="grid grid-cols-1 lg:grid-cols-2 sm:grid-cols-1 gap-4"
         >
           {mainComment.map((comment) => {
             return (
@@ -267,7 +322,7 @@ export default function Home() {
         <div className="flex flex-col justify-center items-center h-full">
           <div
             {...animatedItem_main_6}
-            className="text-center font-sans-kr-bold lg:text-5xl md:text-4xl sm:text-3xl text-2xl py-6"
+            className="text-center font-sans-kr-bold lg:text-5xl md:text-4xl sm:text-2xl text-xl py-6"
           >
             러브콩의 로투스 홀더를 지금 바로 만나보세요!
           </div>
@@ -279,7 +334,7 @@ export default function Home() {
               onClick={() => {
                 router.push('/products')
               }}
-              className="text-3xl px-10 py-5 bg-blue-500 text-white rounded-md animate-bounce hover:bg-blue-600 transition duration-200 ease-in-out"
+              className="lg:text-3xl md:text-2xl sm:text-xl text-lg px-10 py-5 bg-blue-500 text-white rounded-md animate-bounce hover:bg-blue-600 transition duration-200 ease-in-out"
             >
               로투스 홀더 바로 구매하기
             </button>
@@ -374,116 +429,63 @@ export default function Home() {
       <section className="bg-zinc-50 flex flex-col justify-center items-center py-36">
         <div
           {...animatedItem_main_9}
-          className="font-sans-kr-bold lg:text-5xl md:text-4xl sm:text-3xl text-2xl pb-36"
+          className="font-sans-kr-bold flex flex-col items-center lg:text-5xl md:text-4xl sm:text-3xl text-2xl pb-36"
         >
-          러브콩의 인스타 엿보기
+          러브콩의 인스타 엿보기<br></br>
+          <span className="py-3 font-sans-kr-bold lg:text-3xl md:text-2xl sm:text-xl text-lg">
+            사진을 클릭해보세요!
+          </span>
         </div>
         <div
           {...animatedItem_main_image_6}
-          className="grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-8"
+          className="grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-4"
         >
-          <Card
-            comment1Id={'viz_zle_yunn'}
-            comment1={'로투스 제품은 진짜 저의 최애 캔들 홀더 입니다….🥂🤍'}
-            comment2Id={'soopool_room'}
-            comment2={
-              '로투스홀더✨ 은은하게 불빛이 일렁이는게 제마음도 일렁일렁😊🤍'
-            }
-            image="/assets/mainCategory/main-1.jpeg"
-            title={'Light'}
-            content={`주말에도 럽콩 유리공장 open🚪|
-               로투스홀더는 낮에도 예쁘지만|
-               특히! 밤에 더 예뻐요✨|
-               오랜만에 모아두니 너무 예뿐걸?|
-               낮엔 홈카페, 밤엔 와인바느낌으로...🥂❤️‍🔥 |
-               모든 유리제품 문의는 디엠 또는 |
-               카톡 lovekong_glass로 문의 주세요😉`}
-            tag={'#러브콩 #러브콩스테인드글라스 #스테인드글라스'}
-          ></Card>
-          <Card
-            comment1Id={'ru_mi2'}
-            comment1={`😍영롱영롱 너무이쁘다요`}
-            comment2Id={'milky.haus_'}
-            comment2={`어머 럽콩님 작품 너무 보러가고싶어영😍❤️ 너무예뻐요!`}
-            image="/assets/mainCategory/main-2.jpeg"
-            title={'Case'}
-            content={`하루종일 정신 없는 하루여서|
-              이제야 올리는 피드..💡|
-              많은 분들이 예쁘다 해주시고|
-              너무 잘 만들었다고 칭찬도 많이 해주셔서|
-              기분 좋고 감사한 하루였어용|
-              한번에 두개 주문해가신 분도 계셨다는👍🏻💕|
-              다음주 수요일까지 진행합니당🙇‍♀️|
-              ~|
-              ✨부산 신세계 센텀시티 지하1층(이벤트)|
-              ✨22/3/24(목) ~ 22/3/30(수)|
-              ✨영업시간 10:30~20:00 (금,토,일20:30)`}
-            tag={'#러브콩 #러브콩스테인드글라스 #스테인드글라스'}
-          ></Card>
-          <Card
-            comment1Id={'ur_myhone'}
-            comment1={`콩님 멋져요!!! 취미로 하실 때부터 지켜보며 와 이 재능은 나눠야 할 것이다, 생각했는데 역시나💐💐💐`}
-            comment2Id={'slow.h0use'}
-            comment2={`이렇게 보니 또 색다른 느낌 같아요😍준비하시느라 정말 고생 많으셨어요👏앞으로도 예쁜 작품 부탁뜨려요~❤️💗`}
-            image="/assets/mainCategory/main-3.jpeg"
-            title={'Vase'}
-            content={`✨캠핑 & 피크닉 페어|
-              ✨3/10(목) ~ 3/13(일) 까지|
-              ✨일산 킨텍스 제2전시장 7,8홀|
-              ✨부스 A105 (폴라리스)|
-              ~|
-              이번 전시참여로 처음 선보이는|
-              골제로 쉐이드, 캠들리에 쉐이드도 있어용!|
-              베스트셀러 로투스홀더도 잔뜩 있답니다😊|
-              놀러오세효💓 `}
-            tag={'#러브콩 #러브콩스테인드글라스 #스테인드글라스'}
-          ></Card>
-          <Card
-            comment1Id={'eu_nee__'}
-            comment1={'진짜 영롱하다는 말밖에 안나오네요너❤️ 넘 이뻐요😍'}
-            comment2Id={'fiume_____'}
-            comment2={'와 대박… 진짜 멋져요ㅠㅠㅠ🤍🤍'}
-            image="/assets/mainCategory/main-4.jpeg"
-            title={'Tray'}
-            content={`러브콩 스테인드글라스 전시 안내|
-              4/19(화)-4/24(일)|
-              더현대서울 지하1층 대행사장✨`}
-            tag={
-              '#디어마이 #룸토피아 #디어마이더현대 #더현대 #더현대서울 #Dearmy #러브콩 #러브콩스테인드글라스 #스테인드글라스'
-            }
-          ></Card>
-          <Card
-            comment1Id={'neuil.o'}
-            comment1={`와 그냥 봐도 너무너무 이뻐요😍😍😍 멀어서 못놀러가는게 넘나 아쉽습니다🥲`}
-            comment2Id={'seul__official'}
-            comment2={`오옷 !! 분위기 모예요 😍❤️❤️ 가고싶따아ㅏㅏㅏㅏ`}
-            image="/assets/mainCategory/main-5.jpeg"
-            title={'Accesory'}
-            content={`2022.12.10-12.11|
-            진주 카페AAM에서|
-            크리스마스 마켓이 열립니다🎄♥️|
-            
-            유리제품뿐만 아니라|
-            러브콩 빈티지 소장품들도 판매해요😄|
-            너무 갑자기 참여하게 되서|
-            제대로 공지를 못 올렸네요!|
-            진주분들 많이 놀러 오세요~!🧚🏻‍♀️ `}
-            tag={'#러브콩 #러브콩스테인드글라스 #스테인드글라스 #진주aam'}
-          ></Card>
-          <Card
-            comment1Id={'intip_interiortip'}
-            comment1={`다양한 제품이 있네용>_<!! 진짜 하나하나 다 너무 예뻐욧!!😍😍`}
-            comment2Id={'by_a.ri'}
-            comment2={`햇살받으니 더 예쁜걸요 😍 무리하지 마시고 화이팅이예요 ❤️`}
-            image="/assets/mainCategory/main-6.jpeg"
-            title={'Others'}
-            content={`해들어올때 모아놓고 한컷📸|
-            초록이들 옆에 두니까 더 예뻐보이는 매직🪄|
-
-            모든 유리제품 문의는 디엠 또는|
-            카톡 lovekong_glass로 문의 주세요😉`}
-            tag={'#러브콩 #러브콩스테인드글라스 #스테인드글라스'}
-          ></Card>
+          {new Array(12).fill(0).map((_, index) => {
+            return (
+              <div key={index}>
+                <Image
+                  onClick={() => {
+                    openModal()
+                    setInstaId(index)
+                  }}
+                  height={500}
+                  width={500}
+                  className="w-full w-72 rounded-md"
+                  src={`/assets/mainCategory/main-${index + 1}.jpeg`}
+                  alt="Sunset in the mountains"
+                ></Image>
+              </div>
+            )
+          })}
+          <Modal isOpen={modalIsOpen} style={customStyles} ariaHideApp={true}>
+            <div className="w-full h-full flex flex-col justify-center items-center">
+              {instagramItem
+                .filter((item) => item.id === instaId)
+                .map((feed) => {
+                  return (
+                    <Card
+                      key={feed.id}
+                      comment1Id={feed.comment1Id}
+                      comment1={feed.comment1}
+                      comment2Id={feed.comment2Id}
+                      comment2={feed.comment2}
+                      image={feed.image}
+                      title={feed.title}
+                      content={feed.content}
+                      tag={feed.tag}
+                    ></Card>
+                  )
+                })}
+              <button
+                onClick={() => {
+                  closeModal()
+                }}
+                className="bg-blue-500 px-6 py-1 my-2 text-lg font-bold text-white rounded-lg hover:bg-blue-600 transition duration-200 ease-in-out"
+              >
+                닫기
+              </button>
+            </div>
+          </Modal>
         </div>
       </section>
       <section className="flex flex-col justify-center items-center py-36">
@@ -662,6 +664,11 @@ export default function Home() {
       </section> */}
     </div>
   )
+}
+
+function getWindowSize() {
+  const { innerWidth, innerHeight } = window
+  return { innerWidth, innerHeight }
 }
 
 const Wrapper = styled.div`

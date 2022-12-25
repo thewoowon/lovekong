@@ -19,12 +19,12 @@ export default function MainCommentItem({
     <div
       style={{
         border: '1px solid rgba(200,200,200,0.6)',
-        maxWidth: '360px',
+        maxWidth: '720px',
         minWidth: '300px',
       }}
-      className="max-w-lg min-w-sm overflow-hidden hover:rotate-1 rounded-md shadow-lg transition duration-300 ease-in-out font-sans-kr"
+      className="flex overflow-hidden rounded-md shadow-lg transition duration-300 ease-in-out font-sans-kr"
     >
-      <div className="rounded-lg relative bg-white">
+      <div className="rounded-lg relative bg-white overflow-scroll">
         <div className="px-3 pt-6 flex justify-between items-center">
           <div className="flex items-center">
             {Array.from({ length: 5 }, (_, i) => i + 1).map((value, iter) => {
@@ -48,17 +48,20 @@ export default function MainCommentItem({
         <div className="px-4 py-1 text-start text-xs text-zinc-600">
           size : {comment.size} / {comment.color}
         </div>
-        <div className="px-4 py-2 h-32 mb-10 text-start text-sm text-zinc-600">
+        <div className="px-4 py-2 mb-10 h-36 w-64 text-start text-sm text-zinc-600">
           {contents.map((contents, iter) => {
             return <div key={iter}>{contents}</div>
           })}
         </div>
+      </div>
+      <span className="mx-auto"></span>
+      <div className="w-72 p-3">
         <Image
           src={comment.user_img}
           alt="Comment Image"
-          width={400}
+          width={500}
           height={500}
-          className="w-full h-96 px-4 pb-4"
+          className="object-cover rounded-lg"
         ></Image>
       </div>
     </div>

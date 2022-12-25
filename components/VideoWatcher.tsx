@@ -17,7 +17,7 @@ const VideoWatcher = (): JSX.Element => {
       slidesPerView={'auto'}
       centeredSlides={true}
       navigation
-      autoplay={{ delay: 5000 }}
+      autoplay={{ delay: 3000 }}
       //   disableOnInteraction:false}}
       pagination={{ clickable: true }}
       className="my-swiper"
@@ -54,7 +54,7 @@ const VideoWatcher = (): JSX.Element => {
           ></Image>
         </div>
       </SwiperSlide>
-      <SwiperSlide className="my-swiper-slide">
+      {/* <SwiperSlide className="my-swiper-slide">
         <div className="bg-white w-full h-full flex flex-col justify-center items-center">
           <Image
             src={'/assets/others/lovekong_thumb_4.png'}
@@ -63,7 +63,7 @@ const VideoWatcher = (): JSX.Element => {
             height={2501}
           ></Image>
         </div>
-      </SwiperSlide>
+      </SwiperSlide> */}
       <SwiperSlide className="my-swiper-slide">
         <div className="bg-white w-full h-full flex flex-col justify-center items-center">
           <Image
