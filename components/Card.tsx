@@ -36,7 +36,7 @@ export default function Card({
         maxWidth: '360px',
         minWidth: '300px',
       }}
-      className="min-w-sm overflow-hidden hover:rotate-1 rounded-md shadow-lg transition duration-300 ease-in-out font-sans-kr"
+      className="min-w-sm overflow-scroll rounded-md shadow-lg font-sans-kr"
     >
       <div className="rounded-lg relative bg-white">
         <div className="p-3 flex justify-between items-center">

@@ -1,8 +1,10 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 
 export default function Footer() {
+  const router = useRouter()
   return (
     <footer
       className="py-5 font-sans-kr-light text-md xs:text-md"
@@ -19,23 +21,53 @@ export default function Footer() {
           <div className="flex flex-col items-center">
             <div className="font-sans-kr-light">PRODUCTS</div>
             <ol className="p-5">
-              <li className="font-sans-kr-light cursor-pointer">
-                <Link href={'/products/'}>Light</Link>
+              <li
+                className="font-sans-kr-light cursor-pointer"
+                onClick={() => {
+                  router.push('/products?category_id=1')
+                }}
+              >
+                LAMP
               </li>
-              <li className="font-sans-kr-light cursor-pointer">
-                <Link href={'/products/'}>Tray</Link>
+              <li
+                className="font-sans-kr-light cursor-pointer"
+                onClick={() => {
+                  router.push('/products?category_id=2')
+                }}
+              >
+                TRAY
               </li>
-              <li className="font-sans-kr-light cursor-pointer">
-                <Link href={'/products/'}>Case</Link>
+              <li
+                className="font-sans-kr-light cursor-pointer"
+                onClick={() => {
+                  router.push('/products?category_id=3')
+                }}
+              >
+                CASE
               </li>
-              <li className="font-sans-kr-light cursor-pointer">
-                <Link href={'/products/'}>Vase</Link>
+              <li
+                className="font-sans-kr-light cursor-pointer"
+                onClick={() => {
+                  router.push('/products?category_id=4')
+                }}
+              >
+                VASE
               </li>
-              <li className="font-sans-kr-light cursor-pointer">
-                <Link href={'/products/'}>Accesory</Link>
+              <li
+                className="font-sans-kr-light cursor-pointer"
+                onClick={() => {
+                  router.push('/products?category_id=5')
+                }}
+              >
+                ACCESORY
               </li>
-              <li className="font-sans-kr-light cursor-pointer">
-                <Link href={'/products/'}>ETC</Link>
+              <li
+                className="font-sans-kr-light cursor-pointer"
+                onClick={() => {
+                  router.push('/products?category_id=6')
+                }}
+              >
+                ETC
               </li>
             </ol>
           </div>

@@ -3,7 +3,7 @@ import useDebounce from 'hooks/useDebounce'
 import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Categories, Products } from '@prisma/client'
 import { CATEGORY_MAP, FITERS, TAKE } from 'constants/goods'
 import {
@@ -18,6 +18,7 @@ import { IconHeart, IconSearch, IconStar } from '@tabler/icons'
 export default function ProductsHome() {
   const router = useRouter()
   const [activePage, setPage] = useState(1)
+  const params = router.query
   //const [total, setTotal] = useState(0)
   //const [categories, setCategories] = useState<categories[]>([])
   const [selectedCategory, setSelectedCategory] = useState<string>('-1')
@@ -29,11 +30,10 @@ export default function ProductsHome() {
 
   const deboundecKeyword = useDebounce(keyword, 500)
 
-  // useEffect(() => {
-  //   fetch(`/api/get-categories`)
-  //     .then((res) => res.json())
-  //     .then((data) => setCategories(data.items))
-  // }, [])
+  useEffect(() => {
+    if (!router.isReady) return
+    setSelectedCategory((params.category_id as string) || '-1')
+  }, [router.isReady, params.category_id])
   const { data: categories } = useQuery<
     { items: Categories[] },
     unknown,

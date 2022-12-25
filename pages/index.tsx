@@ -68,8 +68,8 @@ export default function Home() {
       right: 'auto',
       bottom: 'auto',
       transform: 'translate(-50%, -50%)',
-      width: '500px',
-      height: '900px',
+      width: '400px',
+      height: '700px',
     },
   }
 
@@ -149,48 +149,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-      {/* <section
-        style={{ height: '600px' }}
-        className="flex flex-col justify-center items-center py-20"
-      >
-        <div
-          {...animatedItem_main_1}
-          className="font-sans-kr-bold lg:text-6xl md:text-5xl sm:text-4xl text-3xl"
-        >
-          I LoveKong
-        </div>
-      </section> */}
       <section>
-        {
-          //   <div>
-          //     <Image
-          //       src={'/assets/others/lovekong_thumb_1.png'}
-          //       alt="lovekong_thumb"
-          //       width={4968}
-          //       height={2475}
-          //     ></Image>
-          //     <Image
-          //   src={'/assets/others/lovekong_thumb_2.png'}
-          //   alt="lovekong_thumb"
-          //   width={4905}
-          //   height={2469}
-          // ></Image>
-          //     <Image
-          //   src={'/assets/others/lovekong_thumb_3.png'}
-          //   alt="lovekong_thumb"
-          //   width={4931}
-          //   height={2488}
-          // ></Image>
-          //   <Image
-          //   src={'/assets/others/lovekong_thumb_5.png'}
-          //   alt="lovekong_thumb"
-          //   width={4933}
-          //   height={2465}
-          // ></Image>
-          //   </div>
-
-          <VideoWatcher></VideoWatcher>
-        }
+        <VideoWatcher></VideoWatcher>
       </section>
       <section
         style={{ height: '500px' }}
@@ -332,7 +292,7 @@ export default function Home() {
           >
             <button
               onClick={() => {
-                router.push('/products')
+                router.push('/products/13')
               }}
               className="lg:text-3xl md:text-2xl sm:text-xl text-lg px-10 py-5 bg-blue-500 text-white rounded-md animate-bounce hover:bg-blue-600 transition duration-200 ease-in-out"
             >
@@ -458,7 +418,7 @@ export default function Home() {
             )
           })}
           <Modal isOpen={modalIsOpen} style={customStyles} ariaHideApp={true}>
-            <div className="w-full h-full flex flex-col justify-center items-center">
+            <div className="w-full h-full flex flex-col justify-center items-center overflow-scroll">
               {instagramItem
                 .filter((item) => item.id === instaId)
                 .map((feed) => {
@@ -567,101 +527,6 @@ export default function Home() {
           smj091@nate.com
         </div>
       </section>
-      {/* <section
-        style={{ height: '600px' }}
-        className="bg-white flex justify-center items-center max-w-5xl mx-auto"
-      >
-        <div className="w-6/12 flex flex-col justify-center items-center">
-          <div className="font-sans-kr w-full text-4xl pt-6 text-zinc-700 text-left">
-            오묘한 빛과 색의 조화를
-          </div>
-          <div className="font-sans-kr w-full text-4xl pt-6 text-zinc-700 text-left">
-            확인할 수 있는
-          </div>
-          <div className="font-sans-kr w-full text-4xl pt-6 text-zinc-700 text-left">
-            아름다운 조명
-          </div>
-        </div>
-        <div className="w-6/12 flex justify-center items-center ">
-          <img alt="" src={'/assets/light/light1.jpeg'}></img>
-        </div>
-      </section>
-      <section
-        style={{ height: '600px' }}
-        className="bg-white flex justify-center items-center max-w-5xl mx-auto"
-      >
-        <div className="w-6/12 flex justify-center items-center">
-          <img alt="" src={'/assets/light/light2.jpeg'}></img>
-        </div>
-        <div className="w-6/12 flex flex-col justify-center items-center">
-          <div className="font-sans-kr w-full text-4xl pt-6 text-zinc-700 text-right">
-            당신의 소중한 것을 담아주세요
-          </div>
-          <div className="font-sans-kr w-full text-4xl pt-6 text-zinc-700 text-right">
-            추억도, 사랑도, 행복도
-          </div>
-          <div className="font-sans-kr w-full text-4xl pt-6 text-zinc-700 text-right">
-            여기에
-          </div>
-        </div>
-      </section>
-      <section
-        style={{ height: '600px' }}
-        className="bg-white flex justify-center items-center max-w-5xl mx-auto"
-      >
-        <div className="w-6/12 flex flex-col justify-center items-center">
-          <div className="font-sans-kr w-full text-4xl pt-6 text-zinc-700 text-left">
-            나의 비밀을 간직하는 곳
-          </div>
-          <div className="font-sans-kr w-full text-4xl pt-6 text-zinc-700 text-left">
-            주변을 감싸는 닫힌 공간에
-          </div>
-          <div className="font-sans-kr w-full text-4xl pt-6 text-zinc-700 text-left">
-            담아주세요
-          </div>
-        </div>
-        <div className="w-6/12 flex justify-center items-center">
-          <img alt="" src={'/assets/light/light3.jpeg'}></img>
-        </div>
-      </section>
-      <section
-        style={{ height: '600px' }}
-        className="bg-white flex justify-center items-center max-w-5xl mx-auto"
-      >
-        <div className="w-6/12 flex justify-center items-center">
-          <img alt="" src={'/assets/light/light5.jpeg'}></img>
-        </div>
-        <div className="w-6/12 flex flex-col justify-center items-center">
-          <div className="font-sans-kr w-full text-4xl pt-6 text-zinc-700 text-right">
-            새로운 느낌을 느껴보세요
-          </div>
-          <div className="font-sans-kr w-full text-4xl pt-6 text-zinc-700 text-right">
-            온전히 확인할 수 있는
-          </div>
-          <div className="font-sans-kr w-full text-4xl pt-6 text-zinc-700 text-right">
-            그런 조명
-          </div>
-        </div>
-      </section>
-      <section
-        style={{ height: '600px' }}
-        className="bg-white flex justify-center items-center max-w-5xl mx-auto"
-      >
-        <div className="w-6/12 flex flex-col justify-center items-center">
-          <div className="font-sans-kr w-full text-4xl pt-6 text-zinc-700 text-left">
-            나만의 특별함을 느껴보세요
-          </div>
-          <div className="font-sans-kr w-full text-4xl pt-6 text-zinc-700 text-left">
-            온전히 확인할 수 있는
-          </div>
-          <div className="font-sans-kr w-full text-4xl pt-6 text-zinc-700 text-left">
-            그런 조명
-          </div>
-        </div>
-        <div className="w-6/12 flex justify-center items-center">
-          <img alt="" src={'/assets/light/light6.jpeg'}></img>
-        </div>
-      </section> */}
     </div>
   )
 }
