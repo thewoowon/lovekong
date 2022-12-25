@@ -328,7 +328,7 @@ export default function ProductsId(props: {
               원산지 : 제품 상세설명 참조
             </div>
             <div className="text-md text-start font-light">
-              택배배송 : 7~14일 thdy(100,000원 이상 구매시 무료배송)
+              택배배송 : 7~14일 소요(100,000원 이상 구매시 무료배송)
             </div>
           </div>
           <div className="flex justify-between">

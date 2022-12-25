@@ -15,11 +15,14 @@ export const FITERS = [
 ]
 
 export const getOrderBy = (orderBy?: string) => {
+  console.log(orderBy)
   return orderBy
     ? orderBy === 'latest'
       ? { orderBy: { createdAt: 'desc' } }
       : orderBy === 'expensive'
       ? { orderBy: { price: 'desc' } }
+      : orderBy === 'id'
+      ? { orderBy: { id: 'asc' } }
       : { orderBy: { price: 'asc' } }
     : undefined
 }
@@ -157,10 +160,11 @@ export const instagramItem: InstagramItemType[] = [
     comment1: '',
     comment2Id: '',
     comment2: '',
-    image: '',
-    title: '',
-    content: '',
-    tag: '',
+    image: '/assets/mainCategory/main-7.jpeg',
+    title: 'Accesory',
+    content: `반짝 반짝 예쁜 유리 키링들✨|
+    햇살에 비친 유리 색이 아름답네요🫶🏻`,
+    tag: '#진주공방 #러브콩스테인드글라스',
   },
   {
     id: 7,
@@ -168,10 +172,11 @@ export const instagramItem: InstagramItemType[] = [
     comment1: '',
     comment2Id: '',
     comment2: '',
-    image: '',
-    title: '',
-    content: '',
-    tag: '',
+    image: '/assets/mainCategory/main-8.jpeg',
+    title: 'Lamp',
+    content: `줄리 램프 입니다...!|
+    단아한 느낌이 매우 사랑스러워요💙`,
+    tag: '#진주공방 #러브콩스테인글라스 ',
   },
   {
     id: 8,
@@ -179,10 +184,12 @@ export const instagramItem: InstagramItemType[] = [
     comment1: '',
     comment2Id: '',
     comment2: '',
-    image: '',
-    title: '',
-    content: '',
-    tag: '',
+    image: '/assets/mainCategory/main-9.jpeg',
+    title: 'Vase',
+    content: `베리 화병💚|
+    화병으로 제작되었지만,|
+    연필꽂이로도 쓸 수 있어요~!!`,
+    tag: '#스테인드글라스 #화병 #꽃병 ',
   },
   {
     id: 9,
@@ -190,10 +197,12 @@ export const instagramItem: InstagramItemType[] = [
     comment1: '',
     comment2Id: '',
     comment2: '',
-    image: '',
-    title: '',
-    content: '',
-    tag: '',
+    image: '/assets/mainCategory/main-10.jpeg',
+    title: 'Accesory',
+    content: `빅 고흐 그립톡♥️|
+    미국산 고흐 유리를 사용한 영롱한 그립톡입니당!|
+    모든 유리 제품 문의는 디엠 주세용😉`,
+    tag: '#진주원데이클래스 #스테인드글라스',
   },
   {
     id: 10,
@@ -201,10 +210,11 @@ export const instagramItem: InstagramItemType[] = [
     comment1: '',
     comment2Id: '',
     comment2: '',
-    image: '',
-    title: '',
-    content: '',
-    tag: '',
+    image: '/assets/mainCategory/main-11.jpeg',
+    title: 'Lamp',
+    content: `꽃이랑 달이랑 식물🌙🌿|
+    제가 좋아하는거 다 넣어봄..🤭`,
+    tag: '#스테인드글라스 #스테인드글라스조명',
   },
   {
     id: 11,
@@ -212,10 +222,14 @@ export const instagramItem: InstagramItemType[] = [
     comment1: '',
     comment2Id: '',
     comment2: '',
-    image: '',
-    title: '',
-    content: '',
-    tag: '',
+    image: '/assets/mainCategory/main-12.jpeg',
+    title: 'Lamp',
+    content: `고오급진 느낌으로 만들어본 버드윙램프✨|
+    ~|
+    같은 디자인이라도 다른 유리를 쓰면|
+    다른 느낌의 조명이 된답니당!|
+    유리 색 조합은 취향껏 골라 드립니다🙆‍♀️`,
+    tag: '#스테인드글라스 #스테인드글라스조명 ',
   },
 ]
 
@@ -279,8 +293,7 @@ export const mainComment: MainCommentItemType[] = [
     comment:
       '예쁘고 귀여워요!|' +
       '샴페인은 뭔가 더 예쁜거 같아요!|' +
-      '다이아도 이쁘지만 제 취향은 샴페인이네요 😆|' +
-      '러브콩 후회 없을실 거에요.',
+      '다이아도 이쁘지만 제 취향은 샴페인이네요 😆|',
     createdAt: '2021-10-14',
     rate: 5,
     user_img: '/assets/review/review_5.jpeg',
@@ -290,7 +303,7 @@ export const mainComment: MainCommentItemType[] = [
     size: '스몰',
     color: '2 오로라',
     comment:
-      '구매한거 1도 후회없고 너무 예쁘다고 생각해요.|' +
+      '너무 예쁘다고 생각해요.|' +
       '집에 도착하자마자 켜서 놓고 있어요.|' +
       '미니 캔들이랑 너무 잘어울리고 무드가 살아나요.',
     createdAt: '2021-10-14',

@@ -2,6 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { PrismaClient } from '@prisma/client'
 import { getOrderBy } from 'constants/goods'
+import { id } from 'date-fns/locale'
 
 const prisma = new PrismaClient()
 
@@ -43,6 +44,8 @@ async function getProducts({
       where: where,
       ...getOrderBy(orderBy),
     })
+    console.log(getOrderBy(orderBy))
+    console.log(orderBy)
     return response
   } catch (error) {
     console.error(error)

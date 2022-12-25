@@ -74,14 +74,14 @@ export default function Home() {
   }
 
   useEffect(() => {
-    fetch(`/api/get-products?skip=0&take=${TAKE}`)
+    fetch(`/api/get-products?skip=0&take=${TAKE}&orderBy=id`)
       .then((res) => res.json())
       .then((data) => setProducts(data.items))
   }, [])
 
   const getProducts = useCallback(() => {
     const next = skip + TAKE
-    fetch(`/api/get-products?skip=${next}&take=${TAKE}`)
+    fetch(`/api/get-products?skip=${next}&take=${TAKE}&orderBy=id`)
       .then((res) => res.json())
       .then((data) => {
         const list = products.concat(data.items)
