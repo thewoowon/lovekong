@@ -120,18 +120,12 @@ export default function Header() {
           </div>
         ) : (
           <div
-            className="text-xs xs:text-sm flex justify-center items-center px-2 hover:bg-zinc-50 transition duration-200 ease-in-out h-full"
+            className="cursor-pointer text-xs xs:text-sm flex justify-center items-center px-2 hover:bg-zinc-50 transition duration-200 ease-in-out h-full"
             onClick={() => {
               signIn()
             }}
           >
-            Profile
-            {/* <IconUser
-              stroke={1}
-              onClick={() => {
-                signIn()
-              }}
-            ></IconUser> */}
+            Login
           </div>
         )}
       </div>

@@ -1,4 +1,5 @@
 import ButtonBig from '@components/ButtonBig'
+import { Input } from '@mantine/core'
 import { IconBrandGoogle, IconBrandNextjs } from '@tabler/icons'
 import { GetServerSidePropsContext } from 'next'
 import { BuiltInProviderType } from 'next-auth/providers'
@@ -70,13 +71,18 @@ export default function SignIn({
             </div>
           </div>
         ) : (
-          <>
-            <span className="font-sans-kr-light">
+          <div className="w-full">
+            <div className="font-sans-kr-light">
               사용자의 로그인 정보가 없습니다. 로그인해주세요.
-            </span>
-            <br />
+            </div>
+            <div>
+              <Input></Input>
+            </div>
+            <div>
+              <Input></Input>
+            </div>
             <ButtonBig
-              className="m-2 flex justify-center items-center shadow-lg hover:bg-blue-600 bg-blue-500 text-white"
+              className="w-full my-2 flex justify-center items-center shadow-lg hover:bg-blue-600 bg-blue-500 text-white"
               onClick={() => signIn('google')}
             >
               <IconBrandGoogle
@@ -94,7 +100,7 @@ export default function SignIn({
             <span className="px-2">카카오 로그인</span>
           </ButtonBig> */}
             <ButtonBig
-              className="m-2 flex justify-center items-center shadow-lg hover:bg-green-600 bg-green-500 text-white"
+              className="w-full my-2 flex justify-center items-center shadow-lg hover:bg-green-600 bg-green-500 text-white"
               onClick={() => signIn('naver')}
             >
               <IconBrandNextjs
@@ -104,7 +110,7 @@ export default function SignIn({
               ></IconBrandNextjs>
               <span className="px-2">네이버 로그인</span>
             </ButtonBig>
-          </>
+          </div>
         )}
       </div>
     </div>
