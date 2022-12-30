@@ -5,6 +5,7 @@ import prisma from '../../../lib/prismadb'
 import KakaoProvider from 'next-auth/providers/kakao'
 import NaverProvider from 'next-auth/providers/naver'
 import CredentialsProvider from 'next-auth/providers/credentials'
+import * as bcrypt from 'bcrypt'
 
 export interface CustomDefaultSession {
   user?: {
@@ -34,7 +35,11 @@ export const authOptions: NextAuthOptions = {
               email: credentials?.email,
             },
           })
-          if (user) {
+          const result = await bcrypt.compare(
+            credentials?.password ?? '',
+            user?.password ?? ''
+          )
+          if (result) {
             return user
           } else {
             return null
@@ -77,9 +82,6 @@ export const authOptions: NextAuthOptions = {
     },
     jwt: async ({ token, user, account, profile, isNewUser }) => {
       const isSignIn = user ? true : false
-      if (isSignIn) {
-        console.log('isSignIn')
-      }
       return Promise.resolve(token)
     },
   },

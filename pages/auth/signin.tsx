@@ -19,6 +19,7 @@ import {
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import toast from 'react-hot-toast'
 
 export type ILoginForm = {
   email: string
@@ -59,8 +60,20 @@ export default function SignIn({
     const response = await signIn('sign in with email', {
       email,
       password,
-      redirect: true,
+      redirect: false,
       callbackUrl: 'http://localhost:3000/auth/signin',
+    }).then((res) => {
+      if (res?.status === 200) {
+        toast.success('로그인에 성공했습니다.', {
+          icon: '👏',
+          position: 'top-right',
+        })
+      } else {
+        toast.error('로그인에 실패했습니다.', {
+          icon: '👏',
+          position: 'top-right',
+        })
+      }
     })
   }
   return (

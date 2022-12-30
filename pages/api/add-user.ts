@@ -1,30 +1,24 @@
 import { authOptions, CustomDefaultSession } from './auth/[...nextauth]'
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { Carts, PrismaClient } from '@prisma/client'
+import { Carts, PrismaClient, User } from '@prisma/client'
 import { getSession, useSession } from 'next-auth/react'
+import * as bcrypt from 'bcrypt'
 
 const prisma = new PrismaClient()
-async function addUser(
-  userId: string,
-  userName: string,
-  email: string,
-  title: string,
-  contents: string
-) {
+async function addUser(item: Omit<User, 'id' | 'emailVerified' | 'createdAt'>) {
   try {
-    const qna = await prisma.qnAs.create({
+    const user = await prisma.user.create({
       data: {
-        userId: userId,
-        title: title,
-        email: email,
-        contents: contents,
-        writer: userName,
-        status: 0,
-        viewCount: 0,
+        email: item.email,
+        password: await bcrypt.hash(item.password ?? '', 10),
+        name: item.name,
+        phone: item.phone,
+        address: item.address,
+        image: item.image,
       },
     })
-    return qna
+    return user
   } catch (error) {
     console.error(error)
   }
@@ -39,21 +33,9 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  // const session = await getSession({ req });
-  const session = (await getSession({ req })) as CustomDefaultSession
-  const { title, contents } = JSON.parse(req.body)
-  if (session == null) {
-    res.status(401).json({ items: [], message: 'Unauthorized' })
-    return
-  }
+  const { item } = JSON.parse(req.body)
   try {
-    const wishlist = await addUser(
-      String(session.id),
-      String(session.user?.name),
-      String(session.user?.email),
-      title,
-      contents
-    )
+    const wishlist = await addUser(item)
     res.status(200).json({ items: wishlist, message: 'Success' })
   } catch (error) {
     res.status(400).json({ message: 'Failed' })

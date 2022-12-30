@@ -1,17 +1,35 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { PrismaClient } from '@prisma/client'
+import * as bcrypt from 'bcrypt'
 
 const prisma = new PrismaClient()
 
-async function getUser({ email }: { email: string }) {
+async function verifyUser({
+  email,
+  password,
+}: {
+  email: string
+  password: string
+}) {
   try {
     const user = await prisma.user.findUnique({
       where: {
         email: email,
       },
     })
-    return user
+    const result = bcrypt.compare(
+      password,
+      user?.password ?? '',
+      (err, result) => {
+        if (result) {
+          return user
+        } else {
+          return null
+        }
+      }
+    )
+    return result
   } catch (error) {
     console.error(error)
   }
@@ -26,10 +44,11 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const { email } = req.body
+  const { email, password } = req.body
   try {
-    const user = await getUser({
+    const user = await verifyUser({
       email: email ? String(email) : '',
+      password: password ? String(password) : '',
     })
     res.status(200).json({ items: user, message: 'Success' })
   } catch (error) {

@@ -3,6 +3,11 @@ import { useForm } from 'react-hook-form'
 import Image from 'next/image'
 import ClassView from '@components/ClassView'
 import { useDaumPostcodePopup } from 'react-daum-postcode'
+import { useMutation } from '@tanstack/react-query'
+import { User } from '@prisma/client'
+import toast from 'react-hot-toast'
+import { useRouter } from 'next/router'
+import { useState } from 'react'
 
 export type ICreateAccountForm = {
   email: string
@@ -16,6 +21,36 @@ export type ICreateAccountForm = {
 }
 
 export default function NewUser() {
+  const router = useRouter()
+  const [emailVerification, setEmailVerification] = useState(false)
+
+  const { mutate: addUser } = useMutation<
+    unknown,
+    unknown,
+    Omit<User, 'id' | 'emailVerified' | 'createdAt'>,
+    any
+  >(
+    (item) =>
+      fetch(`/api/add-user`, {
+        method: 'POST',
+        body: JSON.stringify({ item }),
+      })
+        .then((res) => res.json())
+        .then((data) => data.items),
+    {
+      onError: (err, variables, context) => {
+        toast.error('회원가입에 실패했습니다.')
+      },
+      onSuccess: () => {
+        toast.success('회원가입이 완료되었습니다.', {
+          icon: '👏',
+          position: 'top-right',
+        })
+        router.push('/auth/signin')
+      },
+    }
+  )
+
   const {
     register,
     getValues,
@@ -26,7 +61,7 @@ export default function NewUser() {
   } = useForm<ICreateAccountForm>({
     mode: 'onChange',
   })
-  const onSubmit = () => {
+  const onSubmit = async () => {
     const {
       email,
       password,
@@ -37,20 +72,31 @@ export default function NewUser() {
       addressDetail,
       agreeCheckbox,
     } = getValues()
-    console.log(
-      email,
-      password,
-      passwordAgain,
-      name,
-      phoneNumber,
-      address,
-      addressDetail,
-      agreeCheckbox
-    )
+
+    if (!emailVerification) {
+      alert('이메일 인증을 완료해주세요.')
+      return
+    }
+
     if (password !== passwordAgain) {
       alert('비밀번호가 일치하지 않습니다.')
       return
     }
+
+    if (!agreeCheckbox) {
+      alert('약관에 동의해주세요.')
+      return
+    }
+
+    //const hashPassword = await bcrypt.hashSync(password, 10);
+    addUser({
+      name: name,
+      email: email,
+      password: password,
+      image: 'https://ssl.pstatic.net/static/pwe/address/img_profile.png',
+      address: address + ', ' + addressDetail,
+      phone: phoneNumber,
+    })
   }
   const open = useDaumPostcodePopup()
 
@@ -60,7 +106,6 @@ export default function NewUser() {
     bname: string
     buildingName: string
   }) => {
-    console.log(data)
     let fullAddress = data.address
     let extraAddress = ''
 
@@ -75,11 +120,31 @@ export default function NewUser() {
       fullAddress += extraAddress !== '' ? ` (${extraAddress})` : ''
     }
     setValue('address', fullAddress)
-    console.log(fullAddress) // e.g. '서울 성동구 왕십리로2길 20 (성수동1가)'
   }
 
   const handleClick = () => {
     open({ onComplete: handleComplete })
+  }
+
+  const handleEmailVerification = async () => {
+    const { email } = getValues()
+    const res = await fetch(`/api/get-user`, {
+      method: 'POST',
+      body: JSON.stringify({ email }),
+    })
+      .then((res) => res.json())
+      .then((data) => data.items)
+
+    if (res) {
+      alert('이미 가입된 이메일입니다.')
+      return
+    } else {
+      setEmailVerification(true)
+      toast.success('이메일 인증이 완료되었습니다.', {
+        icon: '👏',
+        position: 'top-right',
+      })
+    }
   }
 
   return (
@@ -124,6 +189,9 @@ export default function NewUser() {
               autoComplete="true"
             />
             <button
+              onClick={() => {
+                handleEmailVerification()
+              }}
               type="button"
               className="px-4 py-2 bg-blue-500 hover:bg-blue-600 transition duration-200 ease-in-out text-white rounded-lg"
             >
@@ -226,22 +294,13 @@ export default function NewUser() {
             LoveKong Stained Glass 이용을 위한 개인정보 제공 및 수집에
             동의합니다.
           </label>
-          {getValues('agreeCheckbox') ? (
-            <button
-              type="submit"
-              onSubmit={handleSubmit(onSubmit)}
-              className="px-4 py-2 bg-blue-500 hover:bg-blue-600 transition duration-200 ease-in-out text-white rounded-lg"
-            >
-              계정 생성
-            </button>
-          ) : (
-            <button
-              disabled={true}
-              className="px-4 py-2 bg-blue-500 hover:bg-blue-600 transition duration-200 ease-in-out text-white rounded-lg opacity-50 cursor-not-allowed"
-            >
-              계정 생성
-            </button>
-          )}
+          <button
+            type="submit"
+            onSubmit={handleSubmit(onSubmit)}
+            className="px-4 py-2 bg-blue-500 hover:bg-blue-600 transition duration-200 ease-in-out text-white rounded-lg"
+          >
+            계정 생성
+          </button>
         </form>
       </div>
       <div
