@@ -56,25 +56,34 @@ export default function SignIn({
   })
 
   const onSubmit = async () => {
-    const { email, password } = getValues()
-    const response = await signIn('sign in with email', {
-      email,
-      password,
-      redirect: false,
-      callbackUrl: 'http://localhost:3000/auth/signin',
-    }).then((res) => {
-      if (res?.status === 200) {
-        toast.success('로그인에 성공했습니다.', {
-          icon: '👏',
-          position: 'top-right',
+    try {
+      const { email, password } = getValues()
+
+      const response = await signIn('sign in with email', {
+        email,
+        password,
+        redirect: false,
+        callbackUrl: `${window.location.origin}/auth/signin`,
+      })
+        .then((res) => {
+          if (res?.status === 200) {
+            toast.success('로그인에 성공했습니다.', {
+              icon: '👏',
+              position: 'top-right',
+            })
+          } else {
+            toast.error('로그인에 실패했습니다.', {
+              icon: '👏',
+              position: 'top-right',
+            })
+          }
         })
-      } else {
-        toast.error('로그인에 실패했습니다.', {
-          icon: '👏',
-          position: 'top-right',
+        .catch((err) => {
+          console.log(err)
         })
-      }
-    })
+    } catch (err) {
+      console.log(err)
+    }
   }
   return (
     <div className="w-full h-screen flex justify-center mt-20">

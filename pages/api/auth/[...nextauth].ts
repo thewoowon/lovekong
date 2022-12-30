@@ -6,6 +6,7 @@ import KakaoProvider from 'next-auth/providers/kakao'
 import NaverProvider from 'next-auth/providers/naver'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import * as bcrypt from 'bcrypt'
+import { User } from '@prisma/client'
 
 export interface CustomDefaultSession {
   user?: {
@@ -35,14 +36,19 @@ export const authOptions: NextAuthOptions = {
               email: credentials?.email,
             },
           })
-          const result = await bcrypt.compare(
-            credentials?.password ?? '',
-            user?.password ?? ''
-          )
-          if (result) {
-            return user
+          if (user) {
+            const result = await bcrypt.compare(
+              credentials?.password ?? '',
+              user?.password ?? ''
+            )
+
+            if (result) {
+              return Promise.resolve(user)
+            } else {
+              return Promise.resolve(null)
+            }
           } else {
-            return null
+            return Promise.resolve(null)
           }
         } catch (err) {
           console.log(err)
