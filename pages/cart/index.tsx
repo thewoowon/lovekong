@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { useSession } from 'next-auth/react'
+import { signIn, useSession } from 'next-auth/react'
 import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
@@ -47,7 +47,6 @@ export default function Cart() {
   )
 
   const deliveryAmount = data && data.length > 0 ? 3000 : 0
-  const discountAmount = 0
 
   const amount = useMemo(() => {
     if (data == null) {
@@ -221,16 +220,14 @@ export default function Cart() {
           </Row>
           <Row>
             <p>할인 금액</p>
-            <p>{discountAmount.toLocaleString('ko-KR')} ₩</p>
+            <p>{(amount * 0.1).toLocaleString('ko-KR')} ₩</p>
           </Row>
           <Row>
             <p className="font-semibold">결제 금액</p>
             <p className="text-blue-500 font-semibold">
               {amount >= 50000
-                ? (amount - discountAmount).toLocaleString('ko-KR')
-                : (amount + deliveryAmount - discountAmount).toLocaleString(
-                    'ko-KR'
-                  )}{' '}
+                ? (amount * 0.9).toLocaleString('ko-KR')
+                : (amount * 0.9 + deliveryAmount).toLocaleString('ko-KR')}{' '}
               ₩
             </p>
           </Row>
@@ -240,7 +237,7 @@ export default function Cart() {
             onClick={() => {
               if (session == null) {
                 alert('로그인이 필요합니다.')
-                router.push('/auth/login')
+                signIn()
                 return
               }
               handleOrder()
@@ -510,13 +507,6 @@ const Items = (props: ICartItem) => {
             <Button
               leftIcon={<IconCoin size={20} stroke={1.5} />}
               className={`bg-blue-500 hover:bg-blue-600 transition duration-200 ease-in-out`}
-              // onClick={() => {
-              //   if (session == null) {
-              //     alert('로그인이 필요합니다.')
-              //     router.push('/auth/login')
-              //     return
-              //   }
-              // }}
             >
               주문하기
             </Button>
@@ -545,15 +535,17 @@ const Items = (props: ICartItem) => {
         <IconMinus stroke={1} size={25}></IconMinus>
         <div className="flex flex-col items-center justify-center px-8">
           <div>할인예상금액</div>
-          <div className="font-sans-kr-bold text-red-500">{0}원</div>
+          <div className="font-sans-kr-bold text-red-500">
+            {(amount * 0.1).toLocaleString('ko-KR')}원
+          </div>
         </div>
         <IconEqual stroke={1} size={25}></IconEqual>
         <div className="px-8">
           주문 금액
           <span className="text-blue-500 font-sans-kr-bold px-2">
             {amount >= 50000
-              ? amount.toLocaleString('ko-KR')
-              : (amount + delivery).toLocaleString('ko-KR')}
+              ? (amount * 0.9).toLocaleString('ko-KR')
+              : (amount * 0.9 + delivery).toLocaleString('ko-KR')}
             원
           </span>
         </div>

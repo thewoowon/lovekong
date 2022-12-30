@@ -18,7 +18,7 @@ import { CATEGORY_MAP } from 'constants/goods'
 import { format } from 'date-fns'
 import { convertFromRaw, convertToRaw, EditorState } from 'draft-js'
 import { GetServerSidePropsContext } from 'next'
-import { useSession } from 'next-auth/react'
+import { signIn, useSession } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -180,11 +180,6 @@ export default function ProductsId(props: {
   )
 
   const validate = (type: 'cart' | 'order') => {
-    // if (!session) {
-    //   router.push('/auth/login')
-    // } else {
-    //   router.push(`/cart`)
-    // }
     if (quantity == null) {
       alert('수량을 입력해주세요.')
       return
@@ -328,7 +323,7 @@ export default function ProductsId(props: {
               원산지 : 제품 상세설명 참조
             </div>
             <div className="text-md text-start font-light">
-              택배배송 : 7~14일 소요(100,000원 이상 구매시 무료배송)
+              택배배송 : 7~14일 소요(50,000원 이상 구매시 무료배송)
             </div>
           </div>
           <div className="flex justify-between">
@@ -362,7 +357,7 @@ export default function ProductsId(props: {
                 onClick={() => {
                   if (session == null) {
                     alert('로그인이 필요합니다.')
-                    router.push('/auth/login')
+                    signIn()
                     return
                   }
                   validate('cart')
@@ -390,7 +385,7 @@ export default function ProductsId(props: {
                 onClick={() => {
                   if (session == null) {
                     alert('로그인이 필요합니다.')
-                    router.push('/auth/login')
+                    signIn()
                     return
                   }
                   mutate(String(productId))
@@ -408,7 +403,7 @@ export default function ProductsId(props: {
             onClick={() => {
               if (session == null) {
                 alert('로그인이 필요합니다.')
-                router.push('/auth/login')
+                signIn()
                 return
               }
               validate('order')
