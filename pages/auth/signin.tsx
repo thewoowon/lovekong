@@ -63,7 +63,7 @@ export default function SignIn({
         email,
         password,
         redirect: false,
-        callbackUrl: `${window.location.origin}/auth/signin`,
+        callbackUrl: `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/auth/signin`,
       })
         .then((res) => {
           if (res?.status === 200) {
