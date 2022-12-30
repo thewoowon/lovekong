@@ -215,7 +215,9 @@ export default function Cart() {
           </Row>
           <Row>
             <p>배송비</p>
-            <p>{deliveryAmount.toLocaleString('ko-KR')} ₩</p>
+            <p>
+              {amount >= 50000 ? 0 : deliveryAmount.toLocaleString('ko-KR')} ₩
+            </p>
           </Row>
           <Row>
             <p>할인 금액</p>
@@ -224,9 +226,11 @@ export default function Cart() {
           <Row>
             <p className="font-semibold">결제 금액</p>
             <p className="text-blue-500 font-semibold">
-              {(amount + deliveryAmount - discountAmount).toLocaleString(
-                'ko-KR'
-              )}{' '}
+              {amount >= 50000
+                ? (amount - discountAmount).toLocaleString('ko-KR')
+                : (amount + deliveryAmount - discountAmount).toLocaleString(
+                    'ko-KR'
+                  )}{' '}
               ₩
             </p>
           </Row>
@@ -449,7 +453,7 @@ const Items = (props: ICartItem) => {
         <div className="px-10 w-full">
           <div className="text-sm font-sans-kr py-4">
             수제작 평균 소요시간
-            <span className="text-blue-500 font-sans-kr-bold px-2">5~7일</span>
+            <span className="text-blue-500 font-sans-kr-bold px-2">7~14일</span>
           </div>
           <div className="flex xl:border-r-2 border-zinc-400 pr-20">
             <Image
@@ -472,7 +476,6 @@ const Items = (props: ICartItem) => {
               <div className="py-1 text-sm text-zinc-500">
                 LoveKong Statined Glass
               </div>
-              <div className="py-1 text-xs">배송 평균 소요 시간 1~2일</div>
             </div>
           </div>
         </div>
@@ -536,7 +539,7 @@ const Items = (props: ICartItem) => {
         <div className="flex flex-col items-center justify-center px-8">
           <div>총 배송비</div>
           <div className="font-sans-kr-bold">
-            {delivery.toLocaleString('ko-KR')}원
+            {amount >= 50000 ? 0 : delivery.toLocaleString('ko-KR')}원
           </div>
         </div>
         <IconMinus stroke={1} size={25}></IconMinus>
@@ -548,7 +551,10 @@ const Items = (props: ICartItem) => {
         <div className="px-8">
           주문 금액
           <span className="text-blue-500 font-sans-kr-bold px-2">
-            {(amount + delivery).toLocaleString('ko-KR')}원
+            {amount >= 50000
+              ? amount.toLocaleString('ko-KR')
+              : (amount + delivery).toLocaleString('ko-KR')}
+            원
           </span>
         </div>
       </div>

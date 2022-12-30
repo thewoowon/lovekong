@@ -54,8 +54,14 @@ export default function SignIn({
     mode: 'onChange',
   })
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     const { email, password } = getValues()
+    const response = await signIn('sign in with email', {
+      email,
+      password,
+      redirect: true,
+      callbackUrl: 'http://localhost:3000/auth/signin',
+    })
   }
   return (
     <div className="w-full h-screen flex justify-center mt-20">
@@ -148,20 +154,14 @@ export default function SignIn({
                 onSubmit={handleSubmit(onSubmit)}
                 className="w-full my-2 flex justify-center items-center shadow-lg hover:bg-zinc-100 bg-white text-black border-2 border-zinc-500"
               >
-                <IconLogin color="black" stroke={2} size={20}></IconLogin>
-                <span className="px-2">로그인</span>
+                <span className="px-2 font-bold">이메일 로그인</span>
               </ButtonLogin>
             </form>
             <ButtonBig
-              className="w-full my-2 flex justify-center items-center shadow-lg hover:bg-blue-600 bg-blue-500 text-white"
+              className="text-blue-500 border-2 border-blue-500 w-full my-2 flex justify-center items-center shadow-lg hover:bg-blue-500 hover:text-white"
               onClick={() => signIn('google')}
             >
-              <IconBrandGoogle
-                color="white"
-                stroke={2}
-                size={20}
-              ></IconBrandGoogle>
-              <span className="px-2">구글 로그인</span>
+              <span className="px-2 font-bold">Google 로그인</span>
             </ButtonBig>
             {/* <ButtonBig
             className="m-2 flex justify-center items-center shadow-lg hover:bg-yellow-500 bg-yellow-400 text-white"
@@ -171,16 +171,20 @@ export default function SignIn({
             <span className="px-2">카카오 로그인</span>
           </ButtonBig> */}
             <ButtonBig
-              className="w-full my-2 flex justify-center items-center shadow-lg hover:bg-green-600 bg-green-500 text-white"
+              className="text-green-500 border-2 border-green-500 w-full my-2 flex justify-center items-center shadow-lg hover:bg-green-500 hover:text-white"
               onClick={() => signIn('naver')}
             >
-              <IconBrandNextjs
-                color="white"
-                stroke={2}
-                size={25}
-              ></IconBrandNextjs>
-              <span className="px-2">네이버 로그인</span>
+              <span className="px-2 font-bold">NAVER 로그인</span>
             </ButtonBig>
+            <div className="flex justify-center items-center">
+              아직 회원이 아니신가요?
+              <Link
+                className="text-blue-500 px-2 my-4 border-b-blue-500 hover:border-b "
+                href="/auth/new-user"
+              >
+                회원가입하기
+              </Link>
+            </div>
           </div>
         )}
       </div>

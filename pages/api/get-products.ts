@@ -44,8 +44,6 @@ async function getProducts({
       where: where,
       ...getOrderBy(orderBy),
     })
-    console.log(getOrderBy(orderBy))
-    console.log(orderBy)
     return response
   } catch (error) {
     console.error(error)

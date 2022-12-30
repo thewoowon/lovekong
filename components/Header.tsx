@@ -14,7 +14,7 @@ import { useState } from 'react'
 import { signIn } from 'next-auth/react'
 
 export default function Header() {
-  const { data: session } = useSession()
+  const { data: session, status } = useSession()
   const router = useRouter()
 
   const [toggle, setToggle] = useState(false)

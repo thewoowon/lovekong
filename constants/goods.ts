@@ -15,7 +15,6 @@ export const FITERS = [
 ]
 
 export const getOrderBy = (orderBy?: string) => {
-  console.log(orderBy)
   return orderBy
     ? orderBy === 'latest'
       ? { orderBy: { createdAt: 'desc' } }
