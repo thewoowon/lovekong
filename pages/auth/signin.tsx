@@ -59,7 +59,7 @@ export default function SignIn({
     try {
       const { email, password } = getValues()
 
-      const response = await signIn('sign in with email', {
+      const response = await signIn('signInWithEmail', {
         email,
         password,
         redirect: false,
