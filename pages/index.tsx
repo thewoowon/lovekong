@@ -398,7 +398,7 @@ export default function Home() {
         </div>
         <div
           {...animatedItem_main_image_6}
-          className="grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-4"
+          className="grid grid-cols-2 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 gap-4"
         >
           {new Array(12).fill(0).map((_, index) => {
             return (
