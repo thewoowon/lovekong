@@ -30,6 +30,7 @@ async function updateComment(iCommentProps: ICommentProps) {
         contents: iCommentProps.contents,
       },
     })
+    prisma.$disconnect() // disconnect from database
     return response
   } catch (error) {
     console.error(error)

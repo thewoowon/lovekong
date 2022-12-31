@@ -10,6 +10,8 @@ async function getCart(userId: string) {
   try {
     const cart =
       await prisma.$queryRaw`SELECT CA.productId, CA.id , CA.userId, CA.quantity, CA.amount, PR.name, PR.price, PR.image_url FROM Carts AS CA Join Products AS PR ON CA.productId = PR.id AND CA.userId = ${userId}`
+
+    prisma.$disconnect() // disconnect from database
     return cart
   } catch (error) {
     console.error(error)

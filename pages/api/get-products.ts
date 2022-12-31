@@ -44,6 +44,7 @@ async function getProducts({
       where: where,
       ...getOrderBy(orderBy),
     })
+    prisma.$disconnect() // disconnect from database
     return response
   } catch (error) {
     console.error(error)

@@ -14,6 +14,7 @@ async function updateQuestion(id: number, contents?: string) {
         contents: contents,
       },
     })
+    prisma.$disconnect() // disconnect from database
     return response
   } catch (error) {
     console.error(error)

@@ -11,6 +11,7 @@ async function getQuestion(id: number) {
         id: id,
       },
     })
+    prisma.$disconnect() // disconnect from database
     return response
   } catch (error) {
     console.error(error)

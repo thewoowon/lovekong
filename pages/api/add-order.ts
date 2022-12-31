@@ -36,7 +36,7 @@ async function addOrder(
         status: 0,
       },
     })
-
+    prisma.$disconnect() // disconnect from database
     return orderItemIds
   } catch (error) {
     console.error(error)

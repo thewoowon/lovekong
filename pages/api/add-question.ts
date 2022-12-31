@@ -24,6 +24,7 @@ async function addQuestion(
         viewCount: 0,
       },
     })
+    prisma.$disconnect() // disconnect from database
     return qna
   } catch (error) {
     console.error(error)

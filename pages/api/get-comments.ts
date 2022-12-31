@@ -29,7 +29,7 @@ async function getComments(productId: number) {
         })
       }
     }
-
+    prisma.$disconnect() // disconnect from database
     return response
   } catch (error) {
     console.error(error)

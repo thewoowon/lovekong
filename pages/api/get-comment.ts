@@ -14,8 +14,10 @@ async function getComment(userId: string, orderItemId: number) {
       },
     })
     if (response?.userId === userId) {
+      prisma.$disconnect() // disconnect from database
       return response
     }
+    prisma.$disconnect() // disconnect from database
     return { message: 'userid is not matched' }
   } catch (error) {
     console.error(error)

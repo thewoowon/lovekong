@@ -33,6 +33,7 @@ async function getQuestions({ skip, take, contains, email }: qnasQuery) {
       take: take ? take : 10,
       where: where,
     })
+    prisma.$disconnect() // disconnect from database
     return response
   } catch (error) {
     console.error(error)

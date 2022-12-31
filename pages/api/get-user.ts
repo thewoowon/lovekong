@@ -11,6 +11,7 @@ async function getUser({ email }: { email: string }) {
         email: email,
       },
     })
+    prisma.$disconnect() // disconnect from database
     return user
   } catch (error) {
     console.error(error)
@@ -26,7 +27,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const { email } = req.body
+  const { email } = JSON.parse(req.body)
   try {
     const user = await getUser({
       email: email ? String(email) : '',

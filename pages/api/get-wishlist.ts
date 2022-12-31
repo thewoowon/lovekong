@@ -13,6 +13,7 @@ async function getWishlist(userId: string) {
         userId: userId,
       },
     })
+    prisma.$disconnect() // disconnect from database
     return response?.productIds.split(',')
   } catch (error) {
     console.error(error)

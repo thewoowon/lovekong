@@ -23,9 +23,10 @@ async function getWishlists(userId: string) {
           },
         },
       })
+      prisma.$disconnect() // disconnect from database
       return products
     }
-
+    prisma.$disconnect() // disconnect from database
     return []
   } catch (error) {
     console.error(error)

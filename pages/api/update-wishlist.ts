@@ -37,6 +37,7 @@ async function updateWishlist(userId: string, productId: string) {
         productIds: newWishlist.join(','),
       },
     })
+    prisma.$disconnect() // disconnect from database
     return response?.productIds.split(',')
   } catch (error) {
     console.error(error)

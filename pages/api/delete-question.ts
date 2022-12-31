@@ -13,6 +13,7 @@ async function deleteQuestion(id: number) {
         id: id,
       },
     })
+    prisma.$disconnect() // disconnect from database
     return cart
   } catch (error) {
     console.error(error)

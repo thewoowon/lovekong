@@ -7,6 +7,7 @@ const prisma = new PrismaClient()
 async function getCategories() {
   try {
     const response = await prisma.categories.findMany()
+    prisma.$disconnect() // disconnect from database
     return response
   } catch (error) {
     console.error(error)

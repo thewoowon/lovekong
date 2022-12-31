@@ -30,7 +30,7 @@ async function getOrder(userId: string) {
         orderItems: orderItems,
       })
     }
-
+    prisma.$disconnect() // disconnect from database
     return response
   } catch (error) {
     console.error(error)

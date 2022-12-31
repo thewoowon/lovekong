@@ -18,6 +18,7 @@ async function addUser(item: Omit<User, 'id' | 'emailVerified' | 'createdAt'>) {
         image: item.image,
       },
     })
+    prisma.$disconnect() // disconnect from database
     return user
   } catch (error) {
     console.error(error)

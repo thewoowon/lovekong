@@ -29,6 +29,7 @@ async function verifyUser({
         }
       }
     )
+    prisma.$disconnect() // disconnect from database
     return result
   } catch (error) {
     console.error(error)

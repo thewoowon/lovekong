@@ -16,6 +16,7 @@ async function getQuestionsCount(contains: string) {
 
   try {
     const response = await prisma.qnAs.count({ where: where })
+    prisma.$disconnect() // disconnect from database
     return response
   } catch (error) {
     console.error(error)

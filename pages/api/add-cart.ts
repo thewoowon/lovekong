@@ -16,6 +16,7 @@ async function addCart(userId: string, item: Omit<Carts, 'id' | 'userId'>) {
         amount: item.amount,
       },
     })
+    prisma.$disconnect() // disconnect from database
     return cart
   } catch (error) {
     console.error(error)
