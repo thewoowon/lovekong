@@ -18,7 +18,7 @@
     "paths": {
       "@components/*": ["components/*"],
     },
-    "types": ["@emotion/react/types/css-prop","next", "next/types/global", "next/image-types/global"]
+    "types": ["@emotion/react/types/css-prop","next", "next/types/global", "next/image-types/global","@types/gtag.js"]
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"],
