@@ -22,3 +22,5 @@ export const event = ({ action, category, label, value }: GTagEvent) => {
     value: value,
   })
 }
+
+// google analystics
