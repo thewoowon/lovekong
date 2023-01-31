@@ -3,7 +3,12 @@ import { FormError } from '@components/FormError'
 import styled from '@emotion/styled'
 import { Input } from '@mantine/core'
 import { User } from '@prisma/client'
-import { IconBrandGoogle, IconBrandNextjs, IconLogin } from '@tabler/icons'
+import {
+  IconBrandGoogle,
+  IconBrandKickstarter,
+  IconBrandNextjs,
+  IconLogin,
+} from '@tabler/icons'
 import { useMutation } from '@tanstack/react-query'
 import { GetServerSidePropsContext } from 'next'
 import { BuiltInProviderType } from 'next-auth/providers'
@@ -185,13 +190,17 @@ export default function SignIn({
             >
               <span className="px-2 font-bold">Google 로그인</span>
             </ButtonBig>
-            {/* <ButtonBig
-            className="m-2 flex justify-center items-center shadow-lg hover:bg-yellow-500 bg-yellow-400 text-white"
-            onClick={() => signIn('kakao')}
-          >
-            <IconBrandKickstarter color="white" stroke={2} size={25}></IconBrandKickstarter>
-            <span className="px-2">카카오 로그인</span>
-          </ButtonBig> */}
+            <ButtonBig
+              className="m-2 flex justify-center items-center shadow-lg hover:bg-yellow-500 bg-yellow-400 text-white"
+              onClick={() => signIn('kakao')}
+            >
+              <IconBrandKickstarter
+                color="white"
+                stroke={2}
+                size={25}
+              ></IconBrandKickstarter>
+              <span className="px-2">카카오 로그인</span>
+            </ButtonBig>
             <ButtonBig
               className="text-green-500 border-2 border-green-500 w-full my-2 flex justify-center items-center shadow-lg hover:bg-green-500 hover:text-white"
               onClick={() => signIn('naver')}
